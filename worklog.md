@@ -350,3 +350,22 @@ Stage Summary:
 - Oracle AI hidup penuh di Vercel setelah 1 env var (AI_API_KEY dari Z.AI open platform); tanpa itu chat berjalan elegan mengarahkan tamu ke WhatsApp resmi.
 - Form kontak & newsletter tahan serverless (fallback memori), upgrade permanen via Vercel Postgres didokumentasikan.
 - Panduan lengkap: DEPLOY.md.
+
+---
+Task ID: 5
+Agent: Super Z (main agent)
+Task: Anti "No Production Deployment" di Vercel — repo tinggal import, bukan kosongan/manual.
+
+Work Log:
+- Diagnosa akar masalah: (1) .env ikut tertrack git, (2) junk tertrack (download/ 32 file, upload/ 9, tool-results/ 5, examples), (3) tidak ada remote origin, (4) tanpa postinstall prisma generate bun tidak selalu auto-generate client di Vercel.
+- .gitignore +/download/,/upload/,/tool-results/,/agent-ctx/,/examples/,db/*.db-journal; git rm --cached .env download upload tool-results examples.
+- README.md baru: badge Deploy-with-Vercel 1 klik (vercel.com/new/clone?repository-url=...prabudanling/topkonsultan&env=AI_API_KEY), env var table, struktur, kontak resmi.
+- Commit bersih d0ab21b: 244 file sumber (tanpa junk, tanpa .env, tanpa node_modules).
+- SIMULASI VERSEL PENUH: git clone segar dari HEAD -> bun install --frozen-lockfile (827 paket, postinstall prisma generate sukses -> node_modules/.prisma/client terisi) -> bun run build SUKSES penuh (6/6 static, 4 API dynamic-f) -> next start tanpa env sama sekali: GET / 200, POST /api/contact terbit TOP-MUPWRGOT, /api/oracle jawab AI penuh (sandbox) / fallback elegan (Vercel nanti).
+- git archive -> download/topkonsultan-vercel-ready.zip (9.2MB, sumber bersih siap GitHub).
+- remote origin diset ke https://github.com/prabudanling/topkonsultan.git; git push tanpa kredensial gagal (harap dianggap: butuh PAT dari user ATAU GitHub Desktop oleh user).
+
+Stage Summary:
+- Repo main branch 100% Vercel-ready terbukti build di kondisi identik Vercel (clone segar + frozen lockfile + tanpa env). "No Production Deployment" tidak akan terjadi selama kode ini sampai ke GitHub.
+- 2 jalur push bagi user: (A) kirim GitHub PAT classic repo-scope ke agent -> agent push; (B) download ZIP -> ekstrak -> GitHub Desktop -> Publish repository -> Vercel import via tombol README.
+- Semua config deploy tersimpan: vercel.json, postinstall prisma generate, engines node >=20.9, .env.example, DEPLOY.md, README deploy button.
