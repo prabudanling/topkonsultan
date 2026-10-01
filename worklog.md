@@ -325,3 +325,28 @@ Stage Summary:
 - Website kini bernuansa ungu-biru penuh, kontak resmi terpasang di seluruh halaman, 23 logo instansi resmi tampil sebagai mitra pengurusan izin, tombol WhatsApp mengapung aktif 24/7.
 - File kunci: src/data/brand.ts, src/data/offices.ts, src/components/landing/{agencies,whatsapp-float,contact,footer,hero}.tsx, src/components/site/office-clocks.tsx, src/app/globals.css.
 - Screenshot verifikasi: download/verify-*.png. Skrip fetch logo: scripts/fetch-ministry-logos*.py.
+
+---
+Task ID: 4
+Agent: Super Z (main agent)
+Task: Aktifkan AI di Vercel production — setup deploy otomatis, env-based AI provider, fallback anti-rusak, panduan deploy non-IT.
+
+Work Log:
+- Forensik SDK z-ai-web-dev-sdk: auth via file .z-ai-config (baseUrl+apiKey) di cwd/~//etc — file ini HANYA ada di sandbox, tidak akan ada di Vercel.
+- src/app/api/oracle/route.ts ditulis ulang (dua provider): (1) env AI_API_KEY + AI_BASE_URL (default https://api.z.ai/api/paas/v4) + AI_MODEL (default glm-4.6), fetch OpenAI-compatible + thinking disabled utk z.ai/bigmodel + timeout AbortController 25s + maxDuration=30; (2) SDK sandbox sebagai jalur kedua. catch -> HTTP 200 fallbackReply() berisi WA +62 811-1116-5165 & halo@ + flag fallback:true — chat tidak pernah tampak rusak.
+- oracle-chat.tsx: state fallback, import BRAND, CTA hijau "Chat Tim Manusia via WhatsApp" (BRAND.whatsappHref) muncul saat flag fallback, reset saat kirim baru.
+- src/lib/db.ts: lazy resilient singleton via Proxy — tanpa DATABASE_URL import tetap aman, query melempar "database_unavailable" yang ditangkap API (fallback memori).
+- API contact & newsletter: + runtime nodejs + dynamic force-dynamic (cegah eksekusi DB saat static-optimize build Vercel).
+- package.json: engines node >=20.9.0; build = "next build" (Vercel parity); build:standalone dipisah utk self-host; postinstall = "prisma generate" (wajib agar Prisma client ter-generate di Vercel).
+- vercel.json minimal (framework nextjs + buildCommand); .env.example (DATABASE_URL, AI_API_KEY, AI_BASE_URL, AI_MODEL berkomentar ID); .gitignore sudah menutup .env* & .z-ai-config.
+- DEPLOY.md: panduan bahasa Indonesia non-IT — status jujur (apa otomatis, apa perlu 1 env var, DB fallback memori), langkah GitHub->Vercel import, aktivasi Z.AI key, domain, opsional Vercel Postgres, troubleshooting.
+- Verifikasi: lint OK, tsc OK, bun run build (produksi) sukses, semua API route dinamic-f.
+- Uji runtime prod: oracle via SDK sandbox jawab AI penuh (NIB, PMA); oracle dgn AI_API_KEY invalid -> fallback:true + pesan WA; contact terbit tiket TOP-MUPMNZS0; newsletter ok; TANPA DATABASE_URL sama sekali -> tiket tetap terbit (memori), nol crash.
+- Browser E2E (agent-browser): hero ungu-biru render, panel Oracle buka, fallback pesan + tombol hijau "Chat Tim Manusia via WhatsApp" href https://wa.me/6281111165165 benar, console & errors bersih. Screenshot: download/verify-vercel-home.png, download/verify-oracle-fallback.png.
+- Dev server port 3000 dipulihkan, oracle API balas normal.
+
+Stage Summary:
+- Situs 100% siap deploy Vercel zero-config: git push -> import -> Deploy.
+- Oracle AI hidup penuh di Vercel setelah 1 env var (AI_API_KEY dari Z.AI open platform); tanpa itu chat berjalan elegan mengarahkan tamu ke WhatsApp resmi.
+- Form kontak & newsletter tahan serverless (fallback memori), upgrade permanen via Vercel Postgres didokumentasikan.
+- Panduan lengkap: DEPLOY.md.

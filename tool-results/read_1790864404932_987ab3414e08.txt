@@ -228,3 +228,101 @@
    228→- Bilingual: konten ID + kickline EN (enName/enTagline/enTitle) + Oracle multibahasa; 10 hub negara maju dari Jakarta HQ.
    229→- Semua link hidup, semua verifikasi browser lolos, tanpa jejak brand lama.
    230→
+   231→---
+   232→Task ID: 4-leadership-readme
+   233→Agent: Z.ai Code (main orchestrator)
+   234→Task: Permintaan user — (1) buat README terbaik dengan full design & full version; (2) masukkan Gugun Gunara (pengusaha asal Tasikmalaya, konsultan bisnis senior, pernah berpartner dengan McKinsey) sebagai pimpinan perusahaan.
+   235→
+   236→Work Log:
+   237→- Menulis scripts/gen-founders.sh (7 potret editorial black-gold konsisten dengan set leadership-1..6) dan menjalankannya di background: founder-gugun-gunara.png + leadership-7..12.png untuk seluruh C-suite Indonesia.
+   238→- extended-types.ts: menambah field opsional `featured?: boolean` pada interface Leader.
+   239→- leadership.ts ditulis ulang: Gugun Gunara sebagai entri #1 (featured) — Pendiri & Direktur Utama / Founder & CEO, council "Kantor Pusat — Menara TOP, Jakarta", bio Tasikmalaya + McKinsey partnership, chips "Tasikmalaya · Jawa Barat / Konsultan Bisnis Senior / Berpartner dengan McKinsey"; Bimo Aria Wibowo digeser menjadi Wakil Direktur Utama (bio disesuaikan, tetap memimpin operasi 12.000+ penugasan); 6 pimpinan Indonesia kini berpotret (leadership-7..12); 6 Mitra Senior internasional dipertahankan urut di belakang.
+   240→- about.tsx: seksi Kepemimpinan kini merender kartu Pendiri full-width (sm:col-span-2 lg:col-span-3) — potret 340px kiri, konten kanan, chip aksen emas, kickline enRole italic; perbaikan penutup map `))}` → `})}` setelah konversi body arrow ke block.
+   241→- README.md ditulis penuh (full design): ASCII logo TOP, badge shields.io, banner hq.png, daftar isi 18 bagian, ringkasan eksekutif dengan tabel angka kunci, matriks fitur, identitas brand, peta situs 124 tampilan, diagram arsitektur ASCII + penjelasan hash router, struktur proyek, tabel 12 file data, Gerbang Perizinan 36 izin × 8 kategori, strategi dwibahasa + peta jalan bahasa, Oracle AI, referensi 3 API dengan contoh curl, skema Prisma, quickstart, deploy shared hosting (dual mode), sistem desain, rekaman QA E2E, peta jalan, seksi Kepemimpinan (Gugun Gunara difeatured + tabel 13 pimpinan), lisensi/kredit. Semua angka diambil dari kodebase (fakta, bukan klaim).
+   242→- QA: bunx tsc --noEmit → 0 error di src/; bun run lint bersih; dev server 200.
+   243→
+   244→Stage Summary:
+   245→- Gugun Gunara kini Pendiri & Direktur Utama PT TOP KONSULTAN INTERNASIONAL di seluruh data + halaman /about (kartu featured full-width).
+   246→- README.md premium siap publikasi — full design (ASCII art, badge, tabel, diagram, collapsible facts), full version (18 bagian), 100% faktual terhadap kodebase.
+   247→- 7 potret pimpinan Indonesia digenerate gaya black-gold konsisten.
+   248→
+   249→---
+   250→Task ID: 1
+   251→Agent: Super Z (main agent)
+   252→Task: Clone & install repositori https://github.com/prabudanling/topkonsultan
+   253→
+   254→Work Log:
+   255→- Clone repo dari GitHub ke /home/z/my-project/topkonsultan
+   256→- Inisialisasi environment fullstack (init-fullstack.sh)
+   257→- Rsync seluruh isi repo ke /home/z/my-project (root proyek dev server), hapus folder clone
+   258→- bun install — 915 packages, tanpa perubahan (deps sudah lengkap)
+   259→- bun run db:push — skema Prisma (ContactMessage, NewsletterSubscriber) sinkron dengan SQLite db/custom.db
+   260→- Verifikasi Agent Browser: beranda render sempurna (tema emas-hitam), #/perizinan hidup (36 izin, 9 tab filter), Oracle AI menjawab pertanyaan PMA dalam Bahasa Indonesia (POST /api/oracle 200)
+   261→- Uji POST /api/contact → tiket TOP-MUP7ZLMJ tersimpan di SQLite
+   262→- dev.log bersih tanpa error runtime
+   263→
+   264→Stage Summary:
+   265→- Situs PT TOP KONSULTAN INTERNASIONAL berjalan penuh di port 3000 (Next.js 16.1.3 + Turbopack)
+   266→- Fitur terverifikasi E2E: hash router 124 tampilan, katalog perizinan, Oracle AI (Z.AI SDK), form kontak bertiket, newsletter
+   267→- Screenshot verifikasi: download/verify-home.png, download/verify-oracle.png
+   268→
+   269→---
+   270→Task ID: 2
+   271→Agent: Super Z (main agent)
+   272→Task: Branding situs dengan foto asli upload (logo master, foto Pendiri, foto Menara, 5 foto akreditasi/sertifikat)
+   273→
+   274→Work Log:
+   275→- Inspeksi 8 file upload di /home/z/my-project/upload (dimensi & konten)
+   276→- Optimasi via scripts/brand-assets.py (PIL resize + kompresi): logo 9MB->316KB, founder 2.1MB->178KB, total 8 aset ke public/images/
+   277→- Komponen baru src/components/landing/accreditation.tsx — galeri "Setiap Sertifikat Adalah Bukti." berisi 5 kartu foto akreditasi/penyerahan + 1 kartu segel logo emas Pusat Perizinan.ID (next/image, Reveal, SectionHeading, gaya gold zinc-950 konsisten)
+   278→- home.tsx: <Accreditation/> disisipkan antara Results dan Testimonials
+   279→- leadership.ts: foto Pendiri diganti foto asli founder-gugun-gunara.jpg
+   280→- about.tsx: foto Menara TOP diganti menara-top.jpg (1344x768)
+   281→- Verifikasi: ESLint bersih, tsc src bersih, dev.log tanpa error, Agent Browser: galeri 6 kartu render, foto founder & menara termuat, screenshot di download/verify-*.png
+   282→
+   283→Stage Summary:
+   284→- Situs kini memakai aset branding asli klien di beranda & halaman Tentang
+   285→- Galeri Akreditasi hidup di beranda posisi setelah section Hasil (#akreditasi)
+   286→- Semua aset teroptimasi untuk web (total < 1.6KB..KB rata-rata <250KB per foto)
+   287→
+   288→---
+   289→Task ID: 3
+   290→Agent: Super Z (main agent)
+   291→Task: Tambah logo resmi kementerian/lembaga RI sebagai section "Jaringan Instansi" di beranda
+   292→
+   293→Work Log:
+   294→- Upstream z-ai image-search error 400; Wikimedia 429 dengan UA generik -> solusi: UA deskriptif "TopKonsultanSiteBuilder/1.0" + jeda sopan, akses API Wikipedia/Commons lancar
+   295→- Unduh 18 kandidat via scripts/fetch-agency-logos.py + refetch-logos.py (pageimages id.wikipedia & Commons search)
+   296→- QC visual via contact sheet (scripts/logo-contact-sheet.py): 17 lolos, bappebti (PDF sampul) & pu (tidak ada kandidat layak) dibuang per permintaan user "yang tidak bagus jangan dimasukan"
+   297→- Perbaikan manual: kemenkumham awalnya seal Kemenko (salah) -> diganti logo resmi Kemenkumham "Pengayoman"; ojk awalnya foto gedung -> diganti logo OJK; kemenpar awalnya Pesona Indonesia -> lambang resmi Kementerian Pariwisata (2024); bonus logo DJKI (merek/paten/hak cipta)
+   298→- Komponen baru src/components/landing/agencies.tsx: section #instansi "Satu Meja dengan Semua Instansi." — 17 kartu putih berisi logo resmi + nama + cakupan izin, disisipkan setelah PerizinanSection, plus disclaimer kepemilikan logo (bukan afiliasi resmi)
+   299→- Verifikasi: lint bersih, dev.log bersih, Agent Browser: 3 baris logo render sempurna, nol error console
+   300→
+   301→Stage Summary:
+   302→- Beranda kini menampilkan 17 logo resmi instansi (Kemenkumham, BKPM, Kemenkeu, Kemendag, Imipas, KLH, Kemnaker, Kemenkes, BPOM, Kemenag, BSN, DJKI, Komdigi, OJK, Kemenperin, Kemenkop, Kemenpar)
+   303→- Framing jujur & aman: "instansi yang dihadapi langsung", bukan klaim kemitraan — diproteksi disclaimer hukum
+   304→
+   305→---
+   306→Task ID: 3
+   307→Agent: Z.ai Code (main orchestrator)
+   308→Task: Kontak resmi (+6281111165165 / halo@topkonsultan.web.id / 4 alamat: Arjamukti, Andalusia, PHI Kwitang, IPHI Pusat), rebrand ungu-biru, maksimalkan layanan + logo mitra instansi resmi.
+   309→
+   310→Work Log:
+   311→- brand.ts: telepon & WhatsApp +62 811-1116-5165 (wa.me/6281111165165), email halo@topkonsultan.web.id, 4 alamat resmi (addresses[]) + address pusat Arjamukti.
+   312→- offices.ts ditulis ulang: 4 kantor real (Tasikmalaya I pusat, Tasikmalaya II, Jakarta PHI Kwitang, IPHI Pusat).
+   313→- office-clocks.tsx -> seksi "Kantor Kami": jam WIB live, jam operasional, 4 kartu kantor + link Google Maps.
+   314→- Rebrand ungu-biru: sed amber->violet di 43 file tsx/ts/svg (314 kemunculan), hex #fbbf24->#a78bfa dst, rgba glow->violet, CTA signature from-violet-400 via-indigo-400 to-blue-500, globals.css (text-gradient-gold jadi gradasi violet-indigo-blue, glass/gold-ring/scrollbar/grid/selection/focus).
+   315→- logo.tsx + icon.svg favicon -> violet.
+   316→- legal.ts, leadership.ts, about.tsx: alamat Menara TOP fiktif -> alamat real, email privacy -> halo@.
+   317→- Logo instansi: scripts/fetch-ministry-logos.py (+round 2) dari id.wikipedia REST & Wikimedia Commons, quality-gate + auto-crop + optimasi PIL; QA via contact sheet; buang logo salah (foto gedung ESDM, Ditjen Survei utk ATR, Badan Keolahragaan utk BSN); hasil 19 logo resmi.
+   318→- agencies.tsx: array 23 instansi (tambah kemenhub, kemendagri, kemenpu, atr-bpn, kesdm, kemendesa; ganti kemendag EN->ID, kemenkop wordmark), strip "Perhimpunan Profesi" PHI Kwitang + IPHI Pusat; logo ke public/images/agencies/.
+   319→- WhatsApp: komponen whatsapp-float.tsx (kiri-bawah, hijau, ping) global di app.tsx; tombol Chat WhatsApp di hero + CTABand.
+   320→- landing/contact.tsx: baris kontak WA/email/telepon/alamat + Jaringan Kantor 4 lokasi; footer.tsx: WA 24/7 + 4 alamat.
+   321→- Debug cache: cache image Next 16 Turbopack ada di .next/dev/cache/images (bukan .next/cache/images) -> hapus + restart server.
+   322→- Verifikasi: lint OK, tsc OK (src), browser E2E multi-screenshot (hero ungu-biru, 23 kartu instansi, PHI/IPHI strip, Kantor Kami, kartu kantor, footer), wa.me href benar, console bersih.
+   323→
+   324→Stage Summary:
+   325→- Website kini bernuansa ungu-biru penuh, kontak resmi terpasang di seluruh halaman, 23 logo instansi resmi tampil sebagai mitra pengurusan izin, tombol WhatsApp mengapung aktif 24/7.
+   326→- File kunci: src/data/brand.ts, src/data/offices.ts, src/components/landing/{agencies,whatsapp-float,contact,footer,hero}.tsx, src/components/site/office-clocks.tsx, src/app/globals.css.
+   327→- Screenshot verifikasi: download/verify-*.png. Skrip fetch logo: scripts/fetch-ministry-logos*.py.
+   328→

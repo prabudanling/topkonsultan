@@ -1,9 +1,10 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Send, Sparkles, X } from "lucide-react";
+import { MessageCircle, Send, Sparkles, X } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { ORACLE_PROMPTS } from "@/data/content";
+import { BRAND } from "@/data/brand";
 import { LogoMark } from "./logo";
 import { EASE } from "./motion";
 
@@ -20,6 +21,7 @@ export default function OracleChat() {
   const [msgs, setMsgs] = useState<Msg[]>([WELCOME]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [fallback, setFallback] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -41,6 +43,7 @@ export default function OracleChat() {
     setMsgs(next);
     setInput("");
     setLoading(true);
+    setFallback(false);
 
     try {
       const res = await fetch("/api/oracle", {
@@ -48,7 +51,12 @@ export default function OracleChat() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: next.slice(-10) }),
       });
-      const data = (await res.json()) as { ok: boolean; reply?: string };
+      const data = (await res.json()) as {
+        ok: boolean;
+        reply?: string;
+        fallback?: boolean;
+      };
+      if (data.fallback) setFallback(true);
       setMsgs((m) => [
         ...m,
         {
@@ -177,6 +185,18 @@ export default function OracleChat() {
                     </button>
                   ))}
                 </div>
+              )}
+
+              {fallback && !loading && (
+                <a
+                  href={BRAND.whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-[12px] font-bold text-zinc-950 transition-transform hover:scale-[1.02] active:scale-95"
+                >
+                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                  Chat Tim Manusia via WhatsApp
+                </a>
               )}
             </div>
 
