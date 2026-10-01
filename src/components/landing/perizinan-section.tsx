@@ -1,0 +1,81 @@
+"use client";
+
+/**
+ * Landing section — Gerbang Perizinan: 8 kategori regulasi, satu gerbang.
+ * Flagship differentiator PT TOP KONSULTAN INTERNASIONAL.
+ */
+
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { PERIZINAN, PERIZINAN_CATEGORIES } from "@/data/perizinan";
+import { Link } from "@/lib/router";
+import { EASE, SectionHeading } from "./motion";
+import { LinkButton } from "@/components/site/ui";
+
+export default function PerizinanSection() {
+  return (
+    <section className="relative overflow-hidden py-24 sm:py-28" aria-label="Gerbang Perizinan">
+      <div
+        className="pointer-events-none absolute left-1/2 top-0 h-72 w-[640px] -translate-x-1/2 rounded-full bg-amber-500/[0.06] blur-[130px]"
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow="Gerbang Perizinan"
+          title={
+            <>
+              36+ Jenis Izin. <span className="text-gradient-gold">Nol Drama.</span>
+            </>
+          }
+          sub="Satu-satunya konsultan di dunia yang menggabungkan strategi kelas McKinsey dengan pengurusan perizinan Indonesia end-to-end — dari NIB hingga OJK, dari BPOM hingga KITAS."
+        />
+
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {PERIZINAN_CATEGORIES.map((c, i) => {
+            const Icon = c.icon;
+            const count = PERIZINAN.filter((p) => p.categoryId === c.id).length;
+            return (
+              <motion.div
+                key={c.id}
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.55, delay: (i % 4) * 0.07, ease: EASE }}
+              >
+                <Link
+                  to={`/perizinan?kategori=${c.id}`}
+                  className="group flex h-full flex-col rounded-2xl border border-zinc-800/80 bg-zinc-950/70 p-5 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40 hover:shadow-[0_20px_60px_-24px_rgba(245,158,11,0.4)]"
+                  ariaLabel={`${c.name} — ${count} jenis izin`}
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-amber-400/20 bg-amber-400/10 text-amber-300 transition-transform duration-500 group-hover:scale-110">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <h3 className="mt-4 font-display text-base font-bold leading-snug text-zinc-50 transition-colors group-hover:text-amber-200">
+                    {c.name}
+                  </h3>
+                  <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-600">
+                    {c.enName}
+                  </p>
+                  <p className="mt-2.5 flex-1 text-[13px] leading-relaxed text-zinc-500">{c.desc}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 border-t border-zinc-800/80 pt-3.5 text-xs font-bold text-amber-300/90">
+                    {count} jenis izin
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+                  </span>
+                </Link>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <LinkButton to="/perizinan" withArrow>
+            Jelajahi Semua 36 Izin
+          </LinkButton>
+          <span className="text-xs text-zinc-600">
+            Peta jalan perizinan pertama dalam 48 jam — dijamin tertib regulasi.
+          </span>
+        </div>
+      </div>
+    </section>
+  );
+}
