@@ -26,27 +26,27 @@ export default function IndustriesPage() {
             <Reveal key={ind.slug} delay={(i % 3) * 0.07} className="h-full">
               <a
                 href={`#/industries/${ind.slug}`}
-                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-violet-400/40 hover:shadow-[0_24px_60px_-24px_rgba(139,92,246,0.35)]"
+                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-violet-500/50 hover:shadow-[0_24px_60px_-24px_rgba(139,92,246,0.22)]"
                 aria-label={`Lihat karya TOP di ${ind.name}`}
               >
                 <span
-                  className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-400/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/80 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   aria-hidden="true"
                 />
-                <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-violet-400/25 bg-gradient-to-br from-violet-400/15 to-indigo-600/10 text-violet-300 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-violet-300 bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-600 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
                   <ind.icon className="h-5 w-5" aria-hidden="true" />
                 </span>
-                <h2 className="font-display text-lg font-bold text-zinc-100">{ind.name}</h2>
+                <h2 className="font-display text-lg font-bold text-slate-900">{ind.name}</h2>
                 {ind.enName ? (
-                  <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-600">
+                  <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-400">
                     {ind.enName}
                   </p>
                 ) : null}
-                <p className="mt-1.5 text-[13px] font-medium italic text-violet-200/70">{ind.tagline}</p>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-zinc-400">
+                <p className="mt-1.5 text-[13px] font-medium italic text-violet-700/70">{ind.tagline}</p>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-500">
                   {ind.description[0]}
                 </p>
-                <span className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-violet-300/90">
+                <span className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-violet-700">
                   Jelajahi wilayah
                   <ArrowUpRight
                     className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -59,8 +59,8 @@ export default function IndustriesPage() {
         </div>
 
         <Reveal delay={0.15}>
-          <div className="mt-14 flex flex-col items-center gap-5 rounded-3xl border border-violet-400/15 bg-gradient-to-br from-violet-400/[0.06] to-transparent p-8 text-center sm:p-10">
-            <p className="max-w-2xl font-display text-xl italic leading-relaxed text-zinc-200 sm:text-2xl">
+          <div className="mt-14 flex flex-col items-center gap-5 rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-600/[0.06] to-transparent p-8 text-center sm:p-10">
+            <p className="max-w-2xl font-display text-xl italic leading-relaxed text-slate-700 sm:text-2xl">
               &ldquo;Industri Anda tidak terdaftar? Para dewan kami punya rekam jejak menggambar
               peta baru.&rdquo;
             </p>

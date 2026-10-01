@@ -47,7 +47,7 @@ export default function Navbar() {
   const linkCls = (to: string) => {
     const active = activeSeg === to.slice(1);
     return `group relative text-[13px] font-medium tracking-wide transition-colors ${
-      active ? "text-violet-300" : "text-zinc-400 hover:text-violet-300"
+      active ? "text-violet-600" : "text-slate-500 hover:text-violet-600"
     }`;
   };
 
@@ -74,7 +74,7 @@ export default function Navbar() {
               <Link to={l.to} className={linkCls(l.to)}>
                 {l.label}
                 <span
-                  className={`absolute -bottom-1.5 left-0 h-px w-full origin-left bg-gradient-to-r from-violet-400 to-indigo-500 transition-transform duration-300 ${
+                  className={`absolute -bottom-1.5 left-0 h-px w-full origin-left bg-gradient-to-r from-violet-600 to-indigo-500 transition-transform duration-300 ${
                     activeSeg === l.to.slice(1) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                   }`}
                 />
@@ -86,14 +86,14 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             to="/contact"
-            className="shine hidden items-center gap-2 rounded-full bg-gradient-to-r from-violet-400 via-indigo-400 to-blue-500 px-5 py-2.5 text-[13px] font-bold text-zinc-950 shadow-[0_8px_30px_-8px_rgba(139,92,246,0.7)] transition-transform duration-300 hover:scale-[1.04] active:scale-95 sm:inline-flex"
+            className="shine hidden items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 via-indigo-500 to-blue-600 px-5 py-2.5 text-[13px] font-bold text-white shadow-[0_8px_30px_-8px_rgba(139,92,246,0.42)] transition-transform duration-300 hover:scale-[1.04] active:scale-95 sm:inline-flex"
           >
             <Sparkles className="h-4 w-4" aria-hidden="true" />
             Konsultasi Sekarang
           </Link>
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-zinc-800 text-zinc-300 transition-colors hover:border-violet-400/40 hover:text-violet-300 lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition-colors hover:border-violet-500/50 hover:text-violet-600 lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? "Tutup menu" : "Buka menu"}
@@ -112,7 +112,7 @@ export default function Navbar() {
             transition={{ duration: 0.35, ease: EASE }}
             className="overflow-hidden lg:hidden xl:hidden"
           >
-            <ul className="mx-4 mb-4 max-h-[70vh] space-y-1 overflow-y-auto rounded-2xl border border-violet-400/15 bg-[#0a0a0d]/95 p-3 shadow-[0_24px_70px_-20px_rgba(0,0,0,0.9)] backdrop-blur-xl custom-scrollbar">
+            <ul className="mx-4 mb-4 max-h-[70vh] space-y-1 overflow-y-auto rounded-2xl border border-violet-200 bg-white/95 p-3 shadow-[0_24px_70px_-20px_rgba(0,0,0,0.9)] backdrop-blur-xl custom-scrollbar">
               {[...NAV_LINKS, ...MENU_EXTRA].map((l, i) => (
                 <motion.li
                   key={l.to}
@@ -123,12 +123,12 @@ export default function Navbar() {
                   <Link
                     to={l.to}
                     onClick={() => setOpen(false)}
-                    className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-colors hover:bg-violet-400/10 hover:text-violet-300 ${
-                      activeSeg === l.to.slice(1) ? "bg-violet-400/10 text-violet-300" : "text-zinc-300"
+                    className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-colors hover:bg-violet-50 hover:text-violet-600 ${
+                      activeSeg === l.to.slice(1) ? "bg-violet-50 text-violet-600" : "text-slate-600"
                     }`}
                   >
                     {l.label}
-                    <span className="text-[10px] font-bold text-zinc-600">
+                    <span className="text-[10px] font-bold text-slate-400">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </Link>
@@ -138,7 +138,7 @@ export default function Navbar() {
                 <Link
                   to="/contact"
                   onClick={() => setOpen(false)}
-                  className="block rounded-xl bg-gradient-to-r from-violet-400 to-blue-500 px-4 py-3 text-center text-sm font-bold text-zinc-950"
+                  className="block rounded-xl bg-gradient-to-r from-violet-600 to-blue-600 px-4 py-3 text-center text-sm font-bold text-white"
                 >
                   Konsultasi Sekarang
                 </Link>

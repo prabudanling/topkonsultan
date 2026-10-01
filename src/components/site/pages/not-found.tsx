@@ -21,7 +21,7 @@ export default function NotFoundPage() {
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute left-1/2 top-1/3 h-96 w-[700px] -translate-x-1/2 rounded-full bg-violet-500/[0.07] blur-[140px]"
+        className="pointer-events-none absolute left-1/2 top-1/3 h-96 w-[700px] -translate-x-1/2 rounded-full bg-violet-600/[0.07] blur-[140px]"
         aria-hidden="true"
       />
       <div className="relative z-10 flex max-w-2xl flex-col items-center text-center">
@@ -29,7 +29,7 @@ export default function NotFoundPage() {
           initial={{ opacity: 0, scale: 0.6, rotate: -20 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, ease: EASE }}
-          className="inline-flex h-20 w-20 items-center justify-center rounded-full border border-violet-400/30 bg-violet-400/10 text-violet-300"
+          className="inline-flex h-20 w-20 items-center justify-center rounded-full border border-violet-300 bg-violet-50 text-violet-600"
         >
           <Compass className="h-9 w-9" aria-hidden="true" />
         </motion.span>
@@ -38,7 +38,7 @@ export default function NotFoundPage() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.12, ease: EASE }}
-          className="mt-8 font-display text-5xl font-bold text-zinc-50 sm:text-6xl"
+          className="mt-8 font-display text-5xl font-bold text-slate-900 sm:text-6xl"
         >
           404 — Halaman <span className="text-gradient-gold">Tidak Ditemukan.</span>
         </motion.h1>
@@ -47,7 +47,7 @@ export default function NotFoundPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.22, ease: EASE }}
-          className="mt-5 max-w-md text-base leading-relaxed text-zinc-400"
+          className="mt-5 max-w-md text-base leading-relaxed text-slate-500"
         >
           Jalur ini tidak ada di peta kami. Namun 46 Dewan Pakar selalu tahu
           jalan.
@@ -66,7 +66,7 @@ export default function NotFoundPage() {
             <a
               key={w.to}
               href={`#${w.to}`}
-              className="inline-flex min-h-11 items-center rounded-full border border-zinc-800 bg-zinc-900/50 px-5 py-2 text-sm font-medium text-zinc-300 backdrop-blur transition-all duration-300 hover:border-violet-400/50 hover:text-violet-300"
+              className="inline-flex min-h-11 items-center rounded-full border border-slate-200 bg-white/50 px-5 py-2 text-sm font-medium text-slate-600 backdrop-blur transition-all duration-300 hover:border-violet-500/60 hover:text-violet-600"
             >
               {w.label}
             </a>

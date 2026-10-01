@@ -18,7 +18,7 @@ export function LogoMark({ className = "h-9 w-9" }: { className?: string }) {
           strokeWidth="2.2"
           strokeDasharray="6 5"
         />
-        <circle cx="24" cy="3" r="3" fill="#a78bfa" />
+        <circle cx="24" cy="3" r="3" fill="#7c3aed" />
       </g>
       {/* Gateway arch — the TOP gate */}
       <path
@@ -31,8 +31,8 @@ export function LogoMark({ className = "h-9 w-9" }: { className?: string }) {
       <circle cx="24" cy="27.5" r="4.5" fill="url(#logo-gold)" />
       <defs>
         <linearGradient id="logo-gold" x1="0" y1="0" x2="48" y2="48">
-          <stop stopColor="#ddd6fe" />
-          <stop offset="1" stopColor="#7c3aed" />
+          <stop stopColor="#7c3aed" />
+          <stop offset="1" stopColor="#2563eb" />
         </linearGradient>
       </defs>
     </svg>
@@ -42,10 +42,10 @@ export function LogoMark({ className = "h-9 w-9" }: { className?: string }) {
 export function Wordmark() {
   return (
     <span className="leading-none">
-      <span className="block font-display text-sm font-bold tracking-[0.3em] text-zinc-50">
+      <span className="block font-display text-sm font-bold tracking-[0.3em] text-slate-900">
         TOP KONSULTAN
       </span>
-      <span className="mt-1 block text-[9px] font-semibold tracking-[0.5em] text-violet-400/90">
+      <span className="mt-1 block text-[9px] font-semibold tracking-[0.5em] text-violet-600">
         INTERNASIONAL
       </span>
     </span>

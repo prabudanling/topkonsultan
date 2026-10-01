@@ -98,7 +98,7 @@ function Mandala() {
           cy="200"
           r={ring.r}
           fill="none"
-          stroke="rgba(167,139,250,0.14)"
+          stroke="rgba(124,58,237,0.16)"
           strokeWidth="1"
           strokeDasharray="2 7"
         />
@@ -182,9 +182,9 @@ export default function Hero() {
 
       {/* Floating orbs */}
       <motion.div style={{ y: yDrift }} className="absolute inset-0" aria-hidden="true">
-        <div className="absolute left-[6%] top-[16%] h-72 w-72 animate-float rounded-full bg-violet-500/15 blur-[110px]" />
+        <div className="absolute left-[6%] top-[16%] h-72 w-72 animate-float rounded-full bg-violet-600/15 blur-[110px]" />
         <div className="absolute right-[4%] top-[28%] h-80 w-80 animate-float-slow rounded-full bg-violet-600/10 blur-[120px]" />
-        <div className="absolute bottom-[6%] left-[36%] h-64 w-64 animate-float rounded-full bg-indigo-300/10 blur-[100px]" />
+        <div className="absolute bottom-[6%] left-[36%] h-64 w-64 animate-float rounded-full bg-indigo-50 blur-[100px]" />
       </motion.div>
 
       {/* 46-node Mandala */}
@@ -212,15 +212,15 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.45, ease: EASE }}
         >
-          <span className="inline-flex items-center gap-2.5 rounded-full border border-violet-400/30 bg-violet-400/[0.07] px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-violet-200">
+          <span className="inline-flex items-center gap-2.5 rounded-full border border-violet-300 bg-violet-600/[0.07] px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-violet-700">
             <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
             EST. 2001 — TASIKMALAYA · JAKARTA · MELAYANI 190 NEGARA
           </span>
         </motion.div>
 
         <h1 className="mt-7 font-display text-[11.5vw] font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
-          <SplitWords text="Satu Gerbang untuk" delay={1.55} className="block text-zinc-100" />
-          <SplitWords text="Segala Izin dan" delay={1.78} className="block text-zinc-100" />
+          <SplitWords text="Satu Gerbang untuk" delay={1.55} className="block text-slate-900" />
+          <SplitWords text="Segala Izin dan" delay={1.78} className="block text-slate-900" />
           <SplitWords text="Kejayaan Bisnis Anda" delay={2.01} allGold className="block" />
         </h1>
 
@@ -228,12 +228,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, delay: 2.35, ease: EASE }}
-          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg"
+          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-500 sm:text-lg"
         >
           Konsultan &amp; perizinan terlengkap di dunia — 46 Dewan Pakar internasional
           dengan 6.900 tahun pengalaman gabungan menuntaskan semua kebutuhan bisnis
           Anda,{" "}
-          <span className="font-semibold text-zinc-200">
+          <span className="font-semibold text-slate-700">
             dari pendirian PT hingga penguasaan pasar di 190 negara.
           </span>
         </motion.p>
@@ -242,12 +242,12 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 2.55, ease: EASE }}
-          className="mt-4 text-sm tracking-wide text-zinc-500"
+          className="mt-4 text-sm tracking-wide text-slate-9000"
           aria-live="off"
         >
           Sedang menuntaskan:{" "}
-          <span className="font-semibold text-violet-300">{typed}</span>
-          <span className="animate-blink font-semibold text-violet-300" aria-hidden="true">
+          <span className="font-semibold text-violet-600">{typed}</span>
+          <span className="animate-blink font-semibold text-violet-600" aria-hidden="true">
             ▍
           </span>
         </motion.p>
@@ -260,7 +260,7 @@ export default function Hero() {
         >
           <a
             href="#/contact"
-            className="shine inline-flex min-h-12 items-center gap-2.5 rounded-full bg-gradient-to-r from-violet-400 via-indigo-400 to-blue-500 px-8 py-3.5 text-sm font-bold text-zinc-950 shadow-[0_12px_44px_-10px_rgba(139,92,246,0.8)] transition-transform duration-300 hover:scale-[1.04] active:scale-95"
+            className="shine inline-flex min-h-12 items-center gap-2.5 rounded-full bg-gradient-to-r from-violet-600 via-indigo-500 to-blue-600 px-8 py-3.5 text-sm font-bold text-white shadow-[0_12px_44px_-10px_rgba(139,92,246,0.8)] transition-transform duration-300 hover:scale-[1.04] active:scale-95"
           >
             <Sparkles className="h-4 w-4" aria-hidden="true" />
             Mulai Konsultasi
@@ -269,14 +269,14 @@ export default function Hero() {
             href={`https://wa.me/${BRAND.whatsappIntl}?text=${encodeURIComponent("Halo TOP Konsultan, saya ingin konsultasi perizinan bisnis.")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-8 py-3.5 text-sm font-bold text-emerald-300 backdrop-blur transition-all duration-300 hover:border-emerald-400/70 hover:bg-emerald-400/20"
+            className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-emerald-300 bg-emerald-50 px-8 py-3.5 text-sm font-bold text-emerald-600 backdrop-blur transition-all duration-300 hover:border-emerald-500/60 hover:bg-emerald-100"
           >
             <WhatsAppGlyph />
             Chat WhatsApp
           </a>
           <a
             href="#/perizinan"
-            className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-zinc-700 bg-zinc-900/40 px-8 py-3.5 text-sm font-semibold text-zinc-200 backdrop-blur transition-all duration-300 hover:border-violet-400/50 hover:text-violet-300"
+            className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-slate-300 bg-white px-8 py-3.5 text-sm font-semibold text-slate-700 backdrop-blur transition-all duration-300 hover:border-violet-500/60 hover:text-violet-600"
           >
             Jelajahi 36 Izin
           </a>
@@ -291,9 +291,9 @@ export default function Hero() {
           {HERO_CHIPS.map(({ Icon, label }) => (
             <li
               key={label}
-              className="inline-flex items-center gap-2 rounded-full border border-zinc-800/90 bg-zinc-900/50 px-4 py-2 text-xs font-medium text-zinc-400 backdrop-blur"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/50 px-4 py-2 text-xs font-medium text-slate-500 backdrop-blur"
             >
-              <Icon className="h-3.5 w-3.5 text-violet-400" aria-hidden="true" />
+              <Icon className="h-3.5 w-3.5 text-violet-600" aria-hidden="true" />
               {label}
             </li>
           ))}
@@ -310,7 +310,7 @@ export default function Hero() {
         <a
           href="#benchmarks"
           aria-label="Gulir ke bawah untuk melihat konten"
-          className="flex flex-col items-center gap-2 text-zinc-500 transition-colors hover:text-violet-300"
+          className="flex flex-col items-center gap-2 text-slate-9000 transition-colors hover:text-violet-600"
         >
           <span className="text-[10px] font-semibold uppercase tracking-[0.4em]">Gulir</span>
           <span className="flex h-9 w-6 items-start justify-center rounded-full border border-current p-1.5">

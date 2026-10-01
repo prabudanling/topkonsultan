@@ -76,27 +76,27 @@ export default function MethodPage() {
           {PRINCIPLES.map((p, i) => (
             <Reveal key={p.title} delay={(i % 3) * 0.08} className="h-full">
               <article className="glass group h-full rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:gold-ring">
-                <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-violet-400/25 bg-gradient-to-br from-violet-400/15 to-indigo-600/10 text-violet-300 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-violet-300 bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-600 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
                   <p.icon className="h-5 w-5" aria-hidden="true" />
                 </span>
-                <h3 className="font-display text-lg font-bold text-zinc-100">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-400">{p.text}</p>
+                <h3 className="font-display text-lg font-bold text-slate-900">{p.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-500">{p.text}</p>
               </article>
             </Reveal>
           ))}
         </div>
 
         <Reveal delay={0.15}>
-          <div className="mt-12 flex flex-col items-center gap-6 rounded-3xl border border-violet-400/15 bg-gradient-to-br from-violet-400/[0.06] to-transparent p-8 text-center sm:p-10">
-            <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-violet-400/30 bg-violet-400/10 text-violet-300">
+          <div className="mt-12 flex flex-col items-center gap-6 rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-600/[0.06] to-transparent p-8 text-center sm:p-10">
+            <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-violet-300 bg-violet-50 text-violet-600">
               <DraftingCompass className="h-6 w-6" aria-hidden="true" />
             </span>
-            <p className="max-w-2xl font-display text-xl italic leading-relaxed text-zinc-200 sm:text-2xl">
+            <p className="max-w-2xl font-display text-xl italic leading-relaxed text-slate-700 sm:text-2xl">
               &ldquo;Kami tidak menjual jam. Kami menjual momen ketika masalah
               Anda berhenti menjadi masalah.&rdquo;
             </p>
-            <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
-              <Users className="h-3.5 w-3.5 text-violet-400" aria-hidden="true" />
+            <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-slate-9000">
+              <Users className="h-3.5 w-3.5 text-violet-600" aria-hidden="true" />
               Piagam Firma, Pasal VII
             </span>
             <LinkButton to="/results" variant="ghost" withArrow>

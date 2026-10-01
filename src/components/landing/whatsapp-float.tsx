@@ -28,11 +28,11 @@ export default function WhatsAppFloat() {
       className="group fixed bottom-5 left-4 z-[85] inline-flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shadow-[0_14px_40px_-8px_rgba(16,185,129,0.65)] transition-all duration-300 hover:scale-110 active:scale-95 sm:left-6"
     >
       <span
-        className="absolute inset-0 -z-10 animate-ping-slow rounded-full bg-emerald-400/50"
+        className="absolute inset-0 -z-10 animate-ping-slow rounded-full bg-emerald-200"
         aria-hidden="true"
       />
       {WA_GLYPH}
-      <span className="pointer-events-none absolute left-[4.2rem] hidden whitespace-nowrap rounded-full border border-zinc-800 bg-zinc-950/95 px-4 py-2 text-xs font-semibold text-zinc-200 opacity-0 shadow-xl backdrop-blur transition-all duration-300 group-hover:opacity-100 md:block">
+      <span className="pointer-events-none absolute left-[4.2rem] hidden whitespace-nowrap rounded-full border border-slate-200 bg-white/95 px-4 py-2 text-xs font-semibold text-slate-700 opacity-0 shadow-xl backdrop-blur transition-all duration-300 group-hover:opacity-100 md:block">
         Chat resmi — {BRAND.whatsapp}
       </span>
     </a>

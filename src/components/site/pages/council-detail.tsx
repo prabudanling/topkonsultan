@@ -15,8 +15,8 @@ export default function CouncilDetailPage({ name }: { name: string }) {
     return (
       <section className="flex min-h-[70vh] items-center justify-center px-4 pt-24 text-center">
         <div>
-          <h1 className="font-display text-3xl font-bold text-zinc-100">Dewan tidak ditemukan.</h1>
-          <p className="mt-3 text-sm text-zinc-500">
+          <h1 className="font-display text-3xl font-bold text-slate-900">Dewan tidak ditemukan.</h1>
+          <p className="mt-3 text-sm text-slate-9000">
             Ruang dewan tidak memiliki catatan atas dewan ini.
           </p>
           <div className="mt-6 flex justify-center">
@@ -63,16 +63,16 @@ export default function CouncilDetailPage({ name }: { name: string }) {
         <Reveal className="h-full">
           <div className="glass flex h-full flex-col gap-6 rounded-3xl p-7 sm:p-9">
             <div>
-              <h2 className="font-display text-2xl font-bold text-zinc-50">Penguasaan</h2>
-              <p className="mt-4 text-base leading-relaxed text-zinc-300">{profile.mastery}</p>
+              <h2 className="font-display text-2xl font-bold text-slate-900">Penguasaan</h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">{profile.mastery}</p>
             </div>
-            <blockquote className="mt-auto flex gap-4 rounded-2xl border border-violet-400/20 bg-violet-400/[0.05] p-5">
-              <Quote className="h-6 w-6 shrink-0 text-violet-400" aria-hidden="true" />
+            <blockquote className="mt-auto flex gap-4 rounded-2xl border border-violet-200 bg-violet-600/[0.05] p-5">
+              <Quote className="h-6 w-6 shrink-0 text-violet-600" aria-hidden="true" />
               <div>
-                <p className="font-display text-lg italic leading-relaxed text-violet-100/90">
+                <p className="font-display text-lg italic leading-relaxed text-violet-800/90">
                   {profile.signatureMove}
                 </p>
-                <cite className="mt-2 block text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500 not-italic">
+                <cite className="mt-2 block text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-9000 not-italic">
                   — Gerakan Khas dewan ini
                 </cite>
               </div>
@@ -83,23 +83,23 @@ export default function CouncilDetailPage({ name }: { name: string }) {
         <Reveal delay={0.1} className="h-full">
           <div className="flex h-full flex-col gap-4">
             <div className="glass rounded-3xl p-7">
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-violet-400/25 bg-gradient-to-br from-violet-400/15 to-indigo-600/10 text-violet-300">
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-violet-300 bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-600">
                 <council.icon className="h-6 w-6" aria-hidden="true" />
               </span>
-              <h2 className="mt-4 flex items-center gap-2 font-display text-lg font-bold text-zinc-50">
-                <UserRound className="h-4 w-4 text-violet-400" aria-hidden="true" />
+              <h2 className="mt-4 flex items-center gap-2 font-display text-lg font-bold text-slate-900">
+                <UserRound className="h-4 w-4 text-violet-600" aria-hidden="true" />
                 Ketua Dewan
               </h2>
-              <p className="mt-2 text-base font-semibold text-zinc-100">{profile.chair}</p>
-              <p className="text-[13px] text-violet-300/90">{profile.chairTitle}</p>
-              <p className="mt-4 flex items-center gap-1.5 text-sm text-zinc-500">
-                <MapPin className="h-3.5 w-3.5 text-violet-400/70" aria-hidden="true" />
+              <p className="mt-2 text-base font-semibold text-slate-900">{profile.chair}</p>
+              <p className="text-[13px] text-violet-700">{profile.chairTitle}</p>
+              <p className="mt-4 flex items-center gap-1.5 text-sm text-slate-9000">
+                <MapPin className="h-3.5 w-3.5 text-violet-500" aria-hidden="true" />
                 Bersidang di {profile.seat}
               </p>
             </div>
             <div className="glass flex-1 rounded-3xl p-7">
-              <h2 className="flex items-center gap-2 font-display text-lg font-bold text-zinc-50">
-                <Award className="h-4 w-4 text-violet-400" aria-hidden="true" />
+              <h2 className="flex items-center gap-2 font-display text-lg font-bold text-slate-900">
+                <Award className="h-4 w-4 text-violet-600" aria-hidden="true" />
                 Pencapaian Tanda Tangan
               </h2>
               <ul className="mt-4 space-y-4">
@@ -108,7 +108,7 @@ export default function CouncilDetailPage({ name }: { name: string }) {
                     <span className="whitespace-nowrap font-display text-xl font-bold text-gradient-gold">
                       {a.value}
                     </span>
-                    <span className="text-[13px] leading-relaxed text-zinc-400">{a.label}</span>
+                    <span className="text-[13px] leading-relaxed text-slate-500">{a.label}</span>
                   </li>
                 ))}
               </ul>
@@ -130,11 +130,11 @@ export default function CouncilDetailPage({ name }: { name: string }) {
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {profile.capabilities.map((cap, i) => (
             <Reveal key={cap} delay={(i % 3) * 0.07} className="h-full">
-              <div className="group flex h-full items-center gap-4 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-violet-400/40">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-violet-400/30 bg-violet-400/10 font-display text-sm font-bold text-violet-300 transition-transform duration-300 group-hover:scale-110">
+              <div className="group flex h-full items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/50">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-violet-300 bg-violet-50 font-display text-sm font-bold text-violet-600 transition-transform duration-300 group-hover:scale-110">
                   {i + 1}
                 </span>
-                <p className="text-[15px] font-medium leading-snug text-zinc-200">{cap}</p>
+                <p className="text-[15px] font-medium leading-snug text-slate-700">{cap}</p>
               </div>
             </Reveal>
           ))}
@@ -158,29 +158,29 @@ export default function CouncilDetailPage({ name }: { name: string }) {
       >
         <a
           href={`#/councils/${slugify(prev.name)}`}
-          className="group flex items-center gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:border-violet-400/40"
+          className="group flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:border-violet-500/50"
         >
-          <span className="text-2xl text-zinc-600 transition-colors group-hover:text-violet-300" aria-hidden="true">
+          <span className="text-2xl text-slate-400 transition-colors group-hover:text-violet-600" aria-hidden="true">
             ←
           </span>
           <span>
-            <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+            <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-9000">
               Dewan sebelumnya
             </span>
-            <span className="block font-display text-sm font-bold text-zinc-200">{prev.name}</span>
+            <span className="block font-display text-sm font-bold text-slate-700">{prev.name}</span>
           </span>
         </a>
         <a
           href={`#/councils/${slugify(next.name)}`}
-          className="group flex items-center justify-end gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 text-right transition-all duration-300 hover:border-violet-400/40"
+          className="group flex items-center justify-end gap-3 rounded-2xl border border-slate-200 bg-white p-5 text-right transition-all duration-300 hover:border-violet-500/50"
         >
           <span>
-            <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+            <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-9000">
               Dewan berikutnya
             </span>
-            <span className="block font-display text-sm font-bold text-zinc-200">{next.name}</span>
+            <span className="block font-display text-sm font-bold text-slate-700">{next.name}</span>
           </span>
-          <span className="text-2xl text-zinc-600 transition-colors group-hover:text-violet-300" aria-hidden="true">
+          <span className="text-2xl text-slate-400 transition-colors group-hover:text-violet-600" aria-hidden="true">
             →
           </span>
         </a>
@@ -190,18 +190,18 @@ export default function CouncilDetailPage({ name }: { name: string }) {
       <Reveal className="mx-auto max-w-7xl px-4 pb-6 sm:px-6 lg:px-8">
         <a
           href="#/services"
-          className="group flex items-center justify-between gap-4 rounded-2xl border border-violet-400/15 bg-gradient-to-br from-violet-400/[0.06] to-transparent p-6 transition-all duration-300 hover:border-violet-400/40"
+          className="group flex items-center justify-between gap-4 rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-600/[0.06] to-transparent p-6 transition-all duration-300 hover:border-violet-500/50"
         >
           <span>
-            <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-400/70">
+            <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-500">
               Tempat dewan ini diterjunkan
             </span>
-            <span className="mt-1 block font-display text-base font-bold text-zinc-100">
+            <span className="mt-1 block font-display text-base font-bold text-slate-900">
               Lihat dua belas praktik kami
             </span>
           </span>
           <ArrowUpRight
-            className="h-5 w-5 shrink-0 text-zinc-600 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-400"
+            className="h-5 w-5 shrink-0 text-slate-400 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-600"
             aria-hidden="true"
           />
         </a>

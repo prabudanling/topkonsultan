@@ -78,7 +78,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="mt-auto border-t border-violet-400/10 bg-zinc-950">
+    <footer className="mt-auto border-t border-violet-200 bg-white">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           {/* Brand + Dispatch + Kontak */}
@@ -86,54 +86,54 @@ export default function Footer() {
             <Link to="/" className="flex items-center gap-3" ariaLabel="PT TOP KONSULTAN INTERNASIONAL — beranda">
               <LogoMark className="h-10 w-10" />
               <span className="leading-none">
-                <span className="block font-display text-sm font-bold tracking-[0.28em] text-zinc-50">
+                <span className="block font-display text-sm font-bold tracking-[0.28em] text-slate-900">
                   TOP KONSULTAN
                 </span>
-                <span className="mt-1 block text-[9px] font-semibold tracking-[0.5em] text-violet-400/90">
+                <span className="mt-1 block text-[9px] font-semibold tracking-[0.5em] text-violet-600">
                   INTERNASIONAL
                 </span>
               </span>
             </Link>
-            <p className="max-w-xs text-sm leading-relaxed text-zinc-500">
+            <p className="max-w-xs text-sm leading-relaxed text-slate-9000">
               Konsultan &amp; perizinan terlengkap di dunia — 46 Dewan Pakar internasional dengan
               6.900 tahun pengalaman gabungan. Dari strategi hulu hingga eksekusi hilir, dari NIB
               hingga ekspansi 190 negara.
             </p>
 
-            <address className="flex flex-col gap-2 text-sm not-italic text-zinc-500">
+            <address className="flex flex-col gap-2 text-sm not-italic text-slate-9000">
               <a
                 href={BRAND.whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 font-semibold text-zinc-300 transition-colors hover:text-violet-300"
+                className="flex items-center gap-2.5 font-semibold text-slate-600 transition-colors hover:text-violet-600"
                 aria-label={`WhatsApp bisnis ${BRAND.whatsapp}`}
               >
-                <span className="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-violet-400/90" aria-hidden="true">
-                  <MessageCircle className="h-2.5 w-2.5 text-zinc-950" />
+                <span className="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-violet-600" aria-hidden="true">
+                  <MessageCircle className="h-2.5 w-2.5 text-white" />
                 </span>
                 {BRAND.whatsapp} — WhatsApp resmi 24/7
               </a>
               <a
                 href={`tel:${BRAND.phoneHref}`}
-                className="flex items-center gap-2.5 transition-colors hover:text-violet-300"
+                className="flex items-center gap-2.5 transition-colors hover:text-violet-600"
                 aria-label={`Telepon ${BRAND.phone}`}
               >
-                <Phone className="h-3.5 w-3.5 shrink-0 text-violet-400/80" aria-hidden="true" />
+                <Phone className="h-3.5 w-3.5 shrink-0 text-violet-500" aria-hidden="true" />
                 {BRAND.phone}
               </a>
               <a
                 href={`mailto:${BRAND.email}`}
-                className="flex items-center gap-2.5 transition-colors hover:text-violet-300"
+                className="flex items-center gap-2.5 transition-colors hover:text-violet-600"
               >
-                <Mail className="h-3.5 w-3.5 shrink-0 text-violet-400/80" aria-hidden="true" />
+                <Mail className="h-3.5 w-3.5 shrink-0 text-violet-500" aria-hidden="true" />
                 {BRAND.email}
               </a>
               <span className="flex flex-col gap-1.5">
                 {BRAND.addresses.map((a) => (
                   <span key={a.label} className="flex items-start gap-2.5">
-                    <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-violet-400/80" aria-hidden="true" />
+                    <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-violet-500" aria-hidden="true" />
                     <span>
-                      <span className="font-semibold text-zinc-400">{a.label}:</span>{" "}
+                      <span className="font-semibold text-slate-500">{a.label}:</span>{" "}
                       {a.value}
                     </span>
                   </span>
@@ -145,11 +145,11 @@ export default function Footer() {
             <form onSubmit={onSubscribe} className="mt-1" aria-label="Berlangganan Oracle Dispatch">
               <label
                 htmlFor="dispatch-email"
-                className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500"
+                className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-9000"
               >
                 Oracle Dispatch
               </label>
-              <div className="flex overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/60 transition-colors focus-within:border-violet-400/50">
+              <div className="flex overflow-hidden rounded-xl border border-slate-200 bg-white/60 transition-colors focus-within:border-violet-500/60">
                 <input
                   id="dispatch-email"
                   type="email"
@@ -157,12 +157,12 @@ export default function Footer() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="nama@perusahaan.com"
                   autoComplete="email"
-                  className="w-full bg-transparent px-4 py-2.5 text-sm text-zinc-100 outline-none placeholder:text-zinc-600"
+                  className="w-full bg-transparent px-4 py-2.5 text-sm text-slate-900 outline-none placeholder:text-slate-400"
                 />
                 <button
                   type="submit"
                   disabled={sending}
-                  className="inline-flex min-h-11 w-12 shrink-0 items-center justify-center bg-gradient-to-r from-violet-400 to-blue-500 text-zinc-950 transition-opacity hover:opacity-90 disabled:opacity-60"
+                  className="inline-flex min-h-11 w-12 shrink-0 items-center justify-center bg-gradient-to-r from-violet-600 to-blue-600 text-white transition-opacity hover:opacity-90 disabled:opacity-60"
                   aria-label="Berlangganan Oracle Dispatch"
                 >
                   {sending ? (
@@ -172,9 +172,9 @@ export default function Footer() {
                   )}
                 </button>
               </div>
-              <p className="mt-2 text-[11px] leading-relaxed text-zinc-600">
+              <p className="mt-2 text-[11px] leading-relaxed text-slate-400">
                 Satu kirim per bulan. Nol derau. Tanpa pelacak — lihat{" "}
-                <Link to="/cookies" className="text-zinc-500 underline decoration-violet-400/40 underline-offset-2 hover:text-violet-300">
+                <Link to="/cookies" className="text-slate-9000 underline decoration-violet-400/40 underline-offset-2 hover:text-violet-600">
                   Kebijakan Cookie
                 </Link>
                 .
@@ -188,7 +188,7 @@ export default function Footer() {
                   type="button"
                   onClick={() => onSocial(label)}
                   aria-label={`${label} — segera hadir`}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-800 text-zinc-500 transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-400/50 hover:text-violet-300"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-9000 transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-500/60 hover:text-violet-600"
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
                 </button>
@@ -198,13 +198,13 @@ export default function Footer() {
 
           {/* Perusahaan */}
           <nav aria-label="Perusahaan">
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-slate-9000">
               Perusahaan
             </h3>
             <ul className="space-y-2.5 text-sm">
               {FIRM_LINKS.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="text-zinc-400 transition-colors hover:text-violet-300">
+                  <Link to={l.to} className="text-slate-500 transition-colors hover:text-violet-600">
                     {l.label}
                   </Link>
                 </li>
@@ -214,7 +214,7 @@ export default function Footer() {
 
           {/* Perizinan */}
           <nav aria-label="Perizinan">
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-slate-9000">
               Perizinan
             </h3>
             <ul className="space-y-2.5 text-sm">
@@ -222,14 +222,14 @@ export default function Footer() {
                 <li key={c.id}>
                   <Link
                     to={`/perizinan?kategori=${c.id}`}
-                    className="text-zinc-400 transition-colors hover:text-violet-300"
+                    className="text-slate-500 transition-colors hover:text-violet-600"
                   >
                     {c.name}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link to="/perizinan" className="font-semibold text-violet-300/90 transition-colors hover:text-violet-200">
+                <Link to="/perizinan" className="font-semibold text-violet-700 transition-colors hover:text-violet-700">
                   Lihat semua 36 izin →
                 </Link>
               </li>
@@ -239,7 +239,7 @@ export default function Footer() {
           {/* Layanan + Dewan + Hukum */}
           <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-1">
             <nav aria-label="Layanan">
-              <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
+              <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-slate-9000">
                 Layanan
               </h3>
               <ul className="space-y-2.5 text-sm">
@@ -247,14 +247,14 @@ export default function Footer() {
                   <li key={s.num}>
                     <Link
                       to={`/services/${s.num}`}
-                      className="text-zinc-400 transition-colors hover:text-violet-300"
+                      className="text-slate-500 transition-colors hover:text-violet-600"
                     >
                       {s.title}
                     </Link>
                   </li>
                 ))}
                 <li>
-                  <Link to="/services" className="font-semibold text-violet-300/90 transition-colors hover:text-violet-200">
+                  <Link to="/services" className="font-semibold text-violet-700 transition-colors hover:text-violet-700">
                     Lihat 12 layanan utama →
                   </Link>
                 </li>
@@ -263,7 +263,7 @@ export default function Footer() {
 
             <div className="flex flex-col gap-8">
               <nav aria-label="Dewan Pakar">
-                <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
+                <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-slate-9000">
                   Dewan Pakar
                 </h3>
                 <ul className="space-y-2.5 text-sm">
@@ -271,14 +271,14 @@ export default function Footer() {
                     <li key={c}>
                       <Link
                         to={`/councils?filter=${encodeURIComponent(c)}`}
-                        className="text-zinc-400 transition-colors hover:text-violet-300"
+                        className="text-slate-500 transition-colors hover:text-violet-600"
                       >
                         {c}
                       </Link>
                     </li>
                   ))}
                   <li>
-                    <Link to="/councils" className="font-semibold text-violet-300/90 transition-colors hover:text-violet-200">
+                    <Link to="/councils" className="font-semibold text-violet-700 transition-colors hover:text-violet-700">
                       Hadapi 46 Dewan →
                     </Link>
                   </li>
@@ -286,13 +286,13 @@ export default function Footer() {
               </nav>
 
               <nav aria-label="Hukum">
-                <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
+                <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-slate-9000">
                   Hukum
                 </h3>
                 <ul className="space-y-2.5 text-sm">
                   {LEGAL_LINKS.map((l) => (
                     <li key={l.to}>
-                      <Link to={l.to} className="text-zinc-400 transition-colors hover:text-violet-300">
+                      <Link to={l.to} className="text-slate-500 transition-colors hover:text-violet-600">
                         {l.label}
                       </Link>
                     </li>
@@ -304,14 +304,14 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-zinc-900">
+      <div className="border-t border-slate-200">
         <div
-          className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-zinc-600 sm:flex-row sm:px-6 lg:px-8"
+          className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-slate-400 sm:flex-row sm:px-6 lg:px-8"
           style={{ paddingBottom: "max(1.5rem, env(safe-area-inset-bottom))" }}
         >
           <p>© {year} {BRAND.legal}. Seluruh masa depan dilindungi.</p>
           <p className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" aria-hidden="true" />
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" aria-hidden="true" />
             Semua 46 Dewan Pakar sedang online — respons ≤ 48 jam
           </p>
         </div>

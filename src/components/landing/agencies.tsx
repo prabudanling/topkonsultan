@@ -44,11 +44,11 @@ export default function Agencies() {
   return (
     <section
       id="instansi"
-      className="relative scroll-mt-20 border-t border-zinc-900/70 py-24 sm:py-28"
+      className="relative scroll-mt-20 border-t border-slate-200 py-24 sm:py-28"
       aria-label="Jaringan instansi pemerintah yang dihadapi dalam pengurusan izin"
     >
       <div
-        className="pointer-events-none absolute -left-40 top-24 h-96 w-96 rounded-full bg-violet-500/[0.06] blur-[130px]"
+        className="pointer-events-none absolute -left-40 top-24 h-96 w-96 rounded-full bg-violet-600/[0.06] blur-[130px]"
         aria-hidden="true"
       />
 
@@ -66,7 +66,7 @@ export default function Agencies() {
         <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {AGENCIES.map((a, i) => (
             <Reveal key={a.slug} delay={(i % 6) * 0.06} className="h-full">
-              <div className="group flex h-full flex-col items-center rounded-xl border border-zinc-800/70 bg-white p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-violet-400/50 hover:shadow-[0_20px_50px_-20px_rgba(139,92,246,0.4)]">
+              <div className="group flex h-full flex-col items-center rounded-xl border border-slate-200/70 bg-white p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/60 hover:shadow-[0_20px_50px_-20px_rgba(139,92,246,0.28)]">
                 <div className="flex h-16 w-full items-center justify-center">
                   <Image
                     src={`/images/agencies/${a.slug}.png`}
@@ -80,7 +80,7 @@ export default function Agencies() {
                 <p className="mt-3 font-display text-[11px] font-bold leading-tight text-zinc-900">
                   {a.name}
                 </p>
-                <p className="mt-1 text-[10px] font-medium uppercase tracking-wide text-zinc-500">
+                <p className="mt-1 text-[10px] font-medium uppercase tracking-wide text-slate-9000">
                   {a.scope}
                 </p>
               </div>
@@ -90,21 +90,21 @@ export default function Agencies() {
 
         {/* Perhimpunan profesi — PHI Kwitang & IPHI Pusat */}
         <Reveal delay={0.12}>
-          <div className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center justify-center gap-3 rounded-2xl border border-violet-400/20 bg-violet-400/[0.05] px-6 py-4 text-center">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+          <div className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center justify-center gap-3 rounded-2xl border border-violet-200 bg-violet-600/[0.05] px-6 py-4 text-center">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-9000">
               Terhubung dengan perhimpunan profesi
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-zinc-950/60 px-4 py-1.5 text-[12px] font-bold text-violet-200">
+            <span className="inline-flex items-center gap-2 rounded-full border border-violet-300 bg-white/60 px-4 py-1.5 text-[12px] font-bold text-violet-700">
               Kantor PHI Kwitang — Jakarta
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-zinc-950/60 px-4 py-1.5 text-[12px] font-bold text-violet-200">
+            <span className="inline-flex items-center gap-2 rounded-full border border-violet-300 bg-white/60 px-4 py-1.5 text-[12px] font-bold text-violet-700">
               IPHI Pusat — Ikatan Penasihat Hukum Indonesia
             </span>
           </div>
         </Reveal>
 
         <Reveal delay={0.2}>
-          <p className="mx-auto mt-8 max-w-3xl text-center text-xs leading-relaxed text-zinc-600">
+          <p className="mx-auto mt-8 max-w-3xl text-center text-xs leading-relaxed text-slate-400">
             Seluruh logo adalah milik resmi instansi masing-masing dan ditampilkan
             semata untuk menggambarkan cakupan pengurusan perizinan — bukan sebagai
             bentuk dukungan atau afiliasi resmi.

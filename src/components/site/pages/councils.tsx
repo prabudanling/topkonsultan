@@ -70,14 +70,14 @@ export default function CouncilsPage({ initialFilter }: { initialFilter: string 
                   onClick={() => setFilter(f)}
                   className={`inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-300 sm:text-[13px] ${
                     active
-                      ? "bg-gradient-to-r from-violet-400 to-blue-500 text-zinc-950 shadow-[0_8px_28px_-8px_rgba(139,92,246,0.7)]"
-                      : "border border-zinc-800 bg-zinc-900/40 text-zinc-400 hover:border-violet-400/40 hover:text-violet-300"
+                      ? "bg-gradient-to-r from-violet-600 to-blue-600 text-white shadow-[0_8px_28px_-8px_rgba(139,92,246,0.42)]"
+                      : "border border-slate-200 bg-white text-slate-500 hover:border-violet-500/50 hover:text-violet-600"
                   }`}
                 >
                   {f === "All" ? "Semua" : f}
                   <span
                     className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${
-                      active ? "bg-zinc-950/20 text-zinc-950" : "bg-zinc-800 text-zinc-500"
+                      active ? "bg-violet-600 text-white" : "bg-slate-100 text-slate-500"
                     }`}
                   >
                     {countFor(f)}
@@ -93,22 +93,22 @@ export default function CouncilsPage({ initialFilter }: { initialFilter: string 
             <label htmlFor="council-search" className="sr-only">
               Cari 46 dewan pakar
             </label>
-            <div className="flex items-center gap-3 rounded-full border border-zinc-800 bg-zinc-900/60 px-5 transition-colors focus-within:border-violet-400/50">
-              <Search className="h-4 w-4 shrink-0 text-zinc-500" aria-hidden="true" />
+            <div className="flex items-center gap-3 rounded-full border border-slate-200 bg-white/60 px-5 transition-colors focus-within:border-violet-500/60">
+              <Search className="h-4 w-4 shrink-0 text-slate-9000" aria-hidden="true" />
               <input
                 id="council-search"
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Cari dewan pakar…"
-                className="min-h-12 w-full bg-transparent text-sm text-zinc-100 outline-none placeholder:text-zinc-600"
+                className="min-h-12 w-full bg-transparent text-sm text-slate-900 outline-none placeholder:text-slate-400"
               />
               {query ? (
                 <button
                   type="button"
                   onClick={() => setQuery("")}
                   aria-label="Hapus pencarian"
-                  className="text-zinc-500 transition-colors hover:text-violet-300"
+                  className="text-slate-9000 transition-colors hover:text-violet-600"
                 >
                   <X className="h-4 w-4" aria-hidden="true" />
                 </button>
@@ -128,29 +128,29 @@ export default function CouncilsPage({ initialFilter }: { initialFilter: string 
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: Math.min(i * 0.03, 0.5), ease: EASE }}
-              className="group flex items-start gap-4 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-400/40 hover:bg-zinc-900/70 hover:shadow-[0_16px_44px_-18px_rgba(139,92,246,0.3)]"
+              className="group flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-500/50 hover:bg-slate-50 hover:shadow-[0_16px_44px_-18px_rgba(139,92,246,0.2)]"
               aria-label={`Buka Dewan ${c.name}`}
             >
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-violet-400/25 bg-violet-400/10 text-violet-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-violet-300 bg-violet-50 text-violet-600 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                 <c.icon className="h-5 w-5" aria-hidden="true" />
               </span>
 
               <div className="min-w-0 flex-1">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-400/70">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-500">
                   {c.category}
                 </p>
-                <h2 className="mt-1 font-display text-[15px] font-bold leading-snug text-zinc-100">
+                <h2 className="mt-1 font-display text-[15px] font-bold leading-snug text-slate-900">
                   {c.name}
                 </h2>
-                <p className="mt-1.5 text-[13px] leading-relaxed text-zinc-500">{c.blurb}</p>
+                <p className="mt-1.5 text-[13px] leading-relaxed text-slate-9000">{c.blurb}</p>
                 {chairFor(c.name) ? (
-                  <p className="mt-2 text-[11px] font-medium text-zinc-600">
-                    Diketuai oleh <span className="text-zinc-500">{chairFor(c.name)}</span>
+                  <p className="mt-2 text-[11px] font-medium text-slate-400">
+                    Diketuai oleh <span className="text-slate-9000">{chairFor(c.name)}</span>
                   </p>
                 ) : null}
               </div>
 
-              <span className="shrink-0 rounded-full border border-violet-400/30 bg-violet-400/10 px-2 py-1 text-[10px] font-bold text-violet-300">
+              <span className="shrink-0 rounded-full border border-violet-300 bg-violet-50 px-2 py-1 text-[10px] font-bold text-violet-600">
                 150 th
               </span>
             </motion.a>
@@ -159,10 +159,10 @@ export default function CouncilsPage({ initialFilter }: { initialFilter: string 
 
         {shown.length === 0 ? (
           <div className="flex flex-col items-center gap-4 py-20 text-center">
-            <p className="font-display text-xl font-bold text-zinc-300">
+            <p className="font-display text-xl font-bold text-slate-600">
               Tidak ada dewan yang menjawab nama itu.
             </p>
-            <p className="max-w-sm text-sm text-zinc-500">
+            <p className="max-w-sm text-sm text-slate-9000">
               Sesuaikan pencarian — atau sampaikan langsung kepada kami, dan kami akan membentuk
               dewan yang belum ada.
             </p>
@@ -172,7 +172,7 @@ export default function CouncilsPage({ initialFilter }: { initialFilter: string 
           </div>
         ) : (
           <Reveal delay={0.1}>
-            <p className="mt-8 text-center text-xs text-zinc-600">
+            <p className="mt-8 text-center text-xs text-slate-400">
               Menampilkan {shown.length} dari 46 dewan · Masing-masing terverifikasi independen
               dengan penguasaan 150 tahun*
             </p>

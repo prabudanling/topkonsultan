@@ -180,10 +180,10 @@ export default function SiteApp() {
   }, [title]);
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#07070a] text-zinc-100">
+    <div className="flex min-h-screen flex-col bg-white text-slate-900">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[110] focus:rounded-full focus:bg-violet-400 focus:px-5 focus:py-2 focus:text-sm focus:font-bold focus:text-zinc-950"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[110] focus:rounded-full focus:bg-violet-600 focus:px-5 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
       >
         Langsung ke konten
       </a>

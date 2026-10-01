@@ -29,9 +29,9 @@ const CONTACT_ROWS = [
 ];
 
 const inputCls =
-  "w-full rounded-xl border border-zinc-800 bg-zinc-950/70 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none transition-all duration-300 focus:border-violet-400/60 focus:ring-2 focus:ring-violet-400/20";
+  "w-full rounded-xl border border-slate-200 bg-white/70 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all duration-300 focus:border-violet-500/70 focus:ring-2 focus:ring-violet-400/20";
 
-const labelCls = "mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500";
+const labelCls = "mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-9000";
 
 export default function Contact({
   initialRole = null,
@@ -82,11 +82,11 @@ export default function Contact({
   return (
     <section
       id="contact"
-      className="relative scroll-mt-20 overflow-hidden border-t border-zinc-900/70 py-24 sm:py-28"
+      className="relative scroll-mt-20 overflow-hidden border-t border-slate-200 py-24 sm:py-28"
       aria-label="Konsultasikan dengan Dewan"
     >
       <div
-        className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-violet-500/[0.07] blur-[140px]"
+        className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-violet-600/[0.07] blur-[140px]"
         aria-hidden="true"
       />
 
@@ -110,14 +110,14 @@ export default function Contact({
                 {CONTACT_ROWS.map(({ Icon, label, value, href }) => {
                   const inner = (
                     <>
-                      <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-violet-400/25 bg-gradient-to-br from-violet-400/15 to-indigo-600/10 text-violet-300">
+                      <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-violet-300 bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-600">
                         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
                       </span>
                       <span>
-                        <span className="block text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                        <span className="block text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-9000">
                           {label}
                         </span>
-                        <span className="block text-sm font-semibold text-zinc-100">{value}</span>
+                        <span className="block text-sm font-semibold text-slate-900">{value}</span>
                       </span>
                     </>
                   );
@@ -140,43 +140,43 @@ export default function Contact({
                 })}
               </ul>
 
-              <div className="h-px bg-gradient-to-r from-transparent via-violet-400/25 to-transparent" aria-hidden="true" />
+              <div className="h-px bg-gradient-to-r from-transparent via-violet-500/25 to-transparent" aria-hidden="true" />
 
               {/* Jaringan kantor resmi */}
               <div>
-                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-9000">
                   Jaringan kantor resmi
                 </p>
                 <ul className="space-y-2.5">
                   {BRAND.addresses.map((a) => (
                     <li key={a.label} className="flex items-start gap-2.5 text-[13px]">
-                      <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-violet-400/70" aria-hidden="true" />
+                      <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-violet-500" aria-hidden="true" />
                       <span>
-                        <span className="font-semibold text-zinc-200">{a.label}</span>
-                        <span className="block text-[12px] leading-relaxed text-zinc-500">{a.value}</span>
+                        <span className="font-semibold text-slate-700">{a.label}</span>
+                        <span className="block text-[12px] leading-relaxed text-slate-9000">{a.value}</span>
                       </span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="h-px bg-gradient-to-r from-transparent via-violet-400/25 to-transparent" aria-hidden="true" />
+              <div className="h-px bg-gradient-to-r from-transparent via-violet-500/25 to-transparent" aria-hidden="true" />
 
               <ul className="space-y-5">
                 {GUARANTEES.map((g) => (
                   <li key={g.title} className="flex items-start gap-4">
-                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-violet-400/25 bg-violet-400/10 text-violet-300">
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-violet-300 bg-violet-50 text-violet-600">
                       <g.icon className="h-4 w-4" aria-hidden="true" />
                     </span>
                       <span>
-                        <span className="block text-sm font-bold text-zinc-100">{g.title}</span>
-                        <span className="block text-[13px] text-zinc-500">{g.desc}</span>
+                        <span className="block text-sm font-bold text-slate-900">{g.title}</span>
+                        <span className="block text-[13px] text-slate-9000">{g.desc}</span>
                       </span>
                     </li>
                 ))}
               </ul>
 
-              <blockquote className="mt-auto border-l-2 border-violet-400/50 pl-4 font-display text-base italic text-violet-100/90">
+              <blockquote className="mt-auto border-l-2 border-violet-500/60 pl-4 font-display text-base italic text-violet-800/90">
                 &ldquo;Mustahil&rdquo; adalah brief favorit kami.
               </blockquote>
             </div>
@@ -194,21 +194,21 @@ export default function Contact({
                   role="status"
                 >
                   <span className="relative flex h-20 w-20 items-center justify-center">
-                    <span className="absolute inset-0 animate-ping-slow rounded-full bg-violet-400/30" />
-                    <CheckCircle2 className="h-16 w-16 text-violet-400" aria-hidden="true" />
+                    <span className="absolute inset-0 animate-ping-slow rounded-full bg-violet-600/30" />
+                    <CheckCircle2 className="h-16 w-16 text-violet-600" aria-hidden="true" />
                   </span>
-                  <h3 className="font-display text-2xl font-bold text-zinc-50">
+                  <h3 className="font-display text-2xl font-bold text-slate-900">
                     Brief diterima.
                   </h3>
-                  <p className="max-w-sm text-sm leading-relaxed text-zinc-400">
+                  <p className="max-w-sm text-sm leading-relaxed text-slate-500">
                     46 Dewan Pakar telah menghadir — wawasan pertama datang
                     dalam ≤ 48 jam. ID penugasan Anda{" "}
-                    <span className="font-bold text-violet-300">#{engagementId}</span>.
+                    <span className="font-bold text-violet-600">#{engagementId}</span>.
                   </p>
                   <button
                     type="button"
                     onClick={() => setStatus("idle")}
-                    className="mt-2 inline-flex min-h-11 items-center rounded-full border border-zinc-700 px-6 py-3 text-sm font-semibold text-zinc-300 transition-colors hover:border-violet-400/50 hover:text-violet-300"
+                    className="mt-2 inline-flex min-h-11 items-center rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-600 transition-colors hover:border-violet-500/60 hover:text-violet-600"
                   >
                     Kirim brief baru
                   </button>
@@ -216,7 +216,7 @@ export default function Contact({
               ) : (
                 <form onSubmit={onSubmit} noValidate={false}>
                   {initialRole ? (
-                    <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-violet-400/40 bg-violet-400/10 px-4 py-2 text-[12px] font-semibold text-violet-200" role="status">
+                    <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-violet-500/50 bg-violet-50 px-4 py-2 text-[12px] font-semibold text-violet-700" role="status">
                       <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
                       Mandat lamaran: {initialRole}
                     </p>
@@ -246,7 +246,7 @@ export default function Contact({
                       </label>
                       <select id="budget" name="budget" className={`${inputCls} appearance-none`} defaultValue={BUDGETS[2]}>
                         {BUDGETS.map((b) => (
-                          <option key={b} value={b} className="bg-zinc-950">
+                          <option key={b} value={b} className="bg-white">
                             {b}
                           </option>
                         ))}
@@ -269,7 +269,7 @@ export default function Contact({
                   </div>
 
                   {status === "error" && (
-                    <p className="mt-4 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300" role="alert">
+                    <p className="mt-4 rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-600" role="alert">
                       {errorMsg}
                     </p>
                   )}
@@ -277,7 +277,7 @@ export default function Contact({
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="shine mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-violet-400 via-indigo-400 to-blue-500 py-3.5 text-sm font-bold text-zinc-950 shadow-[0_12px_44px_-10px_rgba(139,92,246,0.7)] transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+                    className="shine mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-violet-600 via-indigo-500 to-blue-600 py-3.5 text-sm font-bold text-white shadow-[0_12px_44px_-10px_rgba(139,92,246,0.42)] transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {status === "sending" ? (
                       <>
@@ -291,7 +291,7 @@ export default function Contact({
                       </>
                     )}
                   </button>
-                  <p className="mt-4 text-center text-[11px] text-zinc-600">
+                  <p className="mt-4 text-center text-[11px] text-slate-400">
                     Kerahasiaan mutlak terjamin. Brief Anda tidak pernah keluar dari firma.
                   </p>
                 </form>

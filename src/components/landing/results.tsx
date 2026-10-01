@@ -6,11 +6,11 @@ export default function Results() {
   return (
     <section
       id="results"
-      className="relative scroll-mt-20 border-t border-zinc-900/70 py-24 sm:py-28"
+      className="relative scroll-mt-20 border-t border-slate-200 py-24 sm:py-28"
       aria-label="Hasil studi kasus"
     >
       <div
-        className="pointer-events-none absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-violet-500/[0.06] blur-[130px]"
+        className="pointer-events-none absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-violet-600/[0.06] blur-[130px]"
         aria-hidden="true"
       />
 
@@ -28,9 +28,9 @@ export default function Results() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {CASES.map((c, i) => (
             <Reveal key={c.title} delay={i * 0.09} className="h-full">
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-violet-400/40 hover:shadow-[0_24px_60px_-24px_rgba(139,92,246,0.35)]">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-violet-500/50 hover:shadow-[0_24px_60px_-24px_rgba(139,92,246,0.22)]">
                 <span
-                  className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-400/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/80 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   aria-hidden="true"
                 />
                 <Counter
@@ -40,15 +40,15 @@ export default function Results() {
                   decimals={c.decimals}
                   className="text-gradient-gold block font-display text-4xl font-bold tracking-tight"
                 />
-                <h3 className="mt-4 flex items-start justify-between gap-2 font-display text-base font-bold text-zinc-100">
+                <h3 className="mt-4 flex items-start justify-between gap-2 font-display text-base font-bold text-slate-900">
                   {c.title}
                   <ArrowUpRight
-                    className="h-4 w-4 shrink-0 text-zinc-600 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-400"
+                    className="h-4 w-4 shrink-0 text-slate-400 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-600"
                     aria-hidden="true"
                   />
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-500">{c.desc}</p>
-                <span className="mt-5 inline-flex w-fit rounded-full border border-violet-400/25 bg-violet-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-violet-300">
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-9000">{c.desc}</p>
+                <span className="mt-5 inline-flex w-fit rounded-full border border-violet-300 bg-violet-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-violet-600">
                   {c.tag}
                 </span>
               </article>

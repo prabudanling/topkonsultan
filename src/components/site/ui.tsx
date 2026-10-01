@@ -31,7 +31,7 @@ export function LinkButton({
     return (
       <Link
         to={to}
-        className={`shine inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-violet-400 via-indigo-400 to-blue-500 px-7 py-3 text-sm font-bold text-zinc-950 shadow-[0_12px_44px_-10px_rgba(139,92,246,0.7)] transition-transform duration-300 hover:scale-[1.04] active:scale-95 ${className}`}
+        className={`shine inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-violet-600 via-indigo-500 to-blue-600 px-7 py-3 text-sm font-bold text-white shadow-[0_12px_44px_-10px_rgba(139,92,246,0.42)] transition-transform duration-300 hover:scale-[1.04] active:scale-95 ${className}`}
       >
         {children}
         {withArrow ? <ArrowRight className="h-4 w-4" aria-hidden="true" /> : null}
@@ -41,7 +41,7 @@ export function LinkButton({
   return (
     <Link
       to={to}
-      className={`inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full border border-zinc-700 bg-zinc-900/40 px-7 py-3 text-sm font-semibold text-zinc-200 backdrop-blur transition-all duration-300 hover:border-violet-400/50 hover:text-violet-300 ${className}`}
+      className={`inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full border border-slate-300 bg-white px-7 py-3 text-sm font-semibold text-slate-700 backdrop-blur transition-all duration-300 hover:border-violet-500/60 hover:text-violet-600 ${className}`}
     >
       {children}
       {withArrow ? <ArrowRight className="h-4 w-4" aria-hidden="true" /> : null}
@@ -59,17 +59,17 @@ export function Breadcrumb({ items }: { items: { label: string; to?: string }[] 
         return (
           <span key={`${item.label}-${i}`} className="flex items-center gap-1.5">
             {i > 0 ? (
-              <ChevronRight className="h-3 w-3 text-zinc-700" aria-hidden="true" />
+              <ChevronRight className="h-3 w-3 text-slate-400" aria-hidden="true" />
             ) : null}
             {item.to && !last ? (
               <Link
                 to={item.to}
-                className="font-medium text-zinc-500 transition-colors hover:text-violet-300"
+                className="font-medium text-slate-9000 transition-colors hover:text-violet-600"
               >
                 {item.label}
               </Link>
             ) : (
-              <span className={last ? "font-semibold text-violet-300/90" : "font-medium text-zinc-500"}>
+              <span className={last ? "font-semibold text-violet-700" : "font-medium text-slate-9000"}>
                 {item.label}
               </span>
             )}
@@ -114,7 +114,7 @@ export function PageHero({
         className="absolute inset-0"
         aria-hidden="true"
       >
-        <div className="absolute -top-24 left-[8%] h-72 w-72 rounded-full bg-violet-500/15 blur-[120px]" />
+        <div className="absolute -top-24 left-[8%] h-72 w-72 rounded-full bg-violet-600/15 blur-[120px]" />
         <div className="absolute right-[5%] top-10 h-80 w-80 rounded-full bg-violet-600/10 blur-[130px]" />
       </motion.div>
 
@@ -134,7 +134,7 @@ export function PageHero({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.08, ease: EASE }}
         >
-          <span className="inline-flex items-center gap-2.5 rounded-full border border-violet-400/30 bg-violet-400/[0.07] px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-violet-200">
+          <span className="inline-flex items-center gap-2.5 rounded-full border border-violet-300 bg-violet-600/[0.07] px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-violet-700">
             <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
             {eyebrow}
           </span>
@@ -144,7 +144,7 @@ export function PageHero({
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.16, ease: EASE }}
-          className="mt-6 font-display text-4xl font-bold leading-[1.08] tracking-tight text-zinc-50 sm:text-5xl lg:text-6xl"
+          className="mt-6 font-display text-4xl font-bold leading-[1.08] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
         >
           {title}
         </motion.h1>
@@ -154,7 +154,7 @@ export function PageHero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.26, ease: EASE }}
-            className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg"
+            className="mt-5 max-w-2xl text-base leading-relaxed text-slate-500 sm:text-lg"
           >
             {sub}
           </motion.p>
@@ -170,9 +170,9 @@ export function PageHero({
             {meta.map((m) => (
               <li
                 key={m}
-                className="inline-flex items-center gap-2 rounded-full border border-zinc-800/90 bg-zinc-900/50 px-4 py-2 text-xs font-medium text-zinc-400 backdrop-blur"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/50 px-4 py-2 text-xs font-medium text-slate-500 backdrop-blur"
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-violet-400" aria-hidden="true" />
+                <span className="h-1.5 w-1.5 rounded-full bg-violet-600" aria-hidden="true" />
                 {m}
               </li>
             ))}
@@ -205,14 +205,14 @@ export function StatBand({
 }) {
   return (
     <div
-      className={`grid gap-px overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-800/80 sm:grid-cols-3 ${className}`}
+      className={`grid gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-100/80 sm:grid-cols-3 ${className}`}
     >
       {stats.map((s, i) => (
-        <div key={`${s.label}-${i}`} className="flex flex-col items-center gap-1.5 bg-zinc-950/90 px-6 py-7 text-center">
+        <div key={`${s.label}-${i}`} className="flex flex-col items-center gap-1.5 bg-white/90 px-6 py-7 text-center">
           <span className="font-display text-2xl font-bold text-gradient-gold sm:text-3xl">
             {s.value}
           </span>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-9000">
             {s.label}
           </span>
         </div>
@@ -233,7 +233,7 @@ export function CTABand({
   return (
     <section className="relative overflow-hidden py-24 sm:py-28" aria-label="Konsultasikan dengan Dewan">
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[460px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/[0.08] blur-[140px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[460px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/[0.08] blur-[140px]"
         aria-hidden="true"
       />
       <div
@@ -242,12 +242,12 @@ export function CTABand({
       />
       <div className="relative z-10 mx-auto max-w-3xl px-4 text-center sm:px-6">
         <Reveal>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-violet-300/80">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-violet-700">
             Dewan Pakar menanti Anda
           </p>
         </Reveal>
         <Reveal delay={0.08}>
-          <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-zinc-50 sm:text-5xl">
+          <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-slate-900 sm:text-5xl">
             {title ?? (
               <>
                 Dekade berikutnya tidak menunggu.{" "}
@@ -257,7 +257,7 @@ export function CTABand({
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-zinc-400">
+          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-slate-500">
             {sub ??
               "Brieving hari ini, kejelasan dalam 48 jam. Dari izin pertama hingga penguasaan pasar — 46 Dewan Pakar bergerak sejak menit pertama."}
           </p>
@@ -271,7 +271,7 @@ export function CTABand({
               href={`${BRAND.whatsappHref}?text=${encodeURIComponent("Halo TOP Konsultan, saya ingin konsultasi perizinan bisnis.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-8 py-3.5 text-sm font-bold text-emerald-300 backdrop-blur transition-all duration-300 hover:border-emerald-400/70 hover:bg-emerald-400/20"
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-emerald-300 bg-emerald-50 px-8 py-3.5 text-sm font-bold text-emerald-600 backdrop-blur transition-all duration-300 hover:border-emerald-500/60 hover:bg-emerald-100"
             >
               WhatsApp {BRAND.phone}
             </a>
@@ -290,9 +290,9 @@ export function CTABand({
 export function Ornament({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center justify-center gap-3 ${className}`} aria-hidden="true">
-      <span className="h-px w-16 bg-gradient-to-r from-transparent to-violet-400/50" />
-      <span className="h-1.5 w-1.5 rotate-45 bg-violet-400" />
-      <span className="h-px w-16 bg-gradient-to-l from-transparent to-violet-400/50" />
+      <span className="h-px w-16 bg-gradient-to-r from-transparent to-violet-600/50" />
+      <span className="h-1.5 w-1.5 rotate-45 bg-violet-600" />
+      <span className="h-px w-16 bg-gradient-to-l from-transparent to-violet-600/50" />
     </div>
   );
 }

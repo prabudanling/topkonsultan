@@ -32,12 +32,12 @@ export default function ResultsPage() {
       <Comparison />
 
       <Reveal className="mx-auto max-w-4xl px-4 pb-4 sm:px-6">
-        <blockquote className="rounded-3xl border border-violet-400/15 bg-gradient-to-br from-violet-400/[0.06] to-transparent p-8 text-center sm:p-10">
-          <p className="font-display text-xl italic leading-relaxed text-zinc-200 sm:text-2xl">
+        <blockquote className="rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-600/[0.06] to-transparent p-8 text-center sm:p-10">
+          <p className="font-display text-xl italic leading-relaxed text-slate-700 sm:text-2xl">
             &ldquo;Mereka menjawab dalam 48 jam apa yang tak mampu dijawab
             empat firma konsultan dalam empat tahun.&rdquo;
           </p>
-          <cite className="mt-4 block text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500 not-italic">
+          <cite className="mt-4 block text-xs font-semibold uppercase tracking-[0.25em] text-slate-9000 not-italic">
             Putri Maheswari — Ketua Dewan Komisaris, Nusantara Financial Holdings
           </cite>
         </blockquote>

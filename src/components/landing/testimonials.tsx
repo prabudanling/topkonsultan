@@ -21,7 +21,7 @@ export default function Testimonials() {
 
   return (
     <section
-      className="relative border-t border-zinc-900/70 py-24 sm:py-28"
+      className="relative border-t border-slate-200 py-24 sm:py-28"
       aria-label="Testimoni klien"
     >
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -40,7 +40,7 @@ export default function Testimonials() {
           onMouseLeave={() => setPaused(false)}
         >
           <Quote
-            className="mx-auto h-10 w-10 text-violet-400/60"
+            className="mx-auto h-10 w-10 text-violet-600/60"
             aria-hidden="true"
           />
 
@@ -54,19 +54,19 @@ export default function Testimonials() {
                 transition={{ duration: 0.55, ease: EASE }}
                 className="text-center"
               >
-                <blockquote className="mx-auto max-w-3xl font-display text-xl font-medium leading-relaxed text-zinc-100 sm:text-2xl">
+                <blockquote className="mx-auto max-w-3xl font-display text-xl font-medium leading-relaxed text-slate-900 sm:text-2xl">
                   &ldquo;{current.quote}&rdquo;
                 </blockquote>
                 <figcaption className="mt-7 flex items-center justify-center gap-4">
                   <span
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-violet-400 to-indigo-500 font-display text-sm font-bold text-zinc-950"
+                    className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-500 font-display text-sm font-bold text-white"
                     aria-hidden="true"
                   >
                     {current.initials}
                   </span>
                   <span className="text-left">
-                    <span className="block text-sm font-bold text-zinc-100">{current.name}</span>
-                    <span className="block text-xs text-zinc-500">{current.role}</span>
+                    <span className="block text-sm font-bold text-slate-900">{current.name}</span>
+                    <span className="block text-xs text-slate-9000">{current.role}</span>
                   </span>
                 </figcaption>
               </motion.figure>
@@ -79,7 +79,7 @@ export default function Testimonials() {
               type="button"
               onClick={() => setIdx((i) => (i - 1 + total) % total)}
               aria-label="Sebelumnya"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-800 text-zinc-400 transition-all hover:border-violet-400/50 hover:text-violet-300"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition-all hover:border-violet-500/60 hover:text-violet-600"
             >
               <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -94,7 +94,7 @@ export default function Testimonials() {
                   onClick={() => setIdx(i)}
                   className={`h-2 rounded-full transition-all duration-400 ${
                     i === idx
-                      ? "w-8 bg-gradient-to-r from-violet-400 to-blue-500"
+                      ? "w-8 bg-gradient-to-r from-violet-600 to-blue-600"
                       : "w-2 bg-zinc-700 hover:bg-zinc-500"
                   }`}
                 />
@@ -104,7 +104,7 @@ export default function Testimonials() {
               type="button"
               onClick={() => setIdx((i) => (i + 1) % total)}
               aria-label="Berikutnya"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-800 text-zinc-400 transition-all hover:border-violet-400/50 hover:text-violet-300"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition-all hover:border-violet-500/60 hover:text-violet-600"
             >
               <ChevronRight className="h-5 w-5" aria-hidden="true" />
             </button>

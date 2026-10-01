@@ -90,11 +90,11 @@ export default function OracleChat() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Tutup Oracle" : "Buka Oracle"}
           aria-expanded={open}
-          className="relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-violet-400 to-indigo-500 text-zinc-950 shadow-[0_10px_40px_-8px_rgba(139,92,246,0.85)] transition-transform duration-300 hover:scale-105 active:scale-95"
+          className="relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-500 text-white shadow-[0_10px_40px_-8px_rgba(139,92,246,0.5)] transition-transform duration-300 hover:scale-105 active:scale-95"
         >
           {!open && (
             <span
-              className="absolute inset-0 animate-ping-slow rounded-full bg-violet-400/50"
+              className="absolute inset-0 animate-ping-slow rounded-full bg-violet-50/600"
               aria-hidden="true"
             />
           )}
@@ -120,14 +120,14 @@ export default function OracleChat() {
             aria-label="Konsultasi dengan Oracle"
           >
             {/* Header */}
-            <div className="flex items-center gap-3 border-b border-violet-400/20 bg-gradient-to-r from-violet-400/15 to-transparent p-4">
+            <div className="flex items-center gap-3 border-b border-violet-200 bg-gradient-to-r from-violet-100 to-transparent p-4">
               <LogoMark className="h-8 w-8" />
               <div className="flex-1">
-                <p className="font-display text-sm font-bold tracking-[0.22em] text-zinc-50">
+                <p className="font-display text-sm font-bold tracking-[0.22em] text-slate-900">
                   ORACLE
                 </p>
-                <p className="flex items-center gap-1.5 text-[11px] text-emerald-400">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" aria-hidden="true" />
+                <p className="flex items-center gap-1.5 text-[11px] text-emerald-600">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" aria-hidden="true" />
                   Kecerdasan 46 Dewan Pakar
                 </p>
               </div>
@@ -135,7 +135,7 @@ export default function OracleChat() {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Tutup"
-                className="flex h-9 w-9 items-center justify-center rounded-full text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-100"
+                className="flex h-9 w-9 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900"
               >
                 <X className="h-4 w-4" aria-hidden="true" />
               </button>
@@ -151,8 +151,8 @@ export default function OracleChat() {
                   key={i}
                   className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-[13px] leading-relaxed ${
                     m.role === "user"
-                      ? "ml-auto rounded-tr-sm bg-violet-400 font-medium text-zinc-950"
-                      : "mr-auto rounded-tl-sm bg-zinc-800/90 text-zinc-200"
+                      ? "ml-auto rounded-tr-sm bg-violet-600 font-medium text-white"
+                      : "mr-auto rounded-tl-sm bg-slate-100 text-slate-700"
                   }`}
                 >
                   {m.content}
@@ -160,11 +160,11 @@ export default function OracleChat() {
               ))}
 
               {loading && (
-                <div className="mr-auto flex items-center gap-1.5 rounded-2xl rounded-tl-sm bg-zinc-800/90 px-4 py-3">
+                <div className="mr-auto flex items-center gap-1.5 rounded-2xl rounded-tl-sm bg-slate-100 px-4 py-3">
                   {[0, 1, 2].map((d) => (
                     <span
                       key={d}
-                      className="h-1.5 w-1.5 animate-typing-dot rounded-full bg-violet-300"
+                      className="h-1.5 w-1.5 animate-typing-dot rounded-full bg-violet-500"
                       style={{ animationDelay: `${d * 0.18}s` }}
                       aria-hidden="true"
                     />
@@ -179,7 +179,7 @@ export default function OracleChat() {
                       key={p}
                       type="button"
                       onClick={() => void send(p)}
-                      className="rounded-full border border-violet-400/30 bg-violet-400/5 px-3 py-1.5 text-left text-[11px] font-medium text-violet-200/90 transition-colors hover:bg-violet-400/15"
+                      className="rounded-full border border-violet-300 bg-violet-50/60 px-3 py-1.5 text-left text-[11px] font-medium text-violet-700/90 transition-colors hover:bg-violet-100"
                     >
                       {p}
                     </button>
@@ -192,7 +192,7 @@ export default function OracleChat() {
                   href={BRAND.whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-[12px] font-bold text-zinc-950 transition-transform hover:scale-[1.02] active:scale-95"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-[12px] font-bold text-white transition-transform hover:scale-[1.02] active:scale-95"
                 >
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />
                   Chat Tim Manusia via WhatsApp
@@ -203,20 +203,20 @@ export default function OracleChat() {
             {/* Input */}
             <form
               onSubmit={onSubmit}
-              className="flex items-center gap-2 border-t border-zinc-800 p-3"
+              className="flex items-center gap-2 border-t border-slate-200 p-3"
             >
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Tanyakan apa saja — izin, strategi, pajak…"
                 aria-label="Pertanyaan Anda untuk Oracle"
-                className="h-11 flex-1 rounded-xl border border-zinc-800 bg-zinc-950/70 px-4 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none transition-all focus:border-violet-400/60 focus:ring-2 focus:ring-violet-400/20"
+                className="h-11 flex-1 rounded-xl border border-slate-200 bg-white/70 px-4 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all focus:border-violet-500/70 focus:ring-2 focus:ring-violet-400/20"
               />
               <button
                 type="submit"
                 disabled={!input.trim() || loading}
                 aria-label="Kirim"
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-violet-400 to-blue-500 text-zinc-950 transition-all hover:scale-105 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-violet-600 to-blue-600 text-white transition-all hover:scale-105 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <Send className="h-4 w-4" aria-hidden="true" />
               </button>

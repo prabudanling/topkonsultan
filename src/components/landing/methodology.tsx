@@ -16,7 +16,7 @@ export default function Methodology() {
   return (
     <section
       id="method"
-      className="relative scroll-mt-20 overflow-hidden border-t border-zinc-900/70 py-24 sm:py-28"
+      className="relative scroll-mt-20 overflow-hidden border-t border-slate-200 py-24 sm:py-28"
       aria-label="Metode Oracle"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -33,13 +33,13 @@ export default function Methodology() {
         <div ref={ref} className="relative mx-auto mt-16 max-w-4xl">
           {/* Track */}
           <div
-            className="absolute left-[22px] top-2 h-[calc(100%-16px)] w-px bg-zinc-800 md:left-1/2"
+            className="absolute left-[22px] top-2 h-[calc(100%-16px)] w-px bg-slate-100 md:left-1/2"
             aria-hidden="true"
           />
           {/* Animated progress */}
           <motion.div
             style={{ scaleY }}
-            className="absolute left-[22px] top-2 h-[calc(100%-16px)] w-px origin-top bg-gradient-to-b from-violet-400 via-indigo-500 to-blue-400 shadow-[0_0_14px_rgba(139,92,246,0.8)] md:left-1/2"
+            className="absolute left-[22px] top-2 h-[calc(100%-16px)] w-px origin-top bg-gradient-to-b from-violet-600 via-indigo-500 to-blue-600 shadow-[0_0_14px_rgba(139,92,246,0.8)] md:left-1/2"
             aria-hidden="true"
           />
 
@@ -57,8 +57,8 @@ export default function Methodology() {
                   className="absolute left-[22px] top-9 z-10 -translate-x-1/2 md:left-1/2"
                   aria-hidden="true"
                 >
-                  <span className="absolute -inset-1.5 animate-ping-slow rounded-full bg-violet-400/40" />
-                  <span className="relative block h-4 w-4 rounded-full border-2 border-violet-400 bg-zinc-950 shadow-[0_0_12px_rgba(139,92,246,0.9)]" />
+                  <span className="absolute -inset-1.5 animate-ping-slow rounded-full bg-violet-600/40" />
+                  <span className="relative block h-4 w-4 rounded-full border-2 border-violet-500 bg-white shadow-[0_0_12px_rgba(139,92,246,0.9)]" />
                 </span>
 
                 <motion.div
@@ -68,16 +68,16 @@ export default function Methodology() {
                   transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
                   className="glass ml-12 w-full rounded-2xl p-6 sm:p-7 md:ml-0 md:w-[calc(50%-3.5rem)]"
                 >
-                  <span className="text-[11px] font-bold tracking-[0.34em] text-violet-400">
+                  <span className="text-[11px] font-bold tracking-[0.34em] text-violet-600">
                     TAHAP {m.step}
                   </span>
-                  <h3 className="mt-2 flex items-center gap-3 font-display text-xl font-bold text-zinc-50">
-                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-violet-400/25 bg-violet-400/10 text-violet-300">
+                  <h3 className="mt-2 flex items-center gap-3 font-display text-xl font-bold text-slate-900">
+                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-violet-300 bg-violet-50 text-violet-600">
                       <m.icon className="h-[18px] w-[18px]" aria-hidden="true" />
                     </span>
                     {m.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-zinc-400">{m.desc}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-500">{m.desc}</p>
                 </motion.div>
               </div>
             );

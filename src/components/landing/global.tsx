@@ -5,7 +5,7 @@ import { Reveal, SectionHeading } from "./motion";
 export default function GlobalReach() {
   return (
     <section
-      className="relative overflow-hidden border-t border-zinc-900/70 py-24 sm:py-28"
+      className="relative overflow-hidden border-t border-slate-200 py-24 sm:py-28"
       aria-label="Jangkauan global"
     >
       <div className="mx-auto grid max-w-7xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
@@ -26,9 +26,9 @@ export default function GlobalReach() {
               {HUBS.map((h, i) => (
                 <li
                   key={h.name}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 px-3.5 py-2 text-xs font-medium text-zinc-400 transition-colors hover:border-violet-400/40 hover:text-violet-300"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/50 px-3.5 py-2 text-xs font-medium text-slate-500 transition-colors hover:border-violet-500/50 hover:text-violet-600"
                 >
-                  <MapPin className="h-3 w-3 text-violet-400" aria-hidden="true" />
+                  <MapPin className="h-3 w-3 text-violet-600" aria-hidden="true" />
                   {i === 0 ? `Markas Global — ${h.name}` : h.name}
                 </li>
               ))}
@@ -36,8 +36,8 @@ export default function GlobalReach() {
           </Reveal>
 
           <Reveal delay={0.3}>
-            <p className="mt-8 flex items-center gap-2.5 text-sm text-zinc-500">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" aria-hidden="true" />
+            <p className="mt-8 flex items-center gap-2.5 text-sm text-slate-9000">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" aria-hidden="true" />
               24/7/365 — matahari tak pernah terbenam di atas para Dewan.
             </p>
           </Reveal>
@@ -48,7 +48,7 @@ export default function GlobalReach() {
           <div className="relative mx-auto h-[340px] w-[340px] sm:h-[440px] sm:w-[440px]">
             {/* Sphere */}
             <div
-              className="absolute inset-0 rounded-full border border-violet-400/20 bg-[radial-gradient(circle_at_32%_28%,rgba(167,139,250,0.14),rgba(9,9,11,0.25)_62%)]"
+              className="absolute inset-0 rounded-full border border-violet-200 bg-[radial-gradient(circle_at_32%_28%,rgba(167,139,250,0.35),rgba(255,255,255,0.6)_62%)]"
               aria-hidden="true"
             />
             {/* Longitudes (rotating) */}
@@ -65,7 +65,7 @@ export default function GlobalReach() {
                   rx={rx}
                   ry="98"
                   fill="none"
-                  stroke="rgba(167,139,250,0.14)"
+                  stroke="rgba(124,58,237,0.16)"
                   strokeWidth="0.7"
                 />
               ))}
@@ -84,7 +84,7 @@ export default function GlobalReach() {
                   rx="98"
                   ry={ry}
                   fill="none"
-                  stroke="rgba(167,139,250,0.12)"
+                  stroke="rgba(124,58,237,0.14)"
                   strokeWidth="0.7"
                 />
               ))}
@@ -94,7 +94,7 @@ export default function GlobalReach() {
               className="absolute -inset-3 animate-[spin360_15s_linear_infinite]"
               aria-hidden="true"
             >
-              <span className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-200 shadow-[0_0_14px_rgba(167,139,250,1)]" />
+              <span className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500 shadow-[0_0_14px_rgba(124,58,237,0.6)]" />
             </div>
             {/* Hub dots */}
             {HUBS.map((h, i) => (
@@ -104,11 +104,11 @@ export default function GlobalReach() {
                 style={{ left: `${h.x}%`, top: `${h.y}%` }}
               >
                 <span
-                  className="absolute -inset-1.5 animate-ping-slow rounded-full bg-violet-400/40"
+                  className="absolute -inset-1.5 animate-ping-slow rounded-full bg-violet-600/40"
                   aria-hidden="true"
                 />
-                <span className="relative block h-2 w-2 rounded-full bg-violet-300 shadow-[0_0_10px_rgba(167,139,250,0.9)]" />
-                <span className="absolute left-3.5 top-[-4px] whitespace-nowrap text-[10px] font-semibold text-zinc-400">
+                <span className="relative block h-2 w-2 rounded-full bg-violet-500 shadow-[0_0_10px_rgba(124,58,237,0.55)]" />
+                <span className="absolute left-3.5 top-[-4px] whitespace-nowrap text-[10px] font-semibold text-slate-500">
                   {i === 0 ? "Markas Global" : h.name}
                 </span>
               </span>

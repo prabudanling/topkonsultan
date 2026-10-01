@@ -101,19 +101,19 @@ export function SectionHeading({
   return (
     <div className={`flex max-w-3xl flex-col gap-4 ${alignCls} ${className ?? ""}`}>
       <Reveal>
-        <span className="inline-flex items-center gap-2.5 rounded-full border border-violet-400/25 bg-violet-400/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-violet-300">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-400" />
+        <span className="inline-flex items-center gap-2.5 rounded-full border border-violet-300 bg-violet-50/60 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-violet-600">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-600" />
           {eyebrow}
         </span>
       </Reveal>
       <Reveal delay={0.08}>
-        <h2 className="font-display text-3xl font-bold leading-[1.12] tracking-tight text-zinc-50 sm:text-4xl lg:text-5xl">
+        <h2 className="font-display text-3xl font-bold leading-[1.12] tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
           {title}
         </h2>
       </Reveal>
       {sub ? (
         <Reveal delay={0.16}>
-          <p className="max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">{sub}</p>
+          <p className="max-w-2xl text-base leading-relaxed text-slate-500 sm:text-lg">{sub}</p>
         </Reveal>
       ) : null}
     </div>

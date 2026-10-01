@@ -28,7 +28,7 @@ export default function Preloader() {
       {!done && (
         <motion.div
           key="preloader"
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-7 bg-[#07070a]"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-7 bg-white"
           exit={{
             y: "-100%",
             borderBottomLeftRadius: "50% 10%",
@@ -50,25 +50,25 @@ export default function Preloader() {
               initial={{ y: "120%" }}
               animate={{ y: 0 }}
               transition={{ duration: 0.7, delay: 0.25, ease: EASE }}
-              className="font-display text-lg font-bold tracking-[0.4em] text-zinc-100"
+              className="font-display text-lg font-bold tracking-[0.4em] text-slate-900"
             >
               TOP KONSULTAN
             </motion.p>
           </div>
 
           <div className="flex w-60 flex-col items-center gap-3">
-            <div className="h-px w-full overflow-hidden bg-zinc-800">
+            <div className="h-px w-full overflow-hidden bg-slate-100">
               <div
-                className="h-full bg-gradient-to-r from-violet-300 via-indigo-400 to-indigo-600 transition-[width] duration-100 ease-out"
+                className="h-full bg-gradient-to-r from-violet-300 via-indigo-500 to-indigo-600 transition-[width] duration-100 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>
-            <span className="text-xs font-semibold tracking-[0.35em] text-violet-300/90">
+            <span className="text-xs font-semibold tracking-[0.35em] text-violet-700">
               {progress}%
             </span>
           </div>
 
-          <p className="text-[10px] uppercase tracking-[0.42em] text-zinc-600">
+          <p className="text-[10px] uppercase tracking-[0.42em] text-slate-400">
             Menghadirkan 46 Dewan Pakar
           </p>
         </motion.div>
