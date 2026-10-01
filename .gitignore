@@ -52,3 +52,11 @@ prompt
 server.log
 # Skills directory
 /skills/
+
+# artefak kerja lokal (tidak untuk deploy)
+/download/
+/upload/
+/tool-results/
+/agent-ctx/
+/examples/
+db/*.db-journal
