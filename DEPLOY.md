@@ -13,7 +13,7 @@ Ditulis untuk pemula. Tidak perlu latar belakang IT — cukup ikuti langkahnya d
 | Form kontak dengan nomor tiket (TOP-XXXX) | ✅ Jalan — tersimpan di memori server |
 | Newsletter | ✅ Jalan — tersimpan di memori server |
 | Tombol WhatsApp mengapung (wa.me/6281111165165) | ✅ Otomatis jalan |
-| Chat Oracle AI | ⚠️ Jalan dalam **mode cadangan** — tamu diarahkan ke WhatsApp resmi. Untuk AI penuh, isi 1 environment variable (bagian 4) |
+| Chat Oracle AI | 💎 **Eksklusif Member VVIP** — tidak tampil di situs publik. Hanya bisa dibuka di `alamat-situs/#/vvip` dengan kode akses. Untuk AI penuh, isi 1 environment variable (bagian 4) |
 
 **Kejujuran soal database:** Vercel memakai filesystem yang tidak permanen (serverless). Karena itu pesan form kontak tidak tersimpan permanen seperti di komputer lokal. Tiket tetap terbit dan situs tetap berfungsi 100%, tetapi jika Anda ingin pesan tersimpan permanen, ikuti bagian 6 (opsional, ±10 menit).
 
@@ -48,7 +48,7 @@ git push -u origin main
 
 Setiap kali Anda `git push` ke GitHub, Vercel **otomatis membangun ulang** situs. Tidak perlu sentuh apa pun lagi.
 
-## 4. Mengaktifkan Oracle AI penuh (1 langkah penting)
+## 4. Mengaktifkan Oracle AI penuh + kode akses VVIP
 
 Di sandbox lokal, chat Oracle memakai kredensial internal yang **tidak tersedia di Vercel** — itulah sebabnya di Vercel perlu 1 kunci API. Begini caranya:
 
@@ -61,6 +61,7 @@ Di sandbox lokal, chat Oracle memakai kredensial internal yang **tidak tersedia 
    | `AI_API_KEY` | kunci API dari Z.AI |
    | `AI_MODEL` | `glm-4.6` (terbaik) atau `glm-4.5-flash` (paling hemat) |
    | `AI_BASE_URL` | `https://api.z.ai/api/paas/v4` (bawaan; boleh dikosongkan) |
+   | `VVIP_ACCESS_CODE` | kode akses VVIP Anda (lihat bagian 4b di bawah) |
 
 4. Klik **Deployments → tab terakhir → Redeploy** (wajib agar variabel baru terbaca).
 
@@ -68,7 +69,21 @@ Setelah itu chat Oracle di situs Anda hidup penuh — menjawab pertanyaan perizi
 
 > Alternatif: variabel ini kompatibel dengan semua penyedia "OpenAI-compatible". Punya kunci OpenAI? Cukup set `AI_BASE_URL=https://api.openai.com/v1` dan `AI_MODEL=gpt-4o-mini`.
 >
-> Tanpa kunci: chat tetap berfungsi — menjawab dengan mode cadangan + tombol besar **"Chat Tim Manusia via WhatsApp"**. Pengunjung tidak pernah melihat error.
+> Tanpa kunci: chat tetap berfungsi — menjawab dengan mode cadangan + tombol besar **"Chat Tim Manusia via WhatsApp"**. Member VVIP tidak pernah melihat error.
+
+## 4b. Cara kerja Area VVIP (panduan pemilik situs)
+
+Oracle AI **tidak lagi tampil di website depan** — ia kini menjadi layanan eksklusif Member VVIP:
+
+| Hal | Keterangan |
+|---|---|
+| Alamat lounge VVIP | `alamat-situs-anda.com/#/vvip` (tidak ada di menu — bagikan hanya ke member) |
+| Kode akses bawaan | `TOP-VVIP-2026` |
+| Mengganti kode | Vercel → Environment Variables → ubah `VVIP_ACCESS_CODE` → Redeploy. Kode lama langsung mati |
+| Keamanan | Kode diverifikasi **di server** (API menolak dengan 403). Sesi member berakhir otomatis saat tab ditutup |
+| Cara memberi akses | Kirim WhatsApp pribadi ke member: "Berikut alamat lounge VIP kami + kode akses Anda" |
+
+> Simpan kode dengan rapi: selama `VVIP_ACCESS_CODE` tidak diisi di Vercel, kode bawaan `TOP-VVIP-2026` yang dipakai. Segera ganti bila kode bocor.
 
 ## 5. Ganti nama domain sendiri (opsional)
 

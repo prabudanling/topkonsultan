@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import ZAI from "z-ai-web-dev-sdk";
+import { vvipCodeMatches } from "@/lib/vvip";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -123,6 +124,22 @@ async function askSandboxSDK(history: IncomingMsg[]): Promise<string> {
 }
 
 export async function POST(req: Request) {
+  // ── Gerbang VVIP ─────────────────────────────────────────────────────────
+  // Oracle adalah layanan eksklusif Member VVIP. Setiap permintaan wajib
+  // membawa header x-vvip-code yang cocok dengan VVIP_ACCESS_CODE (server-side).
+  const providedCode = (req.headers.get("x-vvip-code") ?? "").trim();
+  if (!vvipCodeMatches(providedCode)) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "vvip_required",
+        message:
+          "Oracle adalah layanan eksklusif Member VVIP. Hubungi tim TOP melalui WhatsApp +62 811-1116-5165 untuk kode akses.",
+      },
+      { status: 403 }
+    );
+  }
+
   // Body Request hanya bisa dibaca sekali — parse di sini, pakai di mana pun dibutuhkan.
   const body: unknown = await req.json().catch(() => null);
   const history = await sanitize(body);

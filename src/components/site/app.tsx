@@ -18,7 +18,6 @@ import Navbar from "@/components/landing/navbar";
 import Footer from "@/components/landing/footer";
 import Preloader from "@/components/landing/preloader";
 import ScrollProgress from "@/components/landing/scroll-progress";
-import OracleChat from "@/components/landing/oracle-chat";
 import WhatsAppFloat from "@/components/landing/whatsapp-float";
 import NotFoundPage from "@/components/site/pages/not-found";
 import HomePage from "@/components/site/pages/home";
@@ -39,6 +38,7 @@ import ResultsPage from "@/components/site/pages/results";
 import ContactPage from "@/components/site/pages/contact";
 import LegalPage from "@/components/site/pages/legal";
 import FaqPage from "@/components/site/pages/faq";
+import VvipPage from "@/components/site/pages/vvip";
 
 const BASE_TITLE = "PT TOP KONSULTAN INTERNASIONAL — Konsultasi & Perizinan Terlengkap di Dunia";
 const SUFFIX = "TOP Konsultan Internasional";
@@ -59,6 +59,8 @@ const TITLES: Record<string, string> = {
   "/privacy": `Kebijakan Privasi — ${SUFFIX}`,
   "/terms": `Syarat & Ketentuan — ${SUFFIX}`,
   "/cookies": `Kebijakan Cookie — ${SUFFIX}`,
+  // Rute diskret — tidak ditautkan dari navigasi publik.
+  "/vvip": `Member Lounge — ${SUFFIX}`,
 };
 
 export default function SiteApp() {
@@ -166,6 +168,9 @@ export default function SiteApp() {
       case "cookies":
         view = <LegalPage docId="cookies" />;
         break;
+      case "vvip":
+        view = <VvipPage />;
+        break;
       default: {
         const profile = COUNCIL_PROFILES[0];
         void profile;
@@ -194,7 +199,7 @@ export default function SiteApp() {
         {view}
       </main>
       <Footer />
-      <OracleChat />
+      {/* Oracle kini eksklusif Member VVIP — hanya di #/vvip, bukan di situs publik. */}
       <WhatsAppFloat />
     </div>
   );

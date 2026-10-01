@@ -47,7 +47,7 @@ Website resmi **PT TOP KONSULTAN INTERNASIONAL** (PUSAT PERIZINAN.ID) — dibang
 
 | | Fitur | Keterangan |
 |---|---|---|
-| ◈ | **Oracle AI** | Asisten kecerdasan 46 Dewan Pakar — menjawab perizinan, bisnis, pajak, strategi dalam bahasa apa pun, 24/7 |
+| ◈ | **Oracle AI — Eksklusif VVIP** | Asisten kecerdasan 46 Dewan Pakar di lounge `#/vvip` (kode akses): menjawab perizinan, bisnis, pajak, strategi dalam bahasa apa pun, 24/7 — tidak tampil di situs publik |
 | ◈ | **124 Tampilan Halaman** | Beranda sinematik, katalog 36+ izin (PT/PMA, NIB, BPOM, Halal, SNI, KITAS, PSE, OJK…), 46 profil Dewan Pakar, industri, wawasan, karier, FAQ |
 | ◈ | **23 Logo Instansi Resmi** | Kemenkumham, BKPM, Kemenkeu, Kemendag, BPOM, OJK, dan lainnya — instansi yang kami hadapi langsung setiap hari |
 | ◈ | **Galeri Akreditasi** | Foto asli penyerahan sertifikat & kartu indikasi PUSAT PERIZINAN.ID |
@@ -72,6 +72,7 @@ Website resmi **PT TOP KONSULTAN INTERNASIONAL** (PUSAT PERIZINAN.ID) — dibang
 | `AI_API_KEY` | Opsional | Mengaktifkan Oracle AI penuh di production — [dapatkan di Z.AI](https://z.ai) |
 | `AI_BASE_URL` | Opsional | Default `https://api.z.ai/api/paas/v4` — kompatibel semua penyedia OpenAI-compatible |
 | `AI_MODEL` | Opsional | Default `glm-4.6` — alternatif hemat: `glm-4.5-flash` |
+| `VVIP_ACCESS_CODE` | Opsional | Kode gerbang lounge `#/vvip` (Oracle). Bawaan: `TOP-VVIP-2026` — rotasi kapan pun tanpa deploy ulang kode |
 | `DATABASE_URL` | Opsional | Tanpa variabel ini, form & newsletter berjalan dengan fallback memori |
 
 ### ✦ Menjalankan Lokal
@@ -129,7 +130,7 @@ The official website of **PT TOP KONSULTAN INTERNASIONAL** (PUSAT PERIZINAN.ID) 
 
 | | Feature | Description |
 |---|---|---|
-| ◈ | **Oracle AI** | The unified voice of 46 Expert Councils — answers licensing, business, tax and strategy questions in any language, 24/7 |
+| ◈ | **Oracle AI — VVIP Exclusive** | The unified voice of 46 Expert Councils, available in the `#/vvip` members-only lounge (access code): licensing, business, tax and strategy in any language, 24/7 — hidden from the public site |
 | ◈ | **124 Page Views** | Cinematic landing, catalog of 36+ permits (PT/PMA, NIB, BPOM, Halal, SNI, KITAS, PSE, OJK…), 46 Council profiles, industries, insights, careers, FAQ |
 | ◈ | **23 Official Agency Logos** | Kemenkumham, BKPM, Ministry of Finance, Ministry of Trade, BPOM, OJK and more — the agencies we face directly, every day |
 | ◈ | **Accreditation Gallery** | Real photos of certificate handovers and PUSAT PERIZINAN.ID credentials |
@@ -154,6 +155,7 @@ The official website of **PT TOP KONSULTAN INTERNASIONAL** (PUSAT PERIZINAN.ID) 
 | `AI_API_KEY` | Optional | Enables full Oracle AI in production — [get one at Z.AI](https://z.ai) |
 | `AI_BASE_URL` | Optional | Defaults to `https://api.z.ai/api/paas/v4` — works with any OpenAI-compatible provider |
 | `AI_MODEL` | Optional | Defaults to `glm-4.6` — budget option: `glm-4.5-flash` |
+| `VVIP_ACCESS_CODE` | Optional | Gate code for the `#/vvip` Oracle lounge. Default: `TOP-VVIP-2026` — rotate anytime without redeploying code |
 | `DATABASE_URL` | Optional | Without it, forms & newsletter run on the in-memory fallback |
 
 ### ✦ Run Locally

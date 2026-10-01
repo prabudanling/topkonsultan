@@ -59,8 +59,8 @@ export default function FaqPage() {
         <Reveal delay={0.15}>
           <div className="mt-12 flex flex-col items-center gap-4 rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-600/[0.06] to-transparent p-8 text-center">
             <p className="max-w-xl font-display text-xl italic leading-relaxed text-slate-700">
-              &ldquo;Pertanyaan yang tak ada di daftar ini? Untuk itulah Oracle
-              ada.&rdquo;
+              &ldquo;Pertanyaan yang tak ada di daftar ini? Oracle — kecerdasan
+              46 Dewan Pakar — menunggu Anda di lounge Member VVIP.&rdquo;
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <LinkButton to="/contact" withArrow>
