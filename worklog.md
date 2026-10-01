@@ -284,3 +284,20 @@ Stage Summary:
 - Situs kini memakai aset branding asli klien di beranda & halaman Tentang
 - Galeri Akreditasi hidup di beranda posisi setelah section Hasil (#akreditasi)
 - Semua aset teroptimasi untuk web (total < 1.6KB..KB rata-rata <250KB per foto)
+
+---
+Task ID: 3
+Agent: Super Z (main agent)
+Task: Tambah logo resmi kementerian/lembaga RI sebagai section "Jaringan Instansi" di beranda
+
+Work Log:
+- Upstream z-ai image-search error 400; Wikimedia 429 dengan UA generik -> solusi: UA deskriptif "TopKonsultanSiteBuilder/1.0" + jeda sopan, akses API Wikipedia/Commons lancar
+- Unduh 18 kandidat via scripts/fetch-agency-logos.py + refetch-logos.py (pageimages id.wikipedia & Commons search)
+- QC visual via contact sheet (scripts/logo-contact-sheet.py): 17 lolos, bappebti (PDF sampul) & pu (tidak ada kandidat layak) dibuang per permintaan user "yang tidak bagus jangan dimasukan"
+- Perbaikan manual: kemenkumham awalnya seal Kemenko (salah) -> diganti logo resmi Kemenkumham "Pengayoman"; ojk awalnya foto gedung -> diganti logo OJK; kemenpar awalnya Pesona Indonesia -> lambang resmi Kementerian Pariwisata (2024); bonus logo DJKI (merek/paten/hak cipta)
+- Komponen baru src/components/landing/agencies.tsx: section #instansi "Satu Meja dengan Semua Instansi." — 17 kartu putih berisi logo resmi + nama + cakupan izin, disisipkan setelah PerizinanSection, plus disclaimer kepemilikan logo (bukan afiliasi resmi)
+- Verifikasi: lint bersih, dev.log bersih, Agent Browser: 3 baris logo render sempurna, nol error console
+
+Stage Summary:
+- Beranda kini menampilkan 17 logo resmi instansi (Kemenkumham, BKPM, Kemenkeu, Kemendag, Imipas, KLH, Kemnaker, Kemenkes, BPOM, Kemenag, BSN, DJKI, Komdigi, OJK, Kemenperin, Kemenkop, Kemenpar)
+- Framing jujur & aman: "instansi yang dihadapi langsung", bukan klaim kemitraan — diproteksi disclaimer hukum

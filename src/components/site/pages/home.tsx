@@ -6,6 +6,7 @@ import Stats from "@/components/landing/stats";
 import About from "@/components/landing/about";
 import Services from "@/components/landing/services";
 import PerizinanSection from "@/components/landing/perizinan-section";
+import Agencies from "@/components/landing/agencies";
 import Councils from "@/components/landing/councils";
 import Methodology from "@/components/landing/methodology";
 import Comparison from "@/components/landing/comparison";
@@ -24,6 +25,7 @@ export default function HomePage() {
       <About />
       <Services />
       <PerizinanSection />
+      <Agencies />
       <Councils />
       <Methodology />
       <Comparison />
