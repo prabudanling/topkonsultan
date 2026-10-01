@@ -385,3 +385,23 @@ Work Log:
 Stage Summary:
 - Repo tampil kelas dunia: README bilingual futuristik dengan aset SVG custom, tombol deploy 1 klik, badge stack modern.
 - Semua siap push ke GitHub (butuh PAT user / GitHub Desktop) — setelah push, Vercel tinggal import & Deploy.
+
+---
+Task ID: 7
+Agent: Super Z (main agent)
+Task: Rebrand seluruh situs gelap -> tema CERAH (Bright Executive) yang enak dipandang, identitas ungu-biru dipertahankan sebagai aksen.
+
+Work Log:
+- Inventaris 45+ pola kelas warna via grep stat; desain palet terang: bg #fafafc (putih-lavender), teks slate-900/600, kartu putih + border slate-200 + bayangan violet lembut, aksen teks violet-600/700 (kontras AA di latar terang), CTA gradien violet-600->indigo-500->blue-600 + teks putih.
+- scripts/light-theme.py: ~90 aturan replace terurut (suffix opacity dulu), kasus khusus (chip kategori councils, radial globe), glow rgba violet ditendang (0.7->0.42 dst); 45 file .ts/.tsx berubah.
+- globals.css: :root light oklch, body #fafafc/slate-800, selection violet-600 putih, scrollbar terang, text-gradient-gold -> gradien dalam (#6d28d9..#2563eb), glass putih 0.8, grid-bg violet lembut, color-scheme light.
+- layout.tsx: className="dark" dihapus, themeColor #fafafc; logo.tsx gradien #7c3aed->#2563eb; icon.svg tetap violet.
+- Perbaikan lanjutan hasil QC browser: wrapper app.tsx bg-[#07070a]->bg-white (akar latar masih gelap), preloader, navbar mobile bg-[#0a0a0d], perizinan-detail; watermark angka services text-slate-900/10; footer border-slate-200.
+- E2E Agent Browser: hero cerah premium, 23 kartu instansi putih, galeri akreditasi, halaman #/perizinan & #/contact & 404, footer lengkap (4 alamat), panel Oracle putih kaca, chat user bubble violet-600 + jawaban AI nyata (NIB). Screenshot: download/verify-light-*.png (9 file).
+- Verifikasi: eslint bersih, tsc src bersih, bun run build produksi sukses.
+- Commit 52efe35; ZIP arsip HEAD diregenerasi (9.2MB).
+
+Stage Summary:
+- Situs kini BERTEMa CERAH penuh (light mode premium): putih-lavender + aksen ungu-biru, nyaman di mata, kontras WCAG, semua 124 tampilan + landing section + Oracle chat + footer konsisten.
+- Identitas brand ungu-biru tetap kental lewat gradien judul, CTA, badge, dan aksen; WhatsApp tetap hijau.
+- Repo & ZIP siap push GitHub -> Vercel (proses deploy tetap zero-config).
