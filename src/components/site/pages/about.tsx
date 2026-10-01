@@ -40,10 +40,10 @@ export default function AboutPage() {
           <Reveal>
             <div className="relative overflow-hidden rounded-3xl border border-amber-400/15">
               <Image
-                src="/images/hq.png"
+                src="/images/menara-top.jpg"
                 alt="Menara TOP — kantor pusat PT TOP KONSULTAN INTERNASIONAL di Jakarta"
-                width={1440}
-                height={720}
+                width={1344}
+                height={768}
                 className="h-auto w-full object-cover"
                 priority={false}
               />

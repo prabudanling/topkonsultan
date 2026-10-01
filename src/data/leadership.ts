@@ -12,7 +12,7 @@ export const LEADERS: Leader[] = [
     enRole: "Founder & Chief Executive Officer",
     council: "Kantor Pusat — Menara TOP, Jakarta",
     bio: "Berakar dari Tasikmalaya, Jawa Barat, Gugun Gunara membangun karier tiga dekade dari lantai usaha keluarga hingga ruang direksi korporasi global. Pengusaha sekaligus konsultan bisnis senior yang pernah berpartner dan bekerja bersama McKinsey, ia mendirikan TOP di atas satu keyakinan: anak negeri berhak mendapat nasihat kelas dunia — dan dunia berhak merasakan standar kerja Indonesia. Hari ini ia memimpin 46 Dewan Pakar dengan 6.900 tahun penguasaan gabungan, melayani klien di 190 negara dari Menara TOP, Jakarta.",
-    image: "/images/founder-gugun-gunara.png",
+    image: "/images/founder-gugun-gunara.jpg",
     initials: "GG",
     featured: true,
   },

@@ -10,6 +10,7 @@ import Councils from "@/components/landing/councils";
 import Methodology from "@/components/landing/methodology";
 import Comparison from "@/components/landing/comparison";
 import Results from "@/components/landing/results";
+import Accreditation from "@/components/landing/accreditation";
 import Testimonials from "@/components/landing/testimonials";
 import GlobalReach from "@/components/landing/global";
 import { CTABand } from "@/components/site/ui";
@@ -27,6 +28,7 @@ export default function HomePage() {
       <Methodology />
       <Comparison />
       <Results />
+      <Accreditation />
       <Testimonials />
       <GlobalReach />
       <CTABand />

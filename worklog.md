@@ -265,3 +265,22 @@ Stage Summary:
 - Situs PT TOP KONSULTAN INTERNASIONAL berjalan penuh di port 3000 (Next.js 16.1.3 + Turbopack)
 - Fitur terverifikasi E2E: hash router 124 tampilan, katalog perizinan, Oracle AI (Z.AI SDK), form kontak bertiket, newsletter
 - Screenshot verifikasi: download/verify-home.png, download/verify-oracle.png
+
+---
+Task ID: 2
+Agent: Super Z (main agent)
+Task: Branding situs dengan foto asli upload (logo master, foto Pendiri, foto Menara, 5 foto akreditasi/sertifikat)
+
+Work Log:
+- Inspeksi 8 file upload di /home/z/my-project/upload (dimensi & konten)
+- Optimasi via scripts/brand-assets.py (PIL resize + kompresi): logo 9MB->316KB, founder 2.1MB->178KB, total 8 aset ke public/images/
+- Komponen baru src/components/landing/accreditation.tsx — galeri "Setiap Sertifikat Adalah Bukti." berisi 5 kartu foto akreditasi/penyerahan + 1 kartu segel logo emas Pusat Perizinan.ID (next/image, Reveal, SectionHeading, gaya gold zinc-950 konsisten)
+- home.tsx: <Accreditation/> disisipkan antara Results dan Testimonials
+- leadership.ts: foto Pendiri diganti foto asli founder-gugun-gunara.jpg
+- about.tsx: foto Menara TOP diganti menara-top.jpg (1344x768)
+- Verifikasi: ESLint bersih, tsc src bersih, dev.log tanpa error, Agent Browser: galeri 6 kartu render, foto founder & menara termuat, screenshot di download/verify-*.png
+
+Stage Summary:
+- Situs kini memakai aset branding asli klien di beranda & halaman Tentang
+- Galeri Akreditasi hidup di beranda posisi setelah section Hasil (#akreditasi)
+- Semua aset teroptimasi untuk web (total < 1.6KB..KB rata-rata <250KB per foto)
