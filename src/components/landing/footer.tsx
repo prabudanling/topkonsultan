@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Instagram, Linkedin, Loader2, Mail, MapPin, Phone, Twitter, Youtube } from "lucide-react";
+import { ArrowRight, Instagram, Linkedin, Loader2, Mail, MapPin, MessageCircle, Phone, Twitter, Youtube } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { COUNCIL_CATEGORIES, SERVICES } from "@/data/content";
 import { PERIZINAN_CATEGORIES } from "@/data/perizinan";
@@ -78,7 +78,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="mt-auto border-t border-amber-400/10 bg-zinc-950">
+    <footer className="mt-auto border-t border-violet-400/10 bg-zinc-950">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           {/* Brand + Dispatch + Kontak */}
@@ -89,7 +89,7 @@ export default function Footer() {
                 <span className="block font-display text-sm font-bold tracking-[0.28em] text-zinc-50">
                   TOP KONSULTAN
                 </span>
-                <span className="mt-1 block text-[9px] font-semibold tracking-[0.5em] text-amber-400/90">
+                <span className="mt-1 block text-[9px] font-semibold tracking-[0.5em] text-violet-400/90">
                   INTERNASIONAL
                 </span>
               </span>
@@ -102,23 +102,42 @@ export default function Footer() {
 
             <address className="flex flex-col gap-2 text-sm not-italic text-zinc-500">
               <a
+                href={BRAND.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 font-semibold text-zinc-300 transition-colors hover:text-violet-300"
+                aria-label={`WhatsApp bisnis ${BRAND.whatsapp}`}
+              >
+                <span className="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-violet-400/90" aria-hidden="true">
+                  <MessageCircle className="h-2.5 w-2.5 text-zinc-950" />
+                </span>
+                {BRAND.whatsapp} — WhatsApp resmi 24/7
+              </a>
+              <a
                 href={`tel:${BRAND.phoneHref}`}
-                className="flex items-center gap-2.5 transition-colors hover:text-amber-300"
+                className="flex items-center gap-2.5 transition-colors hover:text-violet-300"
                 aria-label={`Telepon ${BRAND.phone}`}
               >
-                <Phone className="h-3.5 w-3.5 shrink-0 text-amber-400/80" aria-hidden="true" />
+                <Phone className="h-3.5 w-3.5 shrink-0 text-violet-400/80" aria-hidden="true" />
                 {BRAND.phone}
               </a>
               <a
                 href={`mailto:${BRAND.email}`}
-                className="flex items-center gap-2.5 transition-colors hover:text-amber-300"
+                className="flex items-center gap-2.5 transition-colors hover:text-violet-300"
               >
-                <Mail className="h-3.5 w-3.5 shrink-0 text-amber-400/80" aria-hidden="true" />
+                <Mail className="h-3.5 w-3.5 shrink-0 text-violet-400/80" aria-hidden="true" />
                 {BRAND.email}
               </a>
-              <span className="flex items-start gap-2.5">
-                <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-400/80" aria-hidden="true" />
-                {BRAND.address}
+              <span className="flex flex-col gap-1.5">
+                {BRAND.addresses.map((a) => (
+                  <span key={a.label} className="flex items-start gap-2.5">
+                    <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-violet-400/80" aria-hidden="true" />
+                    <span>
+                      <span className="font-semibold text-zinc-400">{a.label}:</span>{" "}
+                      {a.value}
+                    </span>
+                  </span>
+                ))}
               </span>
             </address>
 
@@ -130,7 +149,7 @@ export default function Footer() {
               >
                 Oracle Dispatch
               </label>
-              <div className="flex overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/60 transition-colors focus-within:border-amber-400/50">
+              <div className="flex overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/60 transition-colors focus-within:border-violet-400/50">
                 <input
                   id="dispatch-email"
                   type="email"
@@ -143,7 +162,7 @@ export default function Footer() {
                 <button
                   type="submit"
                   disabled={sending}
-                  className="inline-flex min-h-11 w-12 shrink-0 items-center justify-center bg-gradient-to-r from-amber-300 to-amber-500 text-zinc-950 transition-opacity hover:opacity-90 disabled:opacity-60"
+                  className="inline-flex min-h-11 w-12 shrink-0 items-center justify-center bg-gradient-to-r from-violet-400 to-blue-500 text-zinc-950 transition-opacity hover:opacity-90 disabled:opacity-60"
                   aria-label="Berlangganan Oracle Dispatch"
                 >
                   {sending ? (
@@ -155,7 +174,7 @@ export default function Footer() {
               </div>
               <p className="mt-2 text-[11px] leading-relaxed text-zinc-600">
                 Satu kirim per bulan. Nol derau. Tanpa pelacak — lihat{" "}
-                <Link to="/cookies" className="text-zinc-500 underline decoration-amber-400/40 underline-offset-2 hover:text-amber-300">
+                <Link to="/cookies" className="text-zinc-500 underline decoration-violet-400/40 underline-offset-2 hover:text-violet-300">
                   Kebijakan Cookie
                 </Link>
                 .
@@ -169,7 +188,7 @@ export default function Footer() {
                   type="button"
                   onClick={() => onSocial(label)}
                   aria-label={`${label} — segera hadir`}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-800 text-zinc-500 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-400/50 hover:text-amber-300"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-800 text-zinc-500 transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-400/50 hover:text-violet-300"
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
                 </button>
@@ -185,7 +204,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm">
               {FIRM_LINKS.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="text-zinc-400 transition-colors hover:text-amber-300">
+                  <Link to={l.to} className="text-zinc-400 transition-colors hover:text-violet-300">
                     {l.label}
                   </Link>
                 </li>
@@ -203,14 +222,14 @@ export default function Footer() {
                 <li key={c.id}>
                   <Link
                     to={`/perizinan?kategori=${c.id}`}
-                    className="text-zinc-400 transition-colors hover:text-amber-300"
+                    className="text-zinc-400 transition-colors hover:text-violet-300"
                   >
                     {c.name}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link to="/perizinan" className="font-semibold text-amber-300/90 transition-colors hover:text-amber-200">
+                <Link to="/perizinan" className="font-semibold text-violet-300/90 transition-colors hover:text-violet-200">
                   Lihat semua 36 izin →
                 </Link>
               </li>
@@ -228,14 +247,14 @@ export default function Footer() {
                   <li key={s.num}>
                     <Link
                       to={`/services/${s.num}`}
-                      className="text-zinc-400 transition-colors hover:text-amber-300"
+                      className="text-zinc-400 transition-colors hover:text-violet-300"
                     >
                       {s.title}
                     </Link>
                   </li>
                 ))}
                 <li>
-                  <Link to="/services" className="font-semibold text-amber-300/90 transition-colors hover:text-amber-200">
+                  <Link to="/services" className="font-semibold text-violet-300/90 transition-colors hover:text-violet-200">
                     Lihat 12 layanan utama →
                   </Link>
                 </li>
@@ -252,14 +271,14 @@ export default function Footer() {
                     <li key={c}>
                       <Link
                         to={`/councils?filter=${encodeURIComponent(c)}`}
-                        className="text-zinc-400 transition-colors hover:text-amber-300"
+                        className="text-zinc-400 transition-colors hover:text-violet-300"
                       >
                         {c}
                       </Link>
                     </li>
                   ))}
                   <li>
-                    <Link to="/councils" className="font-semibold text-amber-300/90 transition-colors hover:text-amber-200">
+                    <Link to="/councils" className="font-semibold text-violet-300/90 transition-colors hover:text-violet-200">
                       Hadapi 46 Dewan →
                     </Link>
                   </li>
@@ -273,7 +292,7 @@ export default function Footer() {
                 <ul className="space-y-2.5 text-sm">
                   {LEGAL_LINKS.map((l) => (
                     <li key={l.to}>
-                      <Link to={l.to} className="text-zinc-400 transition-colors hover:text-amber-300">
+                      <Link to={l.to} className="text-zinc-400 transition-colors hover:text-violet-300">
                         {l.label}
                       </Link>
                     </li>

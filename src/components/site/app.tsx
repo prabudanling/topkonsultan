@@ -19,6 +19,7 @@ import Footer from "@/components/landing/footer";
 import Preloader from "@/components/landing/preloader";
 import ScrollProgress from "@/components/landing/scroll-progress";
 import OracleChat from "@/components/landing/oracle-chat";
+import WhatsAppFloat from "@/components/landing/whatsapp-float";
 import NotFoundPage from "@/components/site/pages/not-found";
 import HomePage from "@/components/site/pages/home";
 import AboutPage from "@/components/site/pages/about";
@@ -182,7 +183,7 @@ export default function SiteApp() {
     <div className="flex min-h-screen flex-col bg-[#07070a] text-zinc-100">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[110] focus:rounded-full focus:bg-amber-400 focus:px-5 focus:py-2 focus:text-sm focus:font-bold focus:text-zinc-950"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[110] focus:rounded-full focus:bg-violet-400 focus:px-5 focus:py-2 focus:text-sm focus:font-bold focus:text-zinc-950"
       >
         Langsung ke konten
       </a>
@@ -194,6 +195,7 @@ export default function SiteApp() {
       </main>
       <Footer />
       <OracleChat />
+      <WhatsAppFloat />
     </div>
   );
 }

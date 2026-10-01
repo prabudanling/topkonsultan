@@ -42,7 +42,7 @@ export default function Preloader() {
             animate={{ scale: 1, opacity: 1, rotate: 0 }}
             transition={{ duration: 0.8, ease: EASE }}
           >
-            <LogoMark className="h-20 w-20 drop-shadow-[0_0_30px_rgba(245,158,11,0.45)]" />
+            <LogoMark className="h-20 w-20 drop-shadow-[0_0_30px_rgba(139,92,246,0.45)]" />
           </motion.div>
 
           <div className="overflow-hidden">
@@ -59,11 +59,11 @@ export default function Preloader() {
           <div className="flex w-60 flex-col items-center gap-3">
             <div className="h-px w-full overflow-hidden bg-zinc-800">
               <div
-                className="h-full bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 transition-[width] duration-100 ease-out"
+                className="h-full bg-gradient-to-r from-violet-300 via-indigo-400 to-indigo-600 transition-[width] duration-100 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>
-            <span className="text-xs font-semibold tracking-[0.35em] text-amber-300/90">
+            <span className="text-xs font-semibold tracking-[0.35em] text-violet-300/90">
               {progress}%
             </span>
           </div>

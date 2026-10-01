@@ -46,7 +46,7 @@ export default function IndustryDetailPage({ slug }: { slug: string }) {
         sub={
           <>
             {industry.enName ? (
-              <span className="mb-2 block font-display text-[12px] font-semibold uppercase tracking-[0.28em] text-amber-300/80">
+              <span className="mb-2 block font-display text-[12px] font-semibold uppercase tracking-[0.28em] text-violet-300/80">
                 {industry.enName}
               </span>
             ) : null}
@@ -83,7 +83,7 @@ export default function IndustryDetailPage({ slug }: { slug: string }) {
       </section>
 
       <section className="mx-auto max-w-4xl px-4 sm:px-6" aria-label="Bukti di lapangan">
-        <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-400/70">
+        <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.22em] text-violet-400/70">
           Bukti di Lapangan
         </p>
         <StatBand stats={industry.stats} />
@@ -102,8 +102,8 @@ export default function IndustryDetailPage({ slug }: { slug: string }) {
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
           {industry.challenges.map((c, i) => (
             <Reveal key={c.title} delay={(i % 2) * 0.08} className="h-full">
-              <article className="h-full rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40">
-                <span className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-amber-400/25 bg-amber-400/10 text-amber-300">
+              <article className="h-full rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-violet-400/40">
+                <span className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-violet-400/25 bg-violet-400/10 text-violet-300">
                   <AlertTriangle className="h-4.5 w-4.5" aria-hidden="true" />
                 </span>
                 <h3 className="font-display text-base font-bold text-zinc-100">{c.title}</h3>
@@ -128,7 +128,7 @@ export default function IndustryDetailPage({ slug }: { slug: string }) {
           {industry.approach.map((a, i) => (
             <Reveal key={i} delay={i * 0.08}>
               <li className="flex items-start gap-4 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-amber-500 text-[13px] font-bold text-zinc-950">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-violet-400 to-blue-500 text-[13px] font-bold text-zinc-950">
                   {i + 1}
                 </span>
                 <p className="pt-1 text-[15px] leading-relaxed text-zinc-300">{a}</p>
@@ -143,7 +143,7 @@ export default function IndustryDetailPage({ slug }: { slug: string }) {
         <div className="grid gap-8 lg:grid-cols-2">
           <div>
             <h2 className="flex items-center gap-2.5 font-display text-xl font-bold text-zinc-50">
-              <Compass className="h-5 w-5 text-amber-400" aria-hidden="true" />
+              <Compass className="h-5 w-5 text-violet-400" aria-hidden="true" />
               Dewan Terkait
             </h2>
             <div className="mt-5 space-y-3">
@@ -151,10 +151,10 @@ export default function IndustryDetailPage({ slug }: { slug: string }) {
                 <Reveal key={name} delay={i * 0.07}>
                   <a
                     href={`#/councils/${slugify(name)}`}
-                    className="group flex items-center justify-between gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:border-amber-400/40"
+                    className="group flex items-center justify-between gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:border-violet-400/40"
                   >
                     <span>
-                      <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-400/70">
+                      <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-400/70">
                         Penguasaan 150 tahun
                       </span>
                       <span className="mt-1 block font-display text-base font-bold text-zinc-100">
@@ -162,7 +162,7 @@ export default function IndustryDetailPage({ slug }: { slug: string }) {
                       </span>
                     </span>
                     <ArrowUpRight
-                      className="h-5 w-5 shrink-0 text-zinc-600 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-amber-400"
+                      className="h-5 w-5 shrink-0 text-zinc-600 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-400"
                       aria-hidden="true"
                     />
                   </a>
@@ -173,7 +173,7 @@ export default function IndustryDetailPage({ slug }: { slug: string }) {
 
           <div>
             <h2 className="flex items-center gap-2.5 font-display text-xl font-bold text-zinc-50">
-              <Compass className="h-5 w-5 text-amber-400" aria-hidden="true" />
+              <Compass className="h-5 w-5 text-violet-400" aria-hidden="true" />
               Praktik Terkait
             </h2>
             <div className="mt-5 space-y-3">
@@ -181,16 +181,16 @@ export default function IndustryDetailPage({ slug }: { slug: string }) {
                 <Reveal key={s.num} delay={i * 0.07}>
                   <a
                     href={`#/services/${s.num}`}
-                    className="group flex items-center justify-between gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:border-amber-400/40"
+                    className="group flex items-center justify-between gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:border-violet-400/40"
                   >
                     <span className="flex items-center gap-4">
-                      <span className="font-display text-lg font-bold text-zinc-700 transition-colors group-hover:text-amber-400/40">
+                      <span className="font-display text-lg font-bold text-zinc-700 transition-colors group-hover:text-violet-400/40">
                         {s.num}
                       </span>
                       <span className="font-display text-base font-bold text-zinc-100">{s.title}</span>
                     </span>
                     <ArrowUpRight
-                      className="h-5 w-5 shrink-0 text-zinc-600 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-amber-400"
+                      className="h-5 w-5 shrink-0 text-zinc-600 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-400"
                       aria-hidden="true"
                     />
                   </a>
@@ -208,9 +208,9 @@ export default function IndustryDetailPage({ slug }: { slug: string }) {
       >
         <a
           href={`#/industries/${prev.slug}`}
-          className="group flex items-center gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:border-amber-400/40"
+          className="group flex items-center gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:border-violet-400/40"
         >
-          <span className="text-2xl text-zinc-600 transition-colors group-hover:text-amber-300" aria-hidden="true">
+          <span className="text-2xl text-zinc-600 transition-colors group-hover:text-violet-300" aria-hidden="true">
             ←
           </span>
           <span>
@@ -222,7 +222,7 @@ export default function IndustryDetailPage({ slug }: { slug: string }) {
         </a>
         <a
           href={`#/industries/${next.slug}`}
-          className="group flex items-center justify-end gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 text-right transition-all duration-300 hover:border-amber-400/40"
+          className="group flex items-center justify-end gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 text-right transition-all duration-300 hover:border-violet-400/40"
         >
           <span>
             <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
@@ -230,7 +230,7 @@ export default function IndustryDetailPage({ slug }: { slug: string }) {
             </span>
             <span className="block font-display text-sm font-bold text-zinc-200">{next.name}</span>
           </span>
-          <span className="text-2xl text-zinc-600 transition-colors group-hover:text-amber-300" aria-hidden="true">
+          <span className="text-2xl text-zinc-600 transition-colors group-hover:text-violet-300" aria-hidden="true">
             →
           </span>
         </a>

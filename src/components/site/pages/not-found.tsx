@@ -21,7 +21,7 @@ export default function NotFoundPage() {
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute left-1/2 top-1/3 h-96 w-[700px] -translate-x-1/2 rounded-full bg-amber-500/[0.07] blur-[140px]"
+        className="pointer-events-none absolute left-1/2 top-1/3 h-96 w-[700px] -translate-x-1/2 rounded-full bg-violet-500/[0.07] blur-[140px]"
         aria-hidden="true"
       />
       <div className="relative z-10 flex max-w-2xl flex-col items-center text-center">
@@ -29,7 +29,7 @@ export default function NotFoundPage() {
           initial={{ opacity: 0, scale: 0.6, rotate: -20 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, ease: EASE }}
-          className="inline-flex h-20 w-20 items-center justify-center rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-300"
+          className="inline-flex h-20 w-20 items-center justify-center rounded-full border border-violet-400/30 bg-violet-400/10 text-violet-300"
         >
           <Compass className="h-9 w-9" aria-hidden="true" />
         </motion.span>
@@ -66,7 +66,7 @@ export default function NotFoundPage() {
             <a
               key={w.to}
               href={`#${w.to}`}
-              className="inline-flex min-h-11 items-center rounded-full border border-zinc-800 bg-zinc-900/50 px-5 py-2 text-sm font-medium text-zinc-300 backdrop-blur transition-all duration-300 hover:border-amber-400/50 hover:text-amber-300"
+              className="inline-flex min-h-11 items-center rounded-full border border-zinc-800 bg-zinc-900/50 px-5 py-2 text-sm font-medium text-zinc-300 backdrop-blur transition-all duration-300 hover:border-violet-400/50 hover:text-violet-300"
             >
               {w.label}
             </a>

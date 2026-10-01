@@ -36,11 +36,11 @@ export default function FaqPage() {
               <AccordionItem
                 key={f.q}
                 value={`faq-${i}`}
-                className="overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-900/40 px-6 transition-colors data-[state=open]:border-amber-400/40"
+                className="overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-900/40 px-6 transition-colors data-[state=open]:border-violet-400/40"
               >
                 <AccordionTrigger className="py-5 text-left hover:no-underline">
                   <span className="flex items-start gap-3 pr-4">
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-amber-400/40 text-[11px] font-bold text-amber-300">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-violet-400/40 text-[11px] font-bold text-violet-300">
                       {i + 1}
                     </span>
                     <span className="font-display text-[15px] font-bold text-zinc-100 sm:text-base">
@@ -57,7 +57,7 @@ export default function FaqPage() {
         </Reveal>
 
         <Reveal delay={0.15}>
-          <div className="mt-12 flex flex-col items-center gap-4 rounded-3xl border border-amber-400/15 bg-gradient-to-br from-amber-400/[0.06] to-transparent p-8 text-center">
+          <div className="mt-12 flex flex-col items-center gap-4 rounded-3xl border border-violet-400/15 bg-gradient-to-br from-violet-400/[0.06] to-transparent p-8 text-center">
             <p className="max-w-xl font-display text-xl italic leading-relaxed text-zinc-200">
               &ldquo;Pertanyaan yang tak ada di daftar ini? Untuk itulah Oracle
               ada.&rdquo;

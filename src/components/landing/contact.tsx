@@ -6,6 +6,7 @@ import {
   Loader2,
   Mail,
   MapPin,
+  MessageCircle,
   Phone,
   Send,
   Sparkles,
@@ -16,13 +17,19 @@ import { BRAND } from "@/data/brand";
 import { EASE, Reveal, SectionHeading } from "./motion";
 
 const CONTACT_ROWS = [
-  { Icon: Mail, label: "Email resmi", value: BRAND.email },
-  { Icon: Phone, label: "Telepon langsung", value: BRAND.phone },
-  { Icon: MapPin, label: "Kantor pusat", value: BRAND.address },
+  {
+    Icon: MessageCircle,
+    label: "WhatsApp bisnis resmi — 24/7",
+    value: BRAND.whatsapp,
+    href: BRAND.whatsappHref,
+  },
+  { Icon: Mail, label: "Email resmi", value: BRAND.email, href: `mailto:${BRAND.email}` },
+  { Icon: Phone, label: "Telepon langsung", value: BRAND.phone, href: `tel:${BRAND.phoneHref}` },
+  { Icon: MapPin, label: "Kantor pusat — Tasikmalaya I", value: BRAND.address },
 ];
 
 const inputCls =
-  "w-full rounded-xl border border-zinc-800 bg-zinc-950/70 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none transition-all duration-300 focus:border-amber-400/60 focus:ring-2 focus:ring-amber-400/20";
+  "w-full rounded-xl border border-zinc-800 bg-zinc-950/70 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none transition-all duration-300 focus:border-violet-400/60 focus:ring-2 focus:ring-violet-400/20";
 
 const labelCls = "mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500";
 
@@ -79,7 +86,7 @@ export default function Contact({
       aria-label="Konsultasikan dengan Dewan"
     >
       <div
-        className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-amber-500/[0.07] blur-[140px]"
+        className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-violet-500/[0.07] blur-[140px]"
         aria-hidden="true"
       />
 
@@ -100,27 +107,65 @@ export default function Contact({
           <Reveal className="h-full">
             <div className="glass flex h-full flex-col gap-7 rounded-3xl p-7 sm:p-8">
               <ul className="space-y-5">
-                {CONTACT_ROWS.map(({ Icon, label, value }) => (
-                  <li key={label} className="flex items-center gap-4">
-                    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-amber-400/25 bg-gradient-to-br from-amber-300/15 to-amber-600/10 text-amber-300">
-                      <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
-                    </span>
-                    <span>
-                      <span className="block text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                        {label}
+                {CONTACT_ROWS.map(({ Icon, label, value, href }) => {
+                  const inner = (
+                    <>
+                      <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-violet-400/25 bg-gradient-to-br from-violet-400/15 to-indigo-600/10 text-violet-300">
+                        <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
                       </span>
-                      <span className="block text-sm font-semibold text-zinc-100">{value}</span>
-                    </span>
-                  </li>
-                ))}
+                      <span>
+                        <span className="block text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                          {label}
+                        </span>
+                        <span className="block text-sm font-semibold text-zinc-100">{value}</span>
+                      </span>
+                    </>
+                  );
+                  return (
+                    <li key={label} className="flex items-center gap-4">
+                      {href ? (
+                        <a
+                          href={href}
+                          target={href.startsWith("http") ? "_blank" : undefined}
+                          rel="noopener noreferrer"
+                          className="flex w-full items-center gap-4 transition-opacity hover:opacity-85"
+                        >
+                          {inner}
+                        </a>
+                      ) : (
+                        inner
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
 
-              <div className="h-px bg-gradient-to-r from-transparent via-amber-400/25 to-transparent" aria-hidden="true" />
+              <div className="h-px bg-gradient-to-r from-transparent via-violet-400/25 to-transparent" aria-hidden="true" />
+
+              {/* Jaringan kantor resmi */}
+              <div>
+                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                  Jaringan kantor resmi
+                </p>
+                <ul className="space-y-2.5">
+                  {BRAND.addresses.map((a) => (
+                    <li key={a.label} className="flex items-start gap-2.5 text-[13px]">
+                      <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-violet-400/70" aria-hidden="true" />
+                      <span>
+                        <span className="font-semibold text-zinc-200">{a.label}</span>
+                        <span className="block text-[12px] leading-relaxed text-zinc-500">{a.value}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="h-px bg-gradient-to-r from-transparent via-violet-400/25 to-transparent" aria-hidden="true" />
 
               <ul className="space-y-5">
                 {GUARANTEES.map((g) => (
                   <li key={g.title} className="flex items-start gap-4">
-                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-amber-400/25 bg-amber-400/10 text-amber-300">
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-violet-400/25 bg-violet-400/10 text-violet-300">
                       <g.icon className="h-4 w-4" aria-hidden="true" />
                     </span>
                       <span>
@@ -131,7 +176,7 @@ export default function Contact({
                 ))}
               </ul>
 
-              <blockquote className="mt-auto border-l-2 border-amber-400/50 pl-4 font-display text-base italic text-amber-100/90">
+              <blockquote className="mt-auto border-l-2 border-violet-400/50 pl-4 font-display text-base italic text-violet-100/90">
                 &ldquo;Mustahil&rdquo; adalah brief favorit kami.
               </blockquote>
             </div>
@@ -149,8 +194,8 @@ export default function Contact({
                   role="status"
                 >
                   <span className="relative flex h-20 w-20 items-center justify-center">
-                    <span className="absolute inset-0 animate-ping-slow rounded-full bg-amber-400/30" />
-                    <CheckCircle2 className="h-16 w-16 text-amber-400" aria-hidden="true" />
+                    <span className="absolute inset-0 animate-ping-slow rounded-full bg-violet-400/30" />
+                    <CheckCircle2 className="h-16 w-16 text-violet-400" aria-hidden="true" />
                   </span>
                   <h3 className="font-display text-2xl font-bold text-zinc-50">
                     Brief diterima.
@@ -158,12 +203,12 @@ export default function Contact({
                   <p className="max-w-sm text-sm leading-relaxed text-zinc-400">
                     46 Dewan Pakar telah menghadir — wawasan pertama datang
                     dalam ≤ 48 jam. ID penugasan Anda{" "}
-                    <span className="font-bold text-amber-300">#{engagementId}</span>.
+                    <span className="font-bold text-violet-300">#{engagementId}</span>.
                   </p>
                   <button
                     type="button"
                     onClick={() => setStatus("idle")}
-                    className="mt-2 inline-flex min-h-11 items-center rounded-full border border-zinc-700 px-6 py-3 text-sm font-semibold text-zinc-300 transition-colors hover:border-amber-400/50 hover:text-amber-300"
+                    className="mt-2 inline-flex min-h-11 items-center rounded-full border border-zinc-700 px-6 py-3 text-sm font-semibold text-zinc-300 transition-colors hover:border-violet-400/50 hover:text-violet-300"
                   >
                     Kirim brief baru
                   </button>
@@ -171,7 +216,7 @@ export default function Contact({
               ) : (
                 <form onSubmit={onSubmit} noValidate={false}>
                   {initialRole ? (
-                    <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/10 px-4 py-2 text-[12px] font-semibold text-amber-200" role="status">
+                    <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-violet-400/40 bg-violet-400/10 px-4 py-2 text-[12px] font-semibold text-violet-200" role="status">
                       <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
                       Mandat lamaran: {initialRole}
                     </p>
@@ -232,7 +277,7 @@ export default function Contact({
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="shine mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 py-3.5 text-sm font-bold text-zinc-950 shadow-[0_12px_44px_-10px_rgba(245,158,11,0.7)] transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+                    className="shine mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-violet-400 via-indigo-400 to-blue-500 py-3.5 text-sm font-bold text-zinc-950 shadow-[0_12px_44px_-10px_rgba(139,92,246,0.7)] transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {status === "sending" ? (
                       <>

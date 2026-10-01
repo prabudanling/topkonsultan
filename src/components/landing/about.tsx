@@ -7,7 +7,7 @@ export default function About() {
     <section id="about" className="relative scroll-mt-20 py-24 sm:py-28" aria-label="Tentang PT TOP Konsultan Internasional">
       {/* ambient glow */}
       <div
-        className="pointer-events-none absolute -left-40 top-1/3 h-96 w-96 rounded-full bg-amber-500/[0.07] blur-[130px]"
+        className="pointer-events-none absolute -left-40 top-1/3 h-96 w-96 rounded-full bg-violet-500/[0.07] blur-[130px]"
         aria-hidden="true"
       />
 
@@ -30,7 +30,7 @@ export default function About() {
               <Reveal key={p} delay={0.1 + i * 0.07}>
                 <li className="flex items-start gap-3 text-[15px] leading-relaxed text-zinc-300">
                   <CheckCircle2
-                    className="mt-0.5 h-5 w-5 shrink-0 text-amber-400"
+                    className="mt-0.5 h-5 w-5 shrink-0 text-violet-400"
                     aria-hidden="true"
                   />
                   {p}
@@ -40,7 +40,7 @@ export default function About() {
           </ul>
 
           <Reveal delay={0.4}>
-            <blockquote className="mt-10 border-l-2 border-amber-400/50 pl-5">
+            <blockquote className="mt-10 border-l-2 border-violet-400/50 pl-5">
               <p className="font-display text-lg italic leading-relaxed text-zinc-200">
                 &ldquo;Berikan kami 46 menit. 46 Dewan Pakar akan memberikan Anda
                 dekade berikutnya.&rdquo;
@@ -57,7 +57,7 @@ export default function About() {
             <Reveal key={c.title} delay={i * 0.09} className="h-full">
               <TiltCard className="h-full">
                 <div className="glass group flex h-full flex-col gap-4 rounded-2xl p-6 transition-all duration-300 hover:gold-ring">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-amber-400/25 bg-gradient-to-br from-amber-300/15 to-amber-600/10 text-amber-300 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-violet-400/25 bg-gradient-to-br from-violet-400/15 to-indigo-600/10 text-violet-300 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
                     <c.icon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <div>

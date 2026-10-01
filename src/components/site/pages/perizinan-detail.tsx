@@ -26,7 +26,7 @@ import { Breadcrumb, CTABand, LinkButton, Ornament } from "@/components/site/ui"
 
 const COMPLEXITY_CLS: Record<string, string> = {
   Dasar: "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
-  Menengah: "border-amber-400/30 bg-amber-400/10 text-amber-300",
+  Menengah: "border-violet-400/30 bg-violet-400/10 text-violet-300",
   Kompleks: "border-rose-400/30 bg-rose-400/10 text-rose-300",
 };
 
@@ -60,8 +60,8 @@ export default function PerizinanDetailPage({ slug }: { slug: string }) {
           className="absolute inset-0"
           aria-hidden="true"
         >
-          <div className="absolute -top-24 left-[8%] h-72 w-72 rounded-full bg-amber-500/15 blur-[120px]" />
-          <div className="absolute right-[5%] top-10 h-80 w-80 rounded-full bg-amber-600/10 blur-[130px]" />
+          <div className="absolute -top-24 left-[8%] h-72 w-72 rounded-full bg-violet-500/15 blur-[120px]" />
+          <div className="absolute right-[5%] top-10 h-80 w-80 rounded-full bg-violet-600/10 blur-[130px]" />
         </motion.div>
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6">
@@ -80,7 +80,7 @@ export default function PerizinanDetailPage({ slug }: { slug: string }) {
             transition={{ duration: 0.7, ease: EASE }}
             className="flex flex-wrap items-center gap-3"
           >
-            <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-amber-400/25 bg-amber-400/10 text-amber-300">
+            <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-violet-400/25 bg-violet-400/10 text-violet-300">
               <Icon className="h-7 w-7" aria-hidden="true" />
             </span>
             <span
@@ -108,7 +108,7 @@ export default function PerizinanDetailPage({ slug }: { slug: string }) {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
-            className="mt-3 text-sm font-semibold uppercase tracking-[0.22em] text-amber-300/80"
+            className="mt-3 text-sm font-semibold uppercase tracking-[0.22em] text-violet-300/80"
           >
             {item.enName}
           </motion.p>
@@ -132,7 +132,7 @@ export default function PerizinanDetailPage({ slug }: { slug: string }) {
             return (
               <div key={f.label} className="flex flex-col gap-2 bg-zinc-950/90 px-6 py-6">
                 <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.22em] text-zinc-500">
-                  <FIcon className="h-3.5 w-3.5 text-amber-400/80" aria-hidden="true" />
+                  <FIcon className="h-3.5 w-3.5 text-violet-400/80" aria-hidden="true" />
                   {f.label}
                 </span>
                 <span className="text-sm font-semibold leading-snug text-zinc-200">{f.value}</span>
@@ -172,7 +172,7 @@ export default function PerizinanDetailPage({ slug }: { slug: string }) {
                   transition={{ duration: 0.45, delay: i * 0.06, ease: EASE }}
                   className="flex items-start gap-3 rounded-xl border border-zinc-800/80 bg-zinc-950/60 p-4"
                 >
-                  <CheckCircle2 className="mt-0.5 h-4.5 w-4.5 shrink-0 text-amber-400" aria-hidden="true" />
+                  <CheckCircle2 className="mt-0.5 h-4.5 w-4.5 shrink-0 text-violet-400" aria-hidden="true" />
                   <span className="text-sm leading-relaxed text-zinc-300">{req}</span>
                 </motion.li>
               ))}
@@ -194,12 +194,12 @@ export default function PerizinanDetailPage({ slug }: { slug: string }) {
                   transition={{ duration: 0.5, delay: i * 0.08, ease: EASE }}
                   className="relative pb-8 last:pb-0"
                 >
-                  <span className="absolute -left-[41px] flex h-6 w-6 items-center justify-center rounded-full border border-amber-400/50 bg-[#0a0a0d] font-display text-[10px] font-bold text-amber-300">
+                  <span className="absolute -left-[41px] flex h-6 w-6 items-center justify-center rounded-full border border-violet-400/50 bg-[#0a0a0d] font-display text-[10px] font-bold text-violet-300">
                     {step.step}
                   </span>
                   <h3 className="font-semibold text-zinc-100">{step.text}</h3>
                   {i === item.process.length - 1 ? null : (
-                    <span className="absolute -left-[9px] top-8 h-[calc(100%-2rem)] w-px bg-gradient-to-b from-amber-400/30 to-transparent" aria-hidden="true" />
+                    <span className="absolute -left-[9px] top-8 h-[calc(100%-2rem)] w-px bg-gradient-to-b from-violet-400/30 to-transparent" aria-hidden="true" />
                   )}
                 </motion.li>
               ))}
@@ -209,9 +209,9 @@ export default function PerizinanDetailPage({ slug }: { slug: string }) {
 
         {/* Sidebar */}
         <aside className="flex flex-col gap-6 lg:sticky lg:top-24 lg:self-start">
-          <div className="rounded-2xl border border-amber-400/20 bg-gradient-to-b from-amber-400/[0.08] to-transparent p-6">
+          <div className="rounded-2xl border border-violet-400/20 bg-gradient-to-b from-violet-400/[0.08] to-transparent p-6">
             <h2 className="flex items-center gap-2 font-display text-lg font-bold text-zinc-50">
-              <FileCheck2 className="h-5 w-5 text-amber-300" aria-hidden="true" />
+              <FileCheck2 className="h-5 w-5 text-violet-300" aria-hidden="true" />
               Kartu Izin
             </h2>
             <dl className="mt-4 flex flex-col gap-3.5 text-sm">
@@ -232,8 +232,8 @@ export default function PerizinanDetailPage({ slug }: { slug: string }) {
                 <dd className="text-right font-semibold text-zinc-200">{item.complexity}</dd>
               </div>
             </dl>
-            <div className="mt-5 border-t border-amber-400/15 pt-4">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-300/90">Investasi</p>
+            <div className="mt-5 border-t border-violet-400/15 pt-4">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-300/90">Investasi</p>
               <p className="mt-1.5 text-sm leading-relaxed text-zinc-400">{item.priceNote}</p>
             </div>
             <div className="mt-6 flex flex-col gap-3">
@@ -249,20 +249,20 @@ export default function PerizinanDetailPage({ slug }: { slug: string }) {
 
           <div className="rounded-2xl border border-zinc-800/80 bg-zinc-950/60 p-6">
             <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-zinc-400">
-              <BadgeCheck className="h-4 w-4 text-amber-400" aria-hidden="true" />
+              <BadgeCheck className="h-4 w-4 text-violet-400" aria-hidden="true" />
               Jaminan TOP
             </h3>
             <ul className="mt-4 flex flex-col gap-3 text-sm text-zinc-400">
               <li className="flex items-start gap-2.5">
-                <Hourglass className="mt-0.5 h-4 w-4 shrink-0 text-amber-400/80" aria-hidden="true" />
+                <Hourglass className="mt-0.5 h-4 w-4 shrink-0 text-violet-400/80" aria-hidden="true" />
                 Peta jalan perizinan dalam 48 jam pertama.
               </li>
               <li className="flex items-start gap-2.5">
-                <Building className="mt-0.5 h-4 w-4 shrink-0 text-amber-400/80" aria-hidden="true" />
+                <Building className="mt-0.5 h-4 w-4 shrink-0 text-violet-400/80" aria-hidden="true" />
                 Satu penanggung jawab bernama untuk seluruh proses.
               </li>
               <li className="flex items-start gap-2.5">
-                <FileCheck2 className="mt-0.5 h-4 w-4 shrink-0 text-amber-400/80" aria-hidden="true" />
+                <FileCheck2 className="mt-0.5 h-4 w-4 shrink-0 text-violet-400/80" aria-hidden="true" />
                 Dokumen resmi dituntaskan sampai tangan — bukan sekadar dianjurkan.
               </li>
             </ul>
@@ -284,15 +284,15 @@ export default function PerizinanDetailPage({ slug }: { slug: string }) {
                 <Link
                   key={r.slug}
                   to={`/perizinan/${r.slug}`}
-                  className="group flex flex-col rounded-2xl border border-zinc-800/80 bg-zinc-950/70 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40"
+                  className="group flex flex-col rounded-2xl border border-zinc-800/80 bg-zinc-950/70 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-violet-400/40"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-amber-400/20 bg-amber-400/10 text-amber-300">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-violet-400/20 bg-violet-400/10 text-violet-300">
                     <RIcon className="h-5 w-5" aria-hidden="true" />
                   </span>
-                  <h3 className="mt-3.5 font-display text-base font-bold leading-snug text-zinc-50 transition-colors group-hover:text-amber-200">
+                  <h3 className="mt-3.5 font-display text-base font-bold leading-snug text-zinc-50 transition-colors group-hover:text-violet-200">
                     {r.name}
                   </h3>
-                  <span className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-amber-300/90">
+                  <span className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-violet-300/90">
                     {r.timeline}
                     <ArrowRight className="h-3 w-3" aria-hidden="true" />
                   </span>

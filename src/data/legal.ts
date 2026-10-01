@@ -6,7 +6,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
     title: "Kebijakan Privasi",
     updated: "1 December 2025",
     intro:
-      "PT TOP KONSULTAN INTERNASIONAL ('TOP'), beralamat di Menara TOP Lt. 38, Jl. Jend. Sudirman Kav. 52–53, Jakarta Selatan 12190, menghormati dan melindungi setiap data pribadi yang Anda percayakan. Kebijakan ini — disusun sesuai Undang-Undang Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP), Undang-Undang Nomor 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik sebagaimana telah diubah dengan Undang-Undang Nomor 19 Tahun 2016 (UU ITE), serta Peraturan Pemerintah Nomor 71 Tahun 2019 tentang Penyelenggaraan Sistem dan Transaksi Elektronik (PP PSTE) — menjelaskan dengan bahasa lugas data apa yang kami kumpulkan, untuk apa, dan seberapa jauh kami menjaganya.",
+      "PT TOP KONSULTAN INTERNASIONAL ('TOP'), beralamat di Perumahan Arjamukti Kencana Raya Blok B7 No. 2, Leuwisari, Arjasari, Kab. Tasikmalaya, Jawa Barat, menghormati dan melindungi setiap data pribadi yang Anda percayakan. Kebijakan ini — disusun sesuai Undang-Undang Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP), Undang-Undang Nomor 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik sebagaimana telah diubah dengan Undang-Undang Nomor 19 Tahun 2016 (UU ITE), serta Peraturan Pemerintah Nomor 71 Tahun 2019 tentang Penyelenggaraan Sistem dan Transaksi Elektronik (PP PSTE) — menjelaskan dengan bahasa lugas data apa yang kami kumpulkan, untuk apa, dan seberapa jauh kami menjaganya.",
     sections: [
       {
         heading: "Data yang Kami Kumpulkan",
@@ -32,7 +32,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
       {
         heading: "Hak Anda",
         text: [
-          "Sesuai UU PDP, Anda berhak mengakses, menyalin, memperbaiki, membatasi pemrosesan, dan menghapus data pribadi Anda, serta mengajukan keberatan dan menuntut ganti rugi sesuai ketentuan yang berlaku. Ajukan permohonan dengan surel ke privacy@topkonsultan.co.id atau surat resmi ke alamat kantor kami.",
+          "Sesuai UU PDP, Anda berhak mengakses, menyalin, memperbaiki, membatasi pemrosesan, dan menghapus data pribadi Anda, serta mengajukan keberatan dan menuntut ganti rugi sesuai ketentuan yang berlaku. Ajukan permohonan dengan surel ke halo@topkonsultan.web.id atau surat resmi ke alamat kantor kami.",
           "Permohonan penghapusan kami laksanakan paling lambat 30 hari dan kami konfirmasikan secara tertulis; tanggapan awal atas setiap keluhan Anda wajib kami sampaikan dalam 3×24 jam.",
         ],
       },
@@ -108,7 +108,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
       {
         heading: "Pertanyaan",
         text: [
-          "Tulislah ke privacy@topkonsultan.co.id atau kunjungi kami di Menara TOP Lt. 38, Jl. Jend. Sudirman Kav. 52–53, Jakarta Selatan 12190. Kami menjawab dengan bahasa lugas, biasanya dalam satu hari kerja.",
+          "Tulislah ke halo@topkonsultan.web.id atau kunjungi kami di Perumahan Arjamukti Kencana Raya Blok B7 No. 2, Leuwisari, Arjasari, Kab. Tasikmalaya, Jawa Barat. Kami menjawab dengan bahasa lugas, biasanya dalam satu hari kerja.",
         ],
       },
     ],
@@ -146,7 +146,7 @@ export const FAQS: FaqItem[] = [
   },
   {
     q: "Bagaimana cara memulai?",
-    a: "Sampaikan brief Anda melalui formulir penugasan, tulislah ke halo@topkonsultan.co.id, atau mintalah orientasi kepada Oracle. Seorang Partner-in-Chief merespons dalam 48 jam dengan wawasan pertama dan usulan penghimpunan dewan.",
+    a: "Sampaikan brief Anda melalui formulir penugasan, tulislah ke halo@topkonsultan.web.id, atau mintalah orientasi kepada Oracle. Seorang Partner-in-Chief merespons dalam 48 jam dengan wawasan pertama dan usulan penghimpunan dewan.",
   },
   {
     q: "Apa itu Oracle?",

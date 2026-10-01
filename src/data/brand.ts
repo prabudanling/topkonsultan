@@ -23,15 +23,46 @@ export const BRAND = {
     "One gateway for every license, strategy and execution — from company incorporation to 190-country expansion.",
 
   founded: 2001,
-  hq: "Jakarta, Indonesia",
+  hq: "Tasikmalaya · Jakarta, Indonesia",
 
-  phone: "+62 21 5088 8000",
-  phoneHref: "+622150888000",
-  whatsapp: "+62 811 100 8000",
-  whatsappHref: "https://wa.me/628111008000",
-  email: "halo@topkonsultan.co.id",
-  emailGlobal: "global@topkonsultan.com",
-  address: "Menara TOP Lt. 38, Jl. Jend. Sudirman Kav. 52–53, Jakarta Selatan 12190",
+  /** Official business line — WhatsApp & telepon satu nomor, aktif 24/7 */
+  phone: "+62 811-1116-5165",
+  phoneHref: "+6281111165165",
+  whatsapp: "+62 811-1116-5165",
+  whatsappHref: "https://wa.me/6281111165165",
+  whatsappIntl: "6281111165165",
+  email: "halo@topkonsultan.web.id",
+  emailGlobal: "halo@topkonsultan.web.id",
+
+  /** Kantor pusat — Alamat I */
+  address:
+    "Perumahan Arjamukti Kencana Raya Blok B7 No. 2, Leuwisari, Arjasari, Tasikmalaya, Jawa Barat",
+
+  /** Empat kantor resmi — tampil di footer, halaman kontak, dan Kantor Kami */
+  addresses: [
+    {
+      label: "Kantor Pusat — Tasikmalaya I",
+      short: "Arjamukti, Arjasari",
+      value:
+        "Perumahan Arjamukti Kencana Raya Blok B7 No. 2, Leuwisari, Arjasari, Kab. Tasikmalaya, Jawa Barat",
+    },
+    {
+      label: "Kantor Tasikmalaya II",
+      short: "Andalusia Garden, Mangkubumi",
+      value:
+        "Perumahan Andalusia Garden, Cluster Granada No. 11, Mangkubumi, Kota Tasikmalaya, Jawa Barat",
+    },
+    {
+      label: "Kantor Jakarta",
+      short: "PHI Kwitang, Jakarta Pusat",
+      value: "Kantor PHI Kwitang, Kwitang, Senen, Jakarta Pusat, DKI Jakarta",
+    },
+    {
+      label: "Perwakilan IPHI Pusat",
+      short: "Ikatan Penasihat Hukum Indonesia",
+      value: "Sekretariat IPHI Pusat — Ikatan Penasihat Hukum Indonesia, Jakarta",
+    },
+  ] as const,
 
   /** Signature numbers — keep in sync with STATS in content.ts */
   councils: 46,

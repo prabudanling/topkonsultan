@@ -44,7 +44,7 @@ export default function LegalPage({ docId }: { docId: "privacy" | "terms" | "coo
       <section className="mx-auto max-w-4xl px-4 pb-16 sm:px-6" aria-label={doc.title}>
         <Reveal>
           <p className="mb-10 flex items-center gap-2 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 px-5 py-3.5 text-[13px] text-zinc-400">
-            <CalendarDays className="h-4 w-4 shrink-0 text-amber-400" aria-hidden="true" />
+            <CalendarDays className="h-4 w-4 shrink-0 text-violet-400" aria-hidden="true" />
             Version {doc.updated} — menggugurkan seluruh ketentuan sebelumnya.
           </p>
         </Reveal>
@@ -52,9 +52,9 @@ export default function LegalPage({ docId }: { docId: "privacy" | "terms" | "coo
         <div className="space-y-5">
           {doc.sections.map((section, i) => (
             <Reveal key={section.heading} delay={Math.min(i * 0.05, 0.3)}>
-              <article className="rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-6 transition-colors duration-300 hover:border-amber-400/30 sm:p-7">
+              <article className="rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-6 transition-colors duration-300 hover:border-violet-400/30 sm:p-7">
                 <h2 className="flex items-center gap-3 font-display text-lg font-bold text-zinc-100">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-amber-400/40 text-[12px] font-bold text-amber-300">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-violet-400/40 text-[12px] font-bold text-violet-300">
                     {i + 1}
                   </span>
                   {section.heading}
@@ -78,7 +78,7 @@ export default function LegalPage({ docId }: { docId: "privacy" | "terms" | "coo
               <a
                 key={s.id}
                 href={`#/${s.id}`}
-                className="group flex items-center justify-between gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:border-amber-400/40"
+                className="group flex items-center justify-between gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:border-violet-400/40"
               >
                 <span>
                   <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
@@ -88,20 +88,20 @@ export default function LegalPage({ docId }: { docId: "privacy" | "terms" | "coo
                     {s.title}
                   </span>
                 </span>
-                <Scale className="h-5 w-5 shrink-0 text-zinc-600 transition-colors group-hover:text-amber-400" aria-hidden="true" />
+                <Scale className="h-5 w-5 shrink-0 text-zinc-600 transition-colors group-hover:text-violet-400" aria-hidden="true" />
               </a>
             ))}
           </div>
         </Reveal>
 
         <Reveal delay={0.15}>
-          <div className="mt-10 flex flex-col items-center gap-4 rounded-3xl border border-amber-400/15 bg-gradient-to-br from-amber-400/[0.06] to-transparent p-8 text-center">
+          <div className="mt-10 flex flex-col items-center gap-4 rounded-3xl border border-violet-400/15 bg-gradient-to-br from-violet-400/[0.06] to-transparent p-8 text-center">
             <p className="max-w-xl text-sm leading-relaxed text-zinc-400">
               Ada pertanyaan tentang doktrin ini? Dewan Audit Forensik menjawab
               dalam bahasa yang lugas — tulis ke{" "}
               <a
                 href={`mailto:${BRAND.email}`}
-                className="font-semibold text-amber-300 underline decoration-amber-400/40 underline-offset-4 hover:text-amber-200"
+                className="font-semibold text-violet-300 underline decoration-violet-400/40 underline-offset-4 hover:text-violet-200"
               >
                 {BRAND.email}
               </a>

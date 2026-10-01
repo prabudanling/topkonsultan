@@ -41,7 +41,7 @@ export default function InsightsPage() {
         <Reveal>
           <a
             href={`#/insights/${featured.slug}`}
-            className="group relative grid overflow-hidden rounded-3xl border border-amber-400/20 bg-zinc-900/40 transition-all duration-300 hover:border-amber-400/50 hover:shadow-[0_30px_80px_-30px_rgba(245,158,11,0.4)] lg:grid-cols-2"
+            className="group relative grid overflow-hidden rounded-3xl border border-violet-400/20 bg-zinc-900/40 transition-all duration-300 hover:border-violet-400/50 hover:shadow-[0_30px_80px_-30px_rgba(139,92,246,0.4)] lg:grid-cols-2"
             aria-label={`Baca: ${featured.title}`}
           >
             <div className="relative h-64 overflow-hidden lg:h-auto lg:min-h-[380px]">
@@ -53,13 +53,13 @@ export default function InsightsPage() {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 priority
               />
-              <span className="absolute left-5 top-5 rounded-full border border-amber-400/40 bg-zinc-950/80 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-amber-300 backdrop-blur">
+              <span className="absolute left-5 top-5 rounded-full border border-violet-400/40 bg-zinc-950/80 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-violet-300 backdrop-blur">
                 Sorotan Utama
               </span>
             </div>
             <div className="flex flex-col justify-center gap-4 p-7 sm:p-10">
               <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                <span className="text-amber-400/80">{featured.category}</span>
+                <span className="text-violet-400/80">{featured.category}</span>
                 <span className="inline-flex items-center gap-1.5">
                   <CalendarDays className="h-3.5 w-3.5" aria-hidden="true" />
                   {formatDate(featured.date)}
@@ -82,7 +82,7 @@ export default function InsightsPage() {
                 <span className="font-semibold text-zinc-300">{featured.author.name}</span> ·{" "}
                 {featured.author.role}
               </p>
-              <span className="mt-2 inline-flex w-fit items-center gap-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-amber-300">
+              <span className="mt-2 inline-flex w-fit items-center gap-1.5 text-[12px] font-bold uppercase tracking-[0.18em] text-violet-300">
                 Baca wawasan
                 <ArrowUpRight
                   className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -99,7 +99,7 @@ export default function InsightsPage() {
             <Reveal key={ins.slug} delay={(i % 3) * 0.08} className="h-full">
               <a
                 href={`#/insights/${ins.slug}`}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-900/40 transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-400/40 hover:shadow-[0_24px_60px_-24px_rgba(245,158,11,0.35)]"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-900/40 transition-all duration-300 hover:-translate-y-1.5 hover:border-violet-400/40 hover:shadow-[0_24px_60px_-24px_rgba(139,92,246,0.35)]"
                 aria-label={`Baca: ${ins.title}`}
               >
                 <div className="relative h-44 overflow-hidden">
@@ -110,7 +110,7 @@ export default function InsightsPage() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <span className="absolute left-4 top-4 rounded-full border border-amber-400/40 bg-zinc-950/80 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-amber-300 backdrop-blur">
+                  <span className="absolute left-4 top-4 rounded-full border border-violet-400/40 bg-zinc-950/80 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-violet-300 backdrop-blur">
                     {ins.category}
                   </span>
                 </div>
@@ -142,7 +142,7 @@ export default function InsightsPage() {
         </div>
 
         <Reveal delay={0.15}>
-          <div className="mt-14 flex flex-col items-center gap-5 rounded-3xl border border-amber-400/15 bg-gradient-to-br from-amber-400/[0.06] to-transparent p-8 text-center sm:p-10">
+          <div className="mt-14 flex flex-col items-center gap-5 rounded-3xl border border-violet-400/15 bg-gradient-to-br from-violet-400/[0.06] to-transparent p-8 text-center sm:p-10">
             <p className="max-w-2xl font-display text-xl italic leading-relaxed text-zinc-200 sm:text-2xl">
               &ldquo;Membaca itu murah. Sidang yang menentukan.&rdquo;
             </p>

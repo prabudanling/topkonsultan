@@ -70,8 +70,8 @@ export default function CouncilsPage({ initialFilter }: { initialFilter: string 
                   onClick={() => setFilter(f)}
                   className={`inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-300 sm:text-[13px] ${
                     active
-                      ? "bg-gradient-to-r from-amber-300 to-amber-500 text-zinc-950 shadow-[0_8px_28px_-8px_rgba(245,158,11,0.7)]"
-                      : "border border-zinc-800 bg-zinc-900/40 text-zinc-400 hover:border-amber-400/40 hover:text-amber-300"
+                      ? "bg-gradient-to-r from-violet-400 to-blue-500 text-zinc-950 shadow-[0_8px_28px_-8px_rgba(139,92,246,0.7)]"
+                      : "border border-zinc-800 bg-zinc-900/40 text-zinc-400 hover:border-violet-400/40 hover:text-violet-300"
                   }`}
                 >
                   {f === "All" ? "Semua" : f}
@@ -93,7 +93,7 @@ export default function CouncilsPage({ initialFilter }: { initialFilter: string 
             <label htmlFor="council-search" className="sr-only">
               Cari 46 dewan pakar
             </label>
-            <div className="flex items-center gap-3 rounded-full border border-zinc-800 bg-zinc-900/60 px-5 transition-colors focus-within:border-amber-400/50">
+            <div className="flex items-center gap-3 rounded-full border border-zinc-800 bg-zinc-900/60 px-5 transition-colors focus-within:border-violet-400/50">
               <Search className="h-4 w-4 shrink-0 text-zinc-500" aria-hidden="true" />
               <input
                 id="council-search"
@@ -108,7 +108,7 @@ export default function CouncilsPage({ initialFilter }: { initialFilter: string 
                   type="button"
                   onClick={() => setQuery("")}
                   aria-label="Hapus pencarian"
-                  className="text-zinc-500 transition-colors hover:text-amber-300"
+                  className="text-zinc-500 transition-colors hover:text-violet-300"
                 >
                   <X className="h-4 w-4" aria-hidden="true" />
                 </button>
@@ -128,15 +128,15 @@ export default function CouncilsPage({ initialFilter }: { initialFilter: string 
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: Math.min(i * 0.03, 0.5), ease: EASE }}
-              className="group flex items-start gap-4 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-400/40 hover:bg-zinc-900/70 hover:shadow-[0_16px_44px_-18px_rgba(245,158,11,0.3)]"
+              className="group flex items-start gap-4 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-400/40 hover:bg-zinc-900/70 hover:shadow-[0_16px_44px_-18px_rgba(139,92,246,0.3)]"
               aria-label={`Buka Dewan ${c.name}`}
             >
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-amber-400/25 bg-amber-400/10 text-amber-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-violet-400/25 bg-violet-400/10 text-violet-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                 <c.icon className="h-5 w-5" aria-hidden="true" />
               </span>
 
               <div className="min-w-0 flex-1">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-400/70">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-400/70">
                   {c.category}
                 </p>
                 <h2 className="mt-1 font-display text-[15px] font-bold leading-snug text-zinc-100">
@@ -150,7 +150,7 @@ export default function CouncilsPage({ initialFilter }: { initialFilter: string 
                 ) : null}
               </div>
 
-              <span className="shrink-0 rounded-full border border-amber-400/30 bg-amber-400/10 px-2 py-1 text-[10px] font-bold text-amber-300">
+              <span className="shrink-0 rounded-full border border-violet-400/30 bg-violet-400/10 px-2 py-1 text-[10px] font-bold text-violet-300">
                 150 th
               </span>
             </motion.a>

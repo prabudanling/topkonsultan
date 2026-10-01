@@ -10,7 +10,7 @@ export default function Services() {
       aria-label="Layanan"
     >
       <div
-        className="pointer-events-none absolute -right-40 top-24 h-96 w-96 rounded-full bg-amber-500/[0.06] blur-[130px]"
+        className="pointer-events-none absolute -right-40 top-24 h-96 w-96 rounded-full bg-violet-500/[0.06] blur-[130px]"
         aria-hidden="true"
       />
 
@@ -31,20 +31,20 @@ export default function Services() {
               <a
                 href={`#/services/${s.num}`}
                 aria-label={`Buka praktik ${s.title}`}
-                className="group relative block h-full overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-400/40 hover:shadow-[0_24px_60px_-24px_rgba(245,158,11,0.35)]"
+                className="group relative block h-full overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-violet-400/40 hover:shadow-[0_24px_60px_-24px_rgba(139,92,246,0.35)]"
               >
                 <span
-                  className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-400/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-400/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   aria-hidden="true"
                 />
                 <span
-                  className="absolute right-5 top-4 font-display text-4xl font-bold text-zinc-800/70 transition-colors duration-300 group-hover:text-amber-400/20"
+                  className="absolute right-5 top-4 font-display text-4xl font-bold text-zinc-800/70 transition-colors duration-300 group-hover:text-violet-400/20"
                   aria-hidden="true"
                 >
                   {s.num}
                 </span>
 
-                <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-amber-400/25 bg-gradient-to-br from-amber-300/15 to-amber-600/10 text-amber-300 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-violet-400/25 bg-gradient-to-br from-violet-400/15 to-indigo-600/10 text-violet-300 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
                   <s.icon className="h-5 w-5" aria-hidden="true" />
                 </span>
 
@@ -55,14 +55,14 @@ export default function Services() {
                   {s.tags.map((t) => (
                     <li
                       key={t}
-                      className="rounded-full border border-zinc-700/70 px-2.5 py-1 text-[11px] font-medium text-zinc-500 transition-colors group-hover:border-amber-400/30 group-hover:text-amber-200/80"
+                      className="rounded-full border border-zinc-700/70 px-2.5 py-1 text-[11px] font-medium text-zinc-500 transition-colors group-hover:border-violet-400/30 group-hover:text-violet-200/80"
                     >
                       {t}
                     </li>
                   ))}
                 </ul>
 
-                <span className="mt-5 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-amber-300/90 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span className="mt-5 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-violet-300/90 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   Lihat detail
                   <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
@@ -75,7 +75,7 @@ export default function Services() {
           <p className="mt-10 text-center">
             <a
               href="#/services"
-              className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-amber-300 transition-colors hover:text-amber-200"
+              className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-violet-300 transition-colors hover:text-violet-200"
             >
               Jelajahi Dua Belas Praktik secara mendalam
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

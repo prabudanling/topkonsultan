@@ -19,7 +19,7 @@ export default function Stats() {
           {STATS.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.08}>
               <div className="group glass h-full rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:gold-ring sm:p-7">
-                <span className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-amber-400/25 bg-gradient-to-br from-amber-300/15 to-amber-600/10 text-amber-300 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                <span className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-violet-400/25 bg-gradient-to-br from-violet-400/15 to-indigo-600/10 text-violet-300 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
                   <s.icon className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <Counter

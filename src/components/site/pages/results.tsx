@@ -32,7 +32,7 @@ export default function ResultsPage() {
       <Comparison />
 
       <Reveal className="mx-auto max-w-4xl px-4 pb-4 sm:px-6">
-        <blockquote className="rounded-3xl border border-amber-400/15 bg-gradient-to-br from-amber-400/[0.06] to-transparent p-8 text-center sm:p-10">
+        <blockquote className="rounded-3xl border border-violet-400/15 bg-gradient-to-br from-violet-400/[0.06] to-transparent p-8 text-center sm:p-10">
           <p className="font-display text-xl italic leading-relaxed text-zinc-200 sm:text-2xl">
             &ldquo;Mereka menjawab dalam 48 jam apa yang tak mampu dijawab
             empat firma konsultan dalam empat tahun.&rdquo;

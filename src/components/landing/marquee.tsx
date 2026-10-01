@@ -8,7 +8,7 @@ export default function BenchmarkMarquee() {
   return (
     <section
       id="benchmarks"
-      className="relative scroll-mt-20 border-y border-amber-400/10 bg-zinc-950/70 py-10"
+      className="relative scroll-mt-20 border-y border-violet-400/10 bg-zinc-950/70 py-10"
       aria-label="Tolok ukur industri yang kami lampaui"
     >
       <Reveal className="mb-8 px-4 text-center">
@@ -29,7 +29,7 @@ export default function BenchmarkMarquee() {
                 {b}
               </span>
               <BadgeCheck
-                className="h-[18px] w-[18px] shrink-0 text-amber-400/80"
+                className="h-[18px] w-[18px] shrink-0 text-violet-400/80"
                 aria-label="terlampaui"
               />
             </div>

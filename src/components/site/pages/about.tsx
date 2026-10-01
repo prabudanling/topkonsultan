@@ -38,10 +38,10 @@ export default function AboutPage() {
       <section className="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8" aria-label="Kisah pendirian firma">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl border border-amber-400/15">
+            <div className="relative overflow-hidden rounded-3xl border border-violet-400/15">
               <Image
                 src="/images/menara-top.jpg"
-                alt="Menara TOP — kantor pusat PT TOP KONSULTAN INTERNASIONAL di Jakarta"
+                alt="Kantor pusat PT TOP KONSULTAN INTERNASIONAL — kantor PHI Kwitang, Jakarta"
                 width={1344}
                 height={768}
                 className="h-auto w-full object-cover"
@@ -49,10 +49,10 @@ export default function AboutPage() {
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent p-6">
                 <p className="font-display text-lg font-bold text-zinc-50">
-                  Menara TOP, Jakarta Selatan
+                  Kantor PHI Kwitang, Jakarta Pusat
                 </p>
-                <p className="text-xs uppercase tracking-[0.25em] text-amber-300/80">
-                  Kedudukan firma sejak {BRAND.founded}
+                <p className="text-xs uppercase tracking-[0.25em] text-violet-300/80">
+                  Jaringan kantor Tasikmalaya · Jakarta sejak {BRAND.founded}
                 </p>
               </div>
             </div>
@@ -83,7 +83,7 @@ export default function AboutPage() {
                 mereka menyulingnya dari guru ke murid, lintas generasi; itulah
                 mengapa satu dewan membawa 150 tahun penguasaan tanpa putus. Dan
                 kredo firma tidak pernah berubah:{" "}
-                <span className="font-semibold text-amber-200">
+                <span className="font-semibold text-violet-200">
                   &ldquo;Mustahil&rdquo; adalah brief favorit kami.
                 </span>
               </p>
@@ -100,7 +100,7 @@ export default function AboutPage() {
                     key={item}
                     className="flex items-center gap-2.5 rounded-xl border border-zinc-800/80 bg-zinc-900/40 px-4 py-3 text-sm text-zinc-300"
                   >
-                    <ArrowRight className="h-4 w-4 shrink-0 text-amber-400" aria-hidden="true" />
+                    <ArrowRight className="h-4 w-4 shrink-0 text-violet-400" aria-hidden="true" />
                     {item}
                   </li>
                 ))}
@@ -122,7 +122,7 @@ export default function AboutPage() {
         />
         <div className="relative mt-14">
           <div
-            className="absolute left-[19px] top-2 h-[calc(100%-16px)] w-px bg-gradient-to-b from-amber-400/60 via-zinc-800 to-transparent md:left-1/2"
+            className="absolute left-[19px] top-2 h-[calc(100%-16px)] w-px bg-gradient-to-b from-violet-400/60 via-zinc-800 to-transparent md:left-1/2"
             aria-hidden="true"
           />
           {TIMELINE.map((t, i) => {
@@ -140,7 +140,7 @@ export default function AboutPage() {
                   className="absolute left-[19px] top-7 z-10 -translate-x-1/2 md:left-1/2"
                   aria-hidden="true"
                 >
-                  <span className="block h-3.5 w-3.5 rounded-full border-2 border-amber-400 bg-zinc-950 shadow-[0_0_12px_rgba(245,158,11,0.9)]" />
+                  <span className="block h-3.5 w-3.5 rounded-full border-2 border-violet-400 bg-zinc-950 shadow-[0_0_12px_rgba(139,92,246,0.9)]" />
                 </span>
                 <div
                   className={`glass ml-10 w-full rounded-2xl p-6 md:ml-0 md:w-[calc(50%-3rem)] ${
@@ -174,7 +174,7 @@ export default function AboutPage() {
               return (
                 <Reveal key={l.name} delay={0} className="sm:col-span-2 lg:col-span-3">
                   <TiltCard className="h-full">
-                    <article className="group grid h-full overflow-hidden rounded-2xl border border-amber-400/25 bg-gradient-to-br from-zinc-900/80 via-zinc-900/40 to-transparent transition-all duration-300 hover:border-amber-400/50 hover:shadow-[0_32px_80px_-32px_rgba(245,158,11,0.45)] lg:grid-cols-[340px_1fr]">
+                    <article className="group grid h-full overflow-hidden rounded-2xl border border-violet-400/25 bg-gradient-to-br from-zinc-900/80 via-zinc-900/40 to-transparent transition-all duration-300 hover:border-violet-400/50 hover:shadow-[0_32px_80px_-32px_rgba(139,92,246,0.45)] lg:grid-cols-[340px_1fr]">
                       <div className="relative h-80 overflow-hidden bg-zinc-950 lg:h-full">
                         {l.image ? (
                           <Image
@@ -186,7 +186,7 @@ export default function AboutPage() {
                           />
                         ) : (
                           <div className="flex h-full items-center justify-center">
-                            <span className="flex h-28 w-28 items-center justify-center rounded-full border border-amber-400/30 bg-gradient-to-br from-amber-400/15 to-transparent font-display text-4xl font-bold text-gradient-gold">
+                            <span className="flex h-28 w-28 items-center justify-center rounded-full border border-violet-400/30 bg-gradient-to-br from-violet-400/15 to-transparent font-display text-4xl font-bold text-gradient-gold">
                               {l.initials}
                             </span>
                           </div>
@@ -194,19 +194,19 @@ export default function AboutPage() {
                         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 to-transparent lg:bg-gradient-to-r" aria-hidden="true" />
                       </div>
                       <div className="flex flex-col justify-center p-6 sm:p-10">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-amber-400">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-violet-400">
                           {l.council}
                         </p>
                         <h3 className="mt-2 font-display text-2xl font-bold text-zinc-50 sm:text-3xl">
                           {l.name}
                         </h3>
-                        <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-amber-300/90">
+                        <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-violet-300/90">
                           {l.role}
                         </p>
                         {l.enRole ? (
                           <p className="mt-0.5 text-xs italic text-zinc-500">{l.enRole}</p>
                         ) : null}
-                        <Quote className="mt-5 h-5 w-5 text-amber-400/40" aria-hidden="true" />
+                        <Quote className="mt-5 h-5 w-5 text-violet-400/40" aria-hidden="true" />
                         <p className="mt-2 max-w-3xl text-[15px] leading-relaxed text-zinc-300">
                           {l.bio}
                         </p>
@@ -215,7 +215,7 @@ export default function AboutPage() {
                             (chip) => (
                               <span
                                 key={chip}
-                                className="rounded-full border border-amber-400/25 bg-amber-400/5 px-3 py-1 text-[11px] font-medium text-amber-200/90"
+                                className="rounded-full border border-violet-400/25 bg-violet-400/5 px-3 py-1 text-[11px] font-medium text-violet-200/90"
                               >
                                 {chip}
                               </span>
@@ -231,7 +231,7 @@ export default function AboutPage() {
             return (
             <Reveal key={l.name} delay={(i % 3) * 0.08} className="h-full">
               <TiltCard className="h-full">
-                <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-900/40 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40 hover:shadow-[0_24px_60px_-24px_rgba(245,158,11,0.35)]">
+                <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-900/40 transition-all duration-300 hover:-translate-y-1 hover:border-violet-400/40 hover:shadow-[0_24px_60px_-24px_rgba(139,92,246,0.35)]">
                   <div className="relative h-64 overflow-hidden bg-zinc-950">
                     {l.image ? (
                       <Image
@@ -243,14 +243,14 @@ export default function AboutPage() {
                       />
                     ) : (
                       <div className="flex h-full items-center justify-center">
-                        <span className="flex h-24 w-24 items-center justify-center rounded-full border border-amber-400/30 bg-gradient-to-br from-amber-400/15 to-transparent font-display text-3xl font-bold text-gradient-gold">
+                        <span className="flex h-24 w-24 items-center justify-center rounded-full border border-violet-400/30 bg-gradient-to-br from-violet-400/15 to-transparent font-display text-3xl font-bold text-gradient-gold">
                           {l.initials}
                         </span>
                       </div>
                     )}
                   </div>
                   <div className="flex flex-1 flex-col p-6">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-400/70">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-400/70">
                       {l.council}
                     </p>
                     <h3 className="mt-1 font-display text-lg font-bold text-zinc-100">{l.name}</h3>
@@ -280,7 +280,7 @@ export default function AboutPage() {
             <Reveal key={c.title} delay={i * 0.08} className="h-full">
               <TiltCard className="h-full">
                 <div className="glass group flex h-full flex-col gap-4 rounded-2xl p-6 transition-all duration-300 hover:gold-ring">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-amber-400/25 bg-gradient-to-br from-amber-300/15 to-amber-600/10 text-amber-300 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-violet-400/25 bg-gradient-to-br from-violet-400/15 to-indigo-600/10 text-violet-300 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
                     <c.icon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <div>
@@ -294,8 +294,8 @@ export default function AboutPage() {
         </div>
 
         <Reveal delay={0.1}>
-          <blockquote className="mx-auto mt-12 max-w-3xl rounded-3xl border border-amber-400/15 bg-gradient-to-br from-amber-400/[0.06] to-transparent p-8 text-center sm:p-10">
-            <Quote className="mx-auto h-7 w-7 text-amber-400" aria-hidden="true" />
+          <blockquote className="mx-auto mt-12 max-w-3xl rounded-3xl border border-violet-400/15 bg-gradient-to-br from-violet-400/[0.06] to-transparent p-8 text-center sm:p-10">
+            <Quote className="mx-auto h-7 w-7 text-violet-400" aria-hidden="true" />
             <p className="mt-4 font-display text-xl italic leading-relaxed text-zinc-200 sm:text-2xl">
               &ldquo;Beri kami 46 menit. 46 Dewan Pakar akan memberi Anda
               dekade berikutnya.&rdquo;

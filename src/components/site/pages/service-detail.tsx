@@ -52,7 +52,7 @@ export default function ServiceDetailPage({ num }: { num: string }) {
         sub={
           <>
             {enKickline ? (
-              <span className="mb-3 block font-display text-[12px] font-semibold uppercase tracking-[0.28em] text-amber-300/80">
+              <span className="mb-3 block font-display text-[12px] font-semibold uppercase tracking-[0.28em] text-violet-300/80">
                 {enKickline}
               </span>
             ) : null}
@@ -84,7 +84,7 @@ export default function ServiceDetailPage({ num }: { num: string }) {
       </section>
 
       <section className="mx-auto max-w-4xl px-4 sm:px-6" aria-label="KPI hasil">
-        <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-400/70">
+        <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.22em] text-violet-400/70">
           KPI Hasil
         </p>
         <StatBand stats={detail.kpis} />
@@ -95,7 +95,7 @@ export default function ServiceDetailPage({ num }: { num: string }) {
         <Reveal className="h-full">
           <div className="glass h-full rounded-3xl p-7 sm:p-8">
             <h2 className="flex items-center gap-3 font-display text-xl font-bold text-zinc-50">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-amber-400/25 bg-amber-400/10 text-amber-300">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-violet-400/25 bg-violet-400/10 text-violet-300">
                 <Target className="h-5 w-5" aria-hidden="true" />
               </span>
               Kapabilitas
@@ -103,7 +103,7 @@ export default function ServiceDetailPage({ num }: { num: string }) {
             <ul className="mt-6 space-y-3.5">
               {detail.capabilities.map((c) => (
                 <li key={c} className="flex items-start gap-3 text-[15px] leading-relaxed text-zinc-300">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-amber-400" aria-hidden="true" />
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-violet-400" aria-hidden="true" />
                   {c}
                 </li>
               ))}
@@ -114,7 +114,7 @@ export default function ServiceDetailPage({ num }: { num: string }) {
         <Reveal delay={0.1} className="h-full">
           <div className="glass h-full rounded-3xl p-7 sm:p-8">
             <h2 className="flex items-center gap-3 font-display text-xl font-bold text-zinc-50">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-amber-400/25 bg-amber-400/10 text-amber-300">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-violet-400/25 bg-violet-400/10 text-violet-300">
                 <FileText className="h-5 w-5" aria-hidden="true" />
               </span>
               Luaran
@@ -122,7 +122,7 @@ export default function ServiceDetailPage({ num }: { num: string }) {
             <ul className="mt-6 space-y-3.5">
               {detail.deliverables.map((d, i) => (
                 <li key={d} className="flex items-start gap-3.5 text-[15px] leading-relaxed text-zinc-300">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-amber-400/40 text-[11px] font-bold text-amber-300">
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-violet-400/40 text-[11px] font-bold text-violet-300">
                     {i + 1}
                   </span>
                   {d}
@@ -147,7 +147,7 @@ export default function ServiceDetailPage({ num }: { num: string }) {
           {detail.protocol.map((p, i) => (
             <Reveal key={i} delay={i * 0.08}>
               <li className="flex items-start gap-4 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-amber-500 text-[13px] font-bold text-zinc-950">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-violet-400 to-blue-500 text-[13px] font-bold text-zinc-950">
                   {i + 1}
                 </span>
                 <p className="pt-1 text-[15px] leading-relaxed text-zinc-300">{p}</p>
@@ -172,10 +172,10 @@ export default function ServiceDetailPage({ num }: { num: string }) {
             <Reveal key={name} delay={i * 0.08} className="h-full">
               <a
                 href={`#/councils/${slugify(name)}`}
-                className="group flex h-full items-center justify-between gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40"
+                className="group flex h-full items-center justify-between gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-violet-400/40"
               >
                 <span>
-                  <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-400/70">
+                  <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-400/70">
                     Penguasaan 150 tahun
                   </span>
                   <span className="mt-1 block font-display text-base font-bold text-zinc-100">
@@ -183,7 +183,7 @@ export default function ServiceDetailPage({ num }: { num: string }) {
                   </span>
                 </span>
                 <ArrowUpRight
-                  className="h-5 w-5 shrink-0 text-zinc-600 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-amber-400"
+                  className="h-5 w-5 shrink-0 text-zinc-600 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-violet-400"
                   aria-hidden="true"
                 />
               </a>
@@ -199,9 +199,9 @@ export default function ServiceDetailPage({ num }: { num: string }) {
       >
         <a
           href={`#/services/${prev.num}`}
-          className="group flex items-center gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:border-amber-400/40"
+          className="group flex items-center gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:border-violet-400/40"
         >
-          <span className="text-2xl text-zinc-600 transition-colors group-hover:text-amber-300" aria-hidden="true">
+          <span className="text-2xl text-zinc-600 transition-colors group-hover:text-violet-300" aria-hidden="true">
             ←
           </span>
           <span>
@@ -213,7 +213,7 @@ export default function ServiceDetailPage({ num }: { num: string }) {
         </a>
         <a
           href={`#/services/${next.num}`}
-          className="group flex items-center justify-end gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 text-right transition-all duration-300 hover:border-amber-400/40"
+          className="group flex items-center justify-end gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 text-right transition-all duration-300 hover:border-violet-400/40"
         >
           <span>
             <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
@@ -221,7 +221,7 @@ export default function ServiceDetailPage({ num }: { num: string }) {
             </span>
             <span className="block font-display text-sm font-bold text-zinc-200">{next.title}</span>
           </span>
-          <span className="text-2xl text-zinc-600 transition-colors group-hover:text-amber-300" aria-hidden="true">
+          <span className="text-2xl text-zinc-600 transition-colors group-hover:text-violet-300" aria-hidden="true">
             →
           </span>
         </a>

@@ -301,3 +301,27 @@ Work Log:
 Stage Summary:
 - Beranda kini menampilkan 17 logo resmi instansi (Kemenkumham, BKPM, Kemenkeu, Kemendag, Imipas, KLH, Kemnaker, Kemenkes, BPOM, Kemenag, BSN, DJKI, Komdigi, OJK, Kemenperin, Kemenkop, Kemenpar)
 - Framing jujur & aman: "instansi yang dihadapi langsung", bukan klaim kemitraan — diproteksi disclaimer hukum
+
+---
+Task ID: 3
+Agent: Z.ai Code (main orchestrator)
+Task: Kontak resmi (+6281111165165 / halo@topkonsultan.web.id / 4 alamat: Arjamukti, Andalusia, PHI Kwitang, IPHI Pusat), rebrand ungu-biru, maksimalkan layanan + logo mitra instansi resmi.
+
+Work Log:
+- brand.ts: telepon & WhatsApp +62 811-1116-5165 (wa.me/6281111165165), email halo@topkonsultan.web.id, 4 alamat resmi (addresses[]) + address pusat Arjamukti.
+- offices.ts ditulis ulang: 4 kantor real (Tasikmalaya I pusat, Tasikmalaya II, Jakarta PHI Kwitang, IPHI Pusat).
+- office-clocks.tsx -> seksi "Kantor Kami": jam WIB live, jam operasional, 4 kartu kantor + link Google Maps.
+- Rebrand ungu-biru: sed amber->violet di 43 file tsx/ts/svg (314 kemunculan), hex #fbbf24->#a78bfa dst, rgba glow->violet, CTA signature from-violet-400 via-indigo-400 to-blue-500, globals.css (text-gradient-gold jadi gradasi violet-indigo-blue, glass/gold-ring/scrollbar/grid/selection/focus).
+- logo.tsx + icon.svg favicon -> violet.
+- legal.ts, leadership.ts, about.tsx: alamat Menara TOP fiktif -> alamat real, email privacy -> halo@.
+- Logo instansi: scripts/fetch-ministry-logos.py (+round 2) dari id.wikipedia REST & Wikimedia Commons, quality-gate + auto-crop + optimasi PIL; QA via contact sheet; buang logo salah (foto gedung ESDM, Ditjen Survei utk ATR, Badan Keolahragaan utk BSN); hasil 19 logo resmi.
+- agencies.tsx: array 23 instansi (tambah kemenhub, kemendagri, kemenpu, atr-bpn, kesdm, kemendesa; ganti kemendag EN->ID, kemenkop wordmark), strip "Perhimpunan Profesi" PHI Kwitang + IPHI Pusat; logo ke public/images/agencies/.
+- WhatsApp: komponen whatsapp-float.tsx (kiri-bawah, hijau, ping) global di app.tsx; tombol Chat WhatsApp di hero + CTABand.
+- landing/contact.tsx: baris kontak WA/email/telepon/alamat + Jaringan Kantor 4 lokasi; footer.tsx: WA 24/7 + 4 alamat.
+- Debug cache: cache image Next 16 Turbopack ada di .next/dev/cache/images (bukan .next/cache/images) -> hapus + restart server.
+- Verifikasi: lint OK, tsc OK (src), browser E2E multi-screenshot (hero ungu-biru, 23 kartu instansi, PHI/IPHI strip, Kantor Kami, kartu kantor, footer), wa.me href benar, console bersih.
+
+Stage Summary:
+- Website kini bernuansa ungu-biru penuh, kontak resmi terpasang di seluruh halaman, 23 logo instansi resmi tampil sebagai mitra pengurusan izin, tombol WhatsApp mengapung aktif 24/7.
+- File kunci: src/data/brand.ts, src/data/offices.ts, src/components/landing/{agencies,whatsapp-float,contact,footer,hero}.tsx, src/components/site/office-clocks.tsx, src/app/globals.css.
+- Screenshot verifikasi: download/verify-*.png. Skrip fetch logo: scripts/fetch-ministry-logos*.py.

@@ -62,13 +62,13 @@ export default function InsightDetailPage({ slug }: { slug: string }) {
           >
             <a
               href="#/insights"
-              className="mb-6 inline-flex items-center gap-2 text-xs font-medium text-zinc-500 transition-colors hover:text-amber-300"
+              className="mb-6 inline-flex items-center gap-2 text-xs font-medium text-zinc-500 transition-colors hover:text-violet-300"
             >
               <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
               Semua wawasan
             </a>
             <div className="flex flex-wrap items-center gap-2.5">
-              <span className="rounded-full border border-amber-400/30 bg-amber-400/[0.07] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-200">
+              <span className="rounded-full border border-violet-400/30 bg-violet-400/[0.07] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-violet-200">
                 {insight.category}
               </span>
               <span className="inline-flex items-center gap-1.5 text-[12px] font-medium text-zinc-500">
@@ -92,7 +92,7 @@ export default function InsightDetailPage({ slug }: { slug: string }) {
           </motion.h1>
 
           {insight.enTitle ? (
-            <p className="mt-3 font-display text-[13px] font-semibold uppercase tracking-[0.24em] text-amber-300/70 sm:text-sm">
+            <p className="mt-3 font-display text-[13px] font-semibold uppercase tracking-[0.24em] text-violet-300/70 sm:text-sm">
               {insight.enTitle}
             </p>
           ) : null}
@@ -113,8 +113,8 @@ export default function InsightDetailPage({ slug }: { slug: string }) {
             className="mt-6 flex flex-wrap items-center justify-between gap-4"
           >
             <p className="flex items-center gap-2.5 text-sm text-zinc-400">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-amber-400/30 bg-amber-400/10">
-                <UserRound className="h-4 w-4 text-amber-300" aria-hidden="true" />
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-violet-400/30 bg-violet-400/10">
+                <UserRound className="h-4 w-4 text-violet-300" aria-hidden="true" />
               </span>
               <span>
                 <span className="block font-semibold text-zinc-200">{insight.author.name}</span>
@@ -130,7 +130,7 @@ export default function InsightDetailPage({ slug }: { slug: string }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Berbagi ke X / Twitter"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-zinc-800 text-zinc-500 transition-all hover:-translate-y-0.5 hover:border-amber-400/50 hover:text-amber-300"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-zinc-800 text-zinc-500 transition-all hover:-translate-y-0.5 hover:border-violet-400/50 hover:text-violet-300"
               >
                 <Twitter className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -139,7 +139,7 @@ export default function InsightDetailPage({ slug }: { slug: string }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Berbagi ke LinkedIn"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-zinc-800 text-zinc-500 transition-all hover:-translate-y-0.5 hover:border-amber-400/50 hover:text-amber-300"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-zinc-800 text-zinc-500 transition-all hover:-translate-y-0.5 hover:border-violet-400/50 hover:text-violet-300"
               >
                 <Linkedin className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -182,15 +182,15 @@ export default function InsightDetailPage({ slug }: { slug: string }) {
 
         {/* Key points */}
         <Reveal>
-          <aside className="mt-12 rounded-3xl border border-amber-400/20 bg-gradient-to-br from-amber-400/[0.07] to-transparent p-7 sm:p-8">
+          <aside className="mt-12 rounded-3xl border border-violet-400/20 bg-gradient-to-br from-violet-400/[0.07] to-transparent p-7 sm:p-8">
             <h2 className="flex items-center gap-2.5 font-display text-lg font-bold text-zinc-50">
-              <KeyRound className="h-5 w-5 text-amber-400" aria-hidden="true" />
+              <KeyRound className="h-5 w-5 text-violet-400" aria-hidden="true" />
               Poin Kunci
             </h2>
             <ul className="mt-5 space-y-3.5">
               {insight.keyPoints.map((k) => (
                 <li key={k} className="flex items-start gap-3 text-[15px] leading-relaxed text-zinc-200">
-                  <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rotate-45 bg-amber-400" aria-hidden="true" />
+                  <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rotate-45 bg-violet-400" aria-hidden="true" />
                   {k}
                 </li>
               ))}
@@ -214,7 +214,7 @@ export default function InsightDetailPage({ slug }: { slug: string }) {
 
         {/* Author box */}
         <div className="mt-10 rounded-3xl border border-zinc-800/80 bg-zinc-900/40 p-7">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-400/70">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-violet-400/70">
             Ditulis dari ruang dewan
           </p>
           <p className="mt-2 font-display text-lg font-bold text-zinc-100">{insight.author.name}</p>
@@ -233,9 +233,9 @@ export default function InsightDetailPage({ slug }: { slug: string }) {
       >
         <a
           href={`#/insights/${prev.slug}`}
-          className="group flex items-center gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:border-amber-400/40"
+          className="group flex items-center gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 transition-all duration-300 hover:border-violet-400/40"
         >
-          <ArrowLeft className="h-5 w-5 shrink-0 text-zinc-600 transition-colors group-hover:text-amber-300" aria-hidden="true" />
+          <ArrowLeft className="h-5 w-5 shrink-0 text-zinc-600 transition-colors group-hover:text-violet-300" aria-hidden="true" />
           <span>
             <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
               Wawasan sebelumnya
@@ -247,7 +247,7 @@ export default function InsightDetailPage({ slug }: { slug: string }) {
         </a>
         <a
           href={`#/insights/${next.slug}`}
-          className="group flex items-center justify-end gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 text-right transition-all duration-300 hover:border-amber-400/40"
+          className="group flex items-center justify-end gap-3 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 text-right transition-all duration-300 hover:border-violet-400/40"
         >
           <span>
             <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
@@ -257,7 +257,7 @@ export default function InsightDetailPage({ slug }: { slug: string }) {
               {next.title}
             </span>
           </span>
-          <ArrowRight className="h-5 w-5 shrink-0 text-zinc-600 transition-colors group-hover:text-amber-300" aria-hidden="true" />
+          <ArrowRight className="h-5 w-5 shrink-0 text-zinc-600 transition-colors group-hover:text-violet-300" aria-hidden="true" />
         </a>
       </nav>
 

@@ -40,7 +40,7 @@ export default function Testimonials() {
           onMouseLeave={() => setPaused(false)}
         >
           <Quote
-            className="mx-auto h-10 w-10 text-amber-400/60"
+            className="mx-auto h-10 w-10 text-violet-400/60"
             aria-hidden="true"
           />
 
@@ -59,7 +59,7 @@ export default function Testimonials() {
                 </blockquote>
                 <figcaption className="mt-7 flex items-center justify-center gap-4">
                   <span
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-amber-600 font-display text-sm font-bold text-zinc-950"
+                    className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-violet-400 to-indigo-500 font-display text-sm font-bold text-zinc-950"
                     aria-hidden="true"
                   >
                     {current.initials}
@@ -79,7 +79,7 @@ export default function Testimonials() {
               type="button"
               onClick={() => setIdx((i) => (i - 1 + total) % total)}
               aria-label="Sebelumnya"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-800 text-zinc-400 transition-all hover:border-amber-400/50 hover:text-amber-300"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-800 text-zinc-400 transition-all hover:border-violet-400/50 hover:text-violet-300"
             >
               <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -94,7 +94,7 @@ export default function Testimonials() {
                   onClick={() => setIdx(i)}
                   className={`h-2 rounded-full transition-all duration-400 ${
                     i === idx
-                      ? "w-8 bg-gradient-to-r from-amber-300 to-amber-500"
+                      ? "w-8 bg-gradient-to-r from-violet-400 to-blue-500"
                       : "w-2 bg-zinc-700 hover:bg-zinc-500"
                   }`}
                 />
@@ -104,7 +104,7 @@ export default function Testimonials() {
               type="button"
               onClick={() => setIdx((i) => (i + 1) % total)}
               aria-label="Berikutnya"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-800 text-zinc-400 transition-all hover:border-amber-400/50 hover:text-amber-300"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-800 text-zinc-400 transition-all hover:border-violet-400/50 hover:text-violet-300"
             >
               <ChevronRight className="h-5 w-5" aria-hidden="true" />
             </button>

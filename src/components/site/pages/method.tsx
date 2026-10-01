@@ -76,7 +76,7 @@ export default function MethodPage() {
           {PRINCIPLES.map((p, i) => (
             <Reveal key={p.title} delay={(i % 3) * 0.08} className="h-full">
               <article className="glass group h-full rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:gold-ring">
-                <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-amber-400/25 bg-gradient-to-br from-amber-300/15 to-amber-600/10 text-amber-300 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-violet-400/25 bg-gradient-to-br from-violet-400/15 to-indigo-600/10 text-violet-300 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
                   <p.icon className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <h3 className="font-display text-lg font-bold text-zinc-100">{p.title}</h3>
@@ -87,8 +87,8 @@ export default function MethodPage() {
         </div>
 
         <Reveal delay={0.15}>
-          <div className="mt-12 flex flex-col items-center gap-6 rounded-3xl border border-amber-400/15 bg-gradient-to-br from-amber-400/[0.06] to-transparent p-8 text-center sm:p-10">
-            <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-300">
+          <div className="mt-12 flex flex-col items-center gap-6 rounded-3xl border border-violet-400/15 bg-gradient-to-br from-violet-400/[0.06] to-transparent p-8 text-center sm:p-10">
+            <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-violet-400/30 bg-violet-400/10 text-violet-300">
               <DraftingCompass className="h-6 w-6" aria-hidden="true" />
             </span>
             <p className="max-w-2xl font-display text-xl italic leading-relaxed text-zinc-200 sm:text-2xl">
@@ -96,7 +96,7 @@ export default function MethodPage() {
               Anda berhenti menjadi masalah.&rdquo;
             </p>
             <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
-              <Users className="h-3.5 w-3.5 text-amber-400" aria-hidden="true" />
+              <Users className="h-3.5 w-3.5 text-violet-400" aria-hidden="true" />
               Piagam Firma, Pasal VII
             </span>
             <LinkButton to="/results" variant="ghost" withArrow>
