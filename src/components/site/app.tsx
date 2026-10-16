@@ -3,12 +3,13 @@
 /**
  * SiteApp — the whole multi-page PT TOP KONSULTAN INTERNASIONAL experience,
  * routed by hash so it runs identically on Next.js dev, Node hosting, or
- * plain shared hosting.
+ * plain shared hosting — with optional initialPath from the SEO catch-all
+ * route so server-rendered HTML shows the right view from the first byte.
  */
 
-import { useEffect } from "react";
-import { useRoute, useScrollTopOnRoute } from "@/lib/router";
+import { RouteProvider, useRoute, useScrollTopOnRoute } from "@/lib/router";
 import { LanguageProvider } from "@/lib/i18n";
+import SeoHead from "@/components/site/seo-head";
 import { slugify } from "@/data/extended-types";
 import { COUNCILS, SERVICES } from "@/data/content";
 import { COUNCIL_PROFILES } from "@/data/council-profiles";
@@ -41,36 +42,23 @@ import LegalPage from "@/components/site/pages/legal";
 import FaqPage from "@/components/site/pages/faq";
 import VvipPage from "@/components/site/pages/vvip";
 
-const BASE_TITLE = "PT TOP KONSULTAN INTERNASIONAL — Konsultasi & Perizinan Terlengkap di Dunia";
-const SUFFIX = "TOP Konsultan Internasional";
+export default function SiteApp({ initialPath = "/" }: { initialPath?: string }) {
+  return (
+    <LanguageProvider>
+      <RouteProvider initialPath={initialPath}>
+        <SeoHead initialPath={initialPath} />
+        <SiteShell />
+      </RouteProvider>
+    </LanguageProvider>
+  );
+}
 
-const TITLES: Record<string, string> = {
-  "/": BASE_TITLE,
-  "/about": `Tentang Kami — ${SUFFIX}`,
-  "/services": `12 Praktik Layanan — ${SUFFIX}`,
-  "/perizinan": `Gerbang Perizinan — 36+ Jenis Izin — ${SUFFIX}`,
-  "/councils": `46 Dewan Pakar — ${SUFFIX}`,
-  "/industries": `Industri — ${SUFFIX}`,
-  "/insights": `Wawasan — ${SUFFIX}`,
-  "/careers": `Karier — ${SUFFIX}`,
-  "/method": `Metode Oracle — ${SUFFIX}`,
-  "/results": `Hasil & Bukti — ${SUFFIX}`,
-  "/contact": `Kontak — ${SUFFIX}`,
-  "/faq": `Pertanyaan Umum — ${SUFFIX}`,
-  "/privacy": `Kebijakan Privasi — ${SUFFIX}`,
-  "/terms": `Syarat & Ketentuan — ${SUFFIX}`,
-  "/cookies": `Kebijakan Cookie — ${SUFFIX}`,
-  // Rute diskret — tidak ditautkan dari navigasi publik.
-  "/vvip": `Member Lounge — ${SUFFIX}`,
-};
-
-export default function SiteApp() {
+function SiteShell() {
   const route = useRoute();
   useScrollTopOnRoute(route.target ?? "");
 
   const [seg1, seg2] = route.segments;
   let view: React.ReactNode;
-  let title: string = TITLES[route.path] ?? BASE_TITLE;
 
   if (!route.target || seg1 === undefined) {
     view = <HomePage />;
@@ -88,7 +76,6 @@ export default function SiteApp() {
         ) : (
           <ServicesPage />
         );
-        if (service) title = `${service.title} — ${SUFFIX}`;
         break;
       }
       case "perizinan": {
@@ -100,7 +87,6 @@ export default function SiteApp() {
         ) : (
           <PerizinanPage initialCategory={route.query.get("kategori")} />
         );
-        if (item) title = `${item.name} — Gerbang Perizinan — ${SUFFIX}`;
         break;
       }
       case "councils": {
@@ -114,7 +100,6 @@ export default function SiteApp() {
         ) : (
           <CouncilsPage initialFilter={route.query.get("filter")} />
         );
-        if (council) title = `Dewan ${council.name} — ${SUFFIX}`;
         break;
       }
       case "industries": {
@@ -128,7 +113,6 @@ export default function SiteApp() {
         ) : (
           <IndustriesPage />
         );
-        if (industry) title = `${industry.name} — ${SUFFIX}`;
         break;
       }
       case "insights": {
@@ -142,7 +126,6 @@ export default function SiteApp() {
         ) : (
           <InsightsPage />
         );
-        if (insight) title = `${insight.title} — ${SUFFIX}`;
         break;
       }
       case "careers":
@@ -176,34 +159,30 @@ export default function SiteApp() {
         const profile = COUNCIL_PROFILES[0];
         void profile;
         view = <NotFoundPage />;
-        title = `Halaman Tidak Ditemukan — ${SUFFIX}`;
       }
     }
   }
 
-  useEffect(() => {
-    document.title = title;
-  }, [title]);
+  /* Judul dokumen & meta per rute dikelola <SeoHead> (sumber: src/lib/seo.ts)
+     — konsisten dengan metadata server-side untuk URL nyata. */
 
   return (
-    <LanguageProvider>
-      <div className="flex min-h-screen flex-col bg-white text-slate-900">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[110] focus:rounded-full focus:bg-violet-600 focus:px-5 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
-        >
-          Langsung ke konten
-        </a>
-        <Preloader />
-        <ScrollProgress />
-        <Navbar />
-        <main id="main" key={route.target ?? "/"} className="page-enter flex-1">
-          {view}
-        </main>
-        <Footer />
-        {/* Oracle kini eksklusif Member VVIP — hanya di #/vvip, bukan di situs publik. */}
-        <WhatsAppFloat />
-      </div>
-    </LanguageProvider>
+    <div className="flex min-h-screen flex-col bg-white text-slate-900">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[110] focus:rounded-full focus:bg-violet-600 focus:px-5 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
+      >
+        Langsung ke konten
+      </a>
+      <Preloader />
+      <ScrollProgress />
+      <Navbar />
+      <main id="main" key={route.target ?? "/"} className="page-enter flex-1">
+        {view}
+      </main>
+      <Footer />
+      {/* Oracle kini eksklusif Member VVIP — hanya di #/vvip, bukan di situs publik. */}
+      <WhatsAppFloat />
+    </div>
   );
 }

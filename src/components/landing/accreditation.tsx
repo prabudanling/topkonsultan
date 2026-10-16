@@ -136,7 +136,7 @@ export default function Accreditation() {
               <div className="relative h-40 w-40 shrink-0">
                 <Image
                   src="/images/logo-pusat-perizinan.png"
-                  alt="Segel emas Pusat Perizinan ID — mitra eksekusi sertifikasi dan akreditasi"
+                  alt="Segel emas Pusat Perizinan.com — mitra eksekusi sertifikasi dan akreditasi"
                   width={800}
                   height={800}
                   sizes="160px"
@@ -145,9 +145,9 @@ export default function Accreditation() {
                 />
               </div>
               <h3 className="mt-6 font-display text-base font-bold text-slate-900">
-                Segel Eksekusi Pusat Perizinan.ID
+                Segel Eksekusi Pusat Perizinan.com
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-9000">
+              <p className="mt-2 text-sm leading-relaxed text-slate-500">
                 Mitra eksekusi sertifikasi &amp; akreditasi — layanan perizinan
                 penuh sejak 2009, di bawah satu gerbang emas yang sama.
               </p>

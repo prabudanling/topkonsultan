@@ -32,8 +32,20 @@ let cachedLang: string | null = null;
 function readStoredLang(): string {
   if (cachedLang !== null) return cachedLang;
   try {
-    const raw = typeof window === "undefined" ? null : window.localStorage.getItem(STORAGE_KEY);
+    /* Prioritas: parameter URL ?lang=xx ( landing hreflang / tautan bahasa )
+       → localStorage → default. Parameter URL juga dipersist agar navigasi
+       antar-halaman mempertahankan bahasa. */
+    const urlLang = new URLSearchParams(window.location.search).get("lang");
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    const raw = urlLang ?? stored;
     cachedLang = normalize(raw);
+    if (urlLang) {
+      try {
+        window.localStorage.setItem(STORAGE_KEY, cachedLang);
+      } catch {
+        /* abaikan kegagalan penyimpanan */
+      }
+    }
   } catch {
     cachedLang = DEFAULT_LANG;
   }

@@ -37,7 +37,7 @@
 
 > ❝ *Satu Gerbang untuk Segala Izin dan Kejayaan Bisnis — dari pendirian PT hingga penguasaan pasar di 190 negara.* ❞
 
-Website resmi **PT TOP KONSULTAN INTERNASIONAL** (PUSAT PERIZINAN.ID) — dibangun dengan teknologi web paling modern: **Next.js 16 + React 19 + TypeScript + Tailwind CSS 4**, ditenagai kecerdasan buatan **Z.AI GLM**, siap deploy **zero-config** di Vercel.
+Website resmi **PT TOP KONSULTAN INTERNASIONAL** (PUSAT PERIZINAN.COM) — dibangun dengan teknologi web paling modern: **Next.js 16 + React 19 + TypeScript + Tailwind CSS 4**, ditenagai kecerdasan buatan **Z.AI GLM**, siap deploy **zero-config** di Vercel.
 
 <div align="center">
 <img src="assets/readme/oracle-architecture.svg" alt="Arsitektur Oracle AI" width="100%"/>
@@ -50,7 +50,7 @@ Website resmi **PT TOP KONSULTAN INTERNASIONAL** (PUSAT PERIZINAN.ID) — dibang
 | ◈ | **Oracle AI — Eksklusif VVIP** | Asisten kecerdasan 46 Dewan Pakar di lounge `#/vvip` (kode akses): menjawab perizinan, bisnis, pajak, strategi dalam bahasa apa pun, 24/7 — tidak tampil di situs publik |
 | ◈ | **124 Tampilan Halaman** | Beranda sinematik, katalog 36+ izin (PT/PMA, NIB, BPOM, Halal, SNI, KITAS, PSE, OJK…), 46 profil Dewan Pakar, industri, wawasan, karier, FAQ |
 | ◈ | **23 Logo Instansi Resmi** | Kemenkumham, BKPM, Kemenkeu, Kemendag, BPOM, OJK, dan lainnya — instansi yang kami hadapi langsung setiap hari |
-| ◈ | **Galeri Akreditasi** | Foto asli penyerahan sertifikat & kartu indikasi PUSAT PERIZINAN.ID |
+| ◈ | **Galeri Akreditasi** | Foto asli penyerahan sertifikat & kartu indikasi PUSAT PERIZINAN.COM |
 | ◈ | **Form Kontak Bertiket** | Setiap brief terbit nomor tiket unik `TOP-XXXXXX` — tidak ada pesan yang hilang |
 | ◈ | **WhatsApp Mengapung 24/7** | Satu ketukan langsung tersambung ke +62 811-1116-5165 |
 | ◈ | **Tema Ungu-Biru Futuristik** | Animasi premium, responsif penuh di mobile & desktop, mode animasi-dimatikan untuk aksesibilitas |
@@ -88,18 +88,52 @@ bun run build      # build produksi (identik dengan Vercel)
 ```
 topkonsultan/
 ├── src/
-│   ├── app/                  # App Router + API (oracle, contact, newsletter)
+│   ├── app/
+│   │   ├── [[...slug]]/page.tsx  # SEO: URL nyata + generateMetadata + JSON-LD untuk 128 rute
+│   │   ├── layout.tsx            # Metadata global terlengkap (OG, DC, geo, PWA)
+│   │   ├── robots.ts             # robots.txt dinamis (Sitemap + Host)
+│   │   ├── sitemap.ts            # sitemap.xml — 127 URL + hreflang 26 bahasa
+│   │   ├── manifest.ts           # manifest.webmanifest (PWA)
+│   │   └── api/                  # oracle, contact, newsletter, vvip
 │   ├── components/
-│   │   ├── landing/          # Hero, perizinan, akreditasi, instansi, oracle-chat…
-│   │   └── site/pages/       # 124 tampilan hash-router
-│   ├── data/                 # brand, offices, content, leadership
-│   └── lib/                  # prisma resilient client
-├── public/images/            # Aset branding asli + 23 logo instansi
-├── assets/readme/            # Banner & diagram SVG futuristik
-├── prisma/                   # Skema database
-├── vercel.json               # Konfigurasi deploy otomatis
-└── DEPLOY.md                 # Panduan deploy bahasa Indonesia
+│   │   ├── landing/              # Hero, perizinan, akreditasi, instansi, oracle-chat…
+│   │   └── site/pages/           # 124 tampilan (hash-router + URL nyata)
+│   ├── data/                     # brand, offices, content, leadership, languages (195)
+│   └── lib/
+│       ├── seo.ts                # ⚙ Mesin SEO terpusat — 1 sumber kebenaran
+│       ├── router.tsx            # Hash router v2 — pathname-aware + SSR-safe
+│       └── i18n.tsx              # 195 bahasa + dukungan ?lang= (hreflang)
+├── public/
+│   ├── og-image.png              # Open Graph 1200×630
+│   ├── icons/                    # Ikon PWA 192/512/maskable
+│   ├── images/                   # Aset branding asli + 23 logo instansi
+│   ├── humans.txt                # Konvensi humanstxt.org
+│   └── .well-known/security.txt  # Konvensi RFC 9116
+├── assets/readme/                # Banner & diagram SVG futuristik
+├── prisma/                       # Skema database
+├── vercel.json                   # Konfigurasi deploy otomatis
+└── DEPLOY.md                     # Panduan deploy bahasa Indonesia
 ```
+
+### ✦ SEO & Metadata Terlengkap
+
+Situs ini memakai **satu sumber kebenaran SEO** (`src/lib/seo.ts`) yang menggerakkan seluruh lapisan:
+
+| Lapisan | Isi |
+|---|---|
+| **URL nyata** | 128 rute (`/perizinan/pendirian-pt`, `/councils/quantum-strategy`, …) di-prerender server — setiap tampilan punya HTML + metadata sendiri, bukan sekadar hash |
+| **Metadata per halaman** | `<title>`, deskripsi, keywords, kanonik, Open Graph, Twitter Card, robots — unik di **setiap** halaman (via `generateMetadata`) |
+| **hreflang** | 27 tautan per halaman: 26 bahasa terjemahan penuh (`?lang=xx`) + `x-default` |
+| **JSON-LD schema.org** | Organization · WebSite (195 `inLanguage`) · LegalService + OfferCatalog 36 izin + 12 praktik · WebPage · BreadcrumbList · Service · Article · FAQPage (10 Q&A) · ItemList · Person |
+| **Metadata global** | Dublin Core (DCMI), geo tags, `business:contact_data`, `apple-web-app`, format-detection, ikon lengkap (SVG/PNG/ICO/apple) |
+| **sitemap.xml** | 127 URL + prioritas + changeFrequency + hreflang; `/vvip` sengaja dikeluarkan |
+| **robots.txt** | Aturan eksplisit bot + `Host:` + `Sitemap:`; `/api/*` disekat |
+| **PWA** | `manifest.webmanifest` + ikon 192/512/maskable + shortcut |
+| **Lainnya** | `humans.txt`, `.well-known/security.txt` (RFC 9116), `browserconfig.xml`, 404 bermerek, `/vvip` noindex |
+
+Navigasi hash (`#/perizinan`) **tetap berfungsi penuh** — komponen `SeoHead` menyinkronkan `<head>` secara langsung saat berpindah tampilan tanpa reload. Build produksi menghasilkan **136 halaman statis**.
+
+> **Aktivasi Search Console:** setelah mendaftar Google Search Console / Bing / Yandex, tambahkan token verifikasi Anda pada objek `verification` di `src/app/layout.tsx` (template & petunjuk sudah disiapkan di komentar).
 
 ### ✦ Kontak Resmi
 
@@ -120,7 +154,7 @@ topkonsultan/
 
 > ❝ *One Gateway for Every License and Business Glory — from company establishment to market domination across 190 countries.* ❞
 
-The official website of **PT TOP KONSULTAN INTERNASIONAL** (PUSAT PERIZINAN.ID) — engineered on the most modern web stack: **Next.js 16 + React 19 + TypeScript + Tailwind CSS 4**, powered by **Z.AI GLM** intelligence, and ready for **zero-config** deployment on Vercel.
+The official website of **PT TOP KONSULTAN INTERNASIONAL** (PUSAT PERIZINAN.COM) — engineered on the most modern web stack: **Next.js 16 + React 19 + TypeScript + Tailwind CSS 4**, powered by **Z.AI GLM** intelligence, and ready for **zero-config** deployment on Vercel.
 
 <div align="center">
 <img src="assets/readme/oracle-architecture.svg" alt="Oracle AI Architecture" width="100%"/>
@@ -133,7 +167,7 @@ The official website of **PT TOP KONSULTAN INTERNASIONAL** (PUSAT PERIZINAN.ID) 
 | ◈ | **Oracle AI — VVIP Exclusive** | The unified voice of 46 Expert Councils, available in the `#/vvip` members-only lounge (access code): licensing, business, tax and strategy in any language, 24/7 — hidden from the public site |
 | ◈ | **124 Page Views** | Cinematic landing, catalog of 36+ permits (PT/PMA, NIB, BPOM, Halal, SNI, KITAS, PSE, OJK…), 46 Council profiles, industries, insights, careers, FAQ |
 | ◈ | **23 Official Agency Logos** | Kemenkumham, BKPM, Ministry of Finance, Ministry of Trade, BPOM, OJK and more — the agencies we face directly, every day |
-| ◈ | **Accreditation Gallery** | Real photos of certificate handovers and PUSAT PERIZINAN.ID credentials |
+| ◈ | **Accreditation Gallery** | Real photos of certificate handovers and PUSAT PERIZINAN.COM credentials |
 | ◈ | **Ticketed Contact Form** | Every brief receives a unique `TOP-XXXXXX` ticket number — no message is ever lost |
 | ◈ | **Floating WhatsApp 24/7** | One tap connects visitors straight to +62 811-1116-5165 |
 | ◈ | **Futuristic Violet-Blue Theme** | Premium motion, fully responsive, reduced-motion support for accessibility |

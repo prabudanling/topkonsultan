@@ -14,6 +14,10 @@ export const BRAND = {
   /** Monogram / logo seed */
   monogram: "TOP",
 
+  /** Domain resmi & URL kanonik — dipakai metadataBase, canonical, sitemap, JSON-LD */
+  domain: "pusatperizinan.com",
+  url: "https://pusatperizinan.com",
+
   tagline: "Konsultasi & Perizinan Terlengkap di Dunia",
   taglineEn: "The World's Most Complete Consulting & Licensing House",
 

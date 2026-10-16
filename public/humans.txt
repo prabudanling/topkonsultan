@@ -1,0 +1,25 @@
+# humans.txt — siapa yang membangun situs ini
+# Konvensi: https://humanstxt.org/
+
+/* TEAM */
+	Penggagas & Pengarah Kreatif: Gugun Gunara — PT TOP KONSULTAN INTERNASIONAL
+	Arsitektur & Rekayasa: Dewan Teknologi & AI — PT TOP KONSULTAN INTERNASIONAL
+	Konten: 46 Dewan Pakar lintas bidang
+	Multibahasa: 195 bahasa — pemilih bahasa + Oracle AI
+
+/* SITE */
+	Standar: HTML5, WCAG-friendly (skip-link, focus management, prefers-reduced-motion)
+	Bahasa terakhir: Bahasa Indonesia (id) — 194 bahasa lain dapat dipilih
+	Komponen: Next.js 16 (React 19) · TypeScript · Tailwind CSS 4 · Prisma
+	AI: Oracle AI — GLM oleh Z.AI
+	Font: Inter & Space Grotesk
+
+/* THANKS */
+	Para notaris, birokrasi OSS, BPOM, BPJPH, Kemenkumham, Komdigi, OJK,
+	dan seluruh mitra perizinan yang menjadikan satu gerbang ini mungkin.
+	Pengunjung dari 190 negara — terima kasih atas kepercayaan Anda.
+
+/* NOTE */
+	Situs ini dibangun dengan craft: satu sumber kebenaran metadata
+	(src/lib/seo.ts), URL nyata untuk setiap tampilan, JSON-LD schema.org,
+	dan sitemap 127 halaman.

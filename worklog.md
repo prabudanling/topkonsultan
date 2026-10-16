@@ -274,7 +274,7 @@ Task: Branding situs dengan foto asli upload (logo master, foto Pendiri, foto Me
 Work Log:
 - Inspeksi 8 file upload di /home/z/my-project/upload (dimensi & konten)
 - Optimasi via scripts/brand-assets.py (PIL resize + kompresi): logo 9MB->316KB, founder 2.1MB->178KB, total 8 aset ke public/images/
-- Komponen baru src/components/landing/accreditation.tsx — galeri "Setiap Sertifikat Adalah Bukti." berisi 5 kartu foto akreditasi/penyerahan + 1 kartu segel logo emas Pusat Perizinan.ID (next/image, Reveal, SectionHeading, gaya gold zinc-950 konsisten)
+- Komponen baru src/components/landing/accreditation.tsx — galeri "Setiap Sertifikat Adalah Bukti." berisi 5 kartu foto akreditasi/penyerahan + 1 kartu segel logo emas Pusat Perizinan.com (next/image, Reveal, SectionHeading, gaya gold zinc-950 konsisten)
 - home.tsx: <Accreditation/> disisipkan antara Results dan Testimonials
 - leadership.ts: foto Pendiri diganti foto asli founder-gugun-gunara.jpg
 - about.tsx: foto Menara TOP diganti menara-top.jpg (1344x768)
@@ -376,7 +376,7 @@ Agent: Super Z (main agent)
 Task: README kelas dunia bilingual (ID+EN) full futuristik + pembersihan final repo.
 
 Work Log:
-- Banner SVG custom assets/readme/banner.svg (1200x320): bg zinc-950, grid + starfield, corner brackets futuristik, monogram TOP lingkaran gradien, judul gradien violet->indigo->blue, subtitle PUSAT PERIZINAN.ID, strip EST. 2001.
+- Banner SVG custom assets/readme/banner.svg (1200x320): bg zinc-950, grid + starfield, corner brackets futuristik, monogram TOP lingkaran gradien, judul gradien violet->indigo->blue, subtitle PUSAT PERIZINAN.COM, strip EST. 2001.
 - Diagram SVG assets/readme/oracle-architecture.svg (1200x200): 4 node (PENGGUNA -> ORACLE AI -> 46 DEWAN PAKAR -> JAWABAN) border gradien + panah + strip teknologi.
 - README.md ditulis ulang penuh: hero center (banner + tagline ID/EN), 2 baris badge shields (Next.js 16, React 19, TS, Tailwind 4 / Prisma, Z.AI, Vercel Ready, Production), tombol Deploy-with-Vercel 1 klik, pilih bahasa badge -> anchor, dua seksi penuh (ID & EN) masing-masing: quote, fitur 8 baris berglyph, deploy 60 detik, env vars, run lokal, struktur, kontak resmi; footer copyright dual-language.
 - QC visual: kedua SVG di-screenshot via agent-browser — render sempurna (download/verify-banner.png, verify-arch.png).
@@ -490,3 +490,28 @@ Work Log:
 Stage Summary:
 - Situs kini multibahasa penuh: 195 bahasa dapat dipilih dari navbar; 75 bahasa menerjemahkan navigasi + hero; seluruh 195 dihormati oleh Oracle AI (jawaban dipaksa dalam bahasa pilihan, tahan riwayat percakapan campuran).
 - Pilihan tersimpan di localStorage; <html lang> ikut berubah (SEO + aksesibilitas); arsitektur kamus Partial<Record> siap diperluas bahasa baru tanpa menyentuh komponen.
+
+---
+Task ID: 3
+Agent: Z.ai Code (main orchestrator — "master polymath + 46 dewan pakar, full time")
+Task: Metadata terlengkap yang pernah ada + full SEO Google di setiap halaman + ganti total pusatperizinan.id → pusatperizinan.com (domain .id sudah diambil pihak lain).
+
+Work Log:
+- Swap domain total (0 sisa): accreditation.tsx (alt + label + perbaiki typo kelas slate-9000), README.md ×4, assets/readme/banner.svg, worklog.md; verifikasi rg menyeluruh + cek string DB — nol kemunculan pusatperizinan.id; brand.ts kini punya domain/url resmi (pusatperizinan.com).
+- Mesin SEO terpusat src/lib/seo.ts (±980 baris): SITE/KEYWORDS konstanta; 26 bahasa hreflang penuh + x-default; registry 15 rute statis + resolver detail (services 12, perizinan 36, councils 46, industries 12, insights 6, legal 3, vvip); buildRouteMetadata() per halaman; buildStaticParams() + buildSitemapEntries() 127 URL; JSON-LD lengkap: Organization (3 alamat, 2 contactPoint 195 bahasa, 74 pasar), WebSite (inLanguage 195 kode), LegalService (OfferCatalog 36 izin + 12 praktik, geo, openingHours 24/7), WebPage, BreadcrumbList, Service (2 varian + OrderAction), Article, FAQPage (10 Q&A), ItemList (5 katalog), Person (ketua dewan).
+- Layout metadata terlengkap: metadataBase, title template, robots + googleBot directives, 27 hreflang, OG penuh (locale + 25 alternateLocale), Twitter Card, Dublin Core 15 field, geo/ICBM, business:contact_data, appleWebApp, formatDetection, ikon SVG/PNG/ICO/apple + template komentar verifikasi Search Console.
+- URL nyata per halaman: src/app/[[...slug]]/page.tsx (generateMetadata + generateStaticParams + JSON-LD server-side, notFound() untuk rute tak dikenal), page.tsx lama dihapus, not-found.tsx bermerek; build produksi: 136 halaman statis (SSG) ✓.
+- Router v2 src/lib/router.tsx: fallback pathname (URL nyata) saat hash kosong, RouteProvider initialPath dari server (SSR tampilan benar sejak byte pertama — Googlebot lihat konten tanpa JS), hash tetap primari (shared-hosting safe).
+- SeoHead (components/site/seo-head.tsx): sinkron title/desc/keywords/robots/canonical/OG/Twitter + suntik JSON-LD klien saat navigasi hash (tanpa duplikasi dengan versi server).
+- i18n: dukungan parameter ?lang=xx (prioritas > localStorage, dipersist) — target hreflang benar-benar menayangkan bahasa.
+- app/robots.txt → robots.ts (Host + Sitemap, /api/ disekat; file statis lama dihapus); app/sitemap.ts (127 URL + hreflang); app/manifest.ts (PWA lengkap).
+- Aset baru via scripts/gen-seo-assets.py (PIL): og-image.png 1200×630 (zinc-950 + logo emas + teks gradasi amber + statistik), icons 192/512/maskable-512, apple-icon 180, favicon.ico 16/32/48.
+- File pelengkap: humans.txt, .well-known/security.txt (RFC 9116), browserconfig.xml; README diperbarui (seksi "SEO & Metadata Terlengkap" + struktur proyek).
+- Verifikasi E2E (curl + agent-browser): title/canonical/JSON-LD unik di /, /perizinan, /perizinan/pendirian-pt (H1 server-render), /services/01, /councils/quantum-strategy, /faq (FAQPage), /insights/... (Article + og:type=article), /vvip (noindex, sitemap & hash), ?lang=ja (html lang=ja + UI Jepang), navigasi hash → SeoHead sinkron penuh, 404 sungguhan, API kontak menulis DB (TOP-MVBL5WJ8), seluruh aset publik 200, ESLint bersih, build 136 statis.
+- Dev server dihidupkan ulang via setsid bash .zscripts/dev.sh setelah uji build.
+
+Stage Summary:
+- Nol kemunculan pusatperizinan.id; domain resmi pusatperizinan.com (metadataBase, canonical, sitemap, JSON-LD, security.txt, OG).
+- 128 rute × metadata unik (title/desc/keywords/canonical/OG/robots) + 9 tipe JSON-LD; 27 hreflang per halaman; sitemap 127 URL; PWA manifest; aset OG/ikon lengkap.
+- Arsitektur: 1 sumber kebenaran (src/lib/seo.ts) → layout + [[...slug]] (server) + SeoHead (client) + sitemap/robots/manifest; hash-nav tetap penuh; /vvip noindex.
+- Bukti: download/seo-beranda-desktop.png, download/seo-perizinan-detail-desktop.png.
