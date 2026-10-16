@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Globe, Languages, Quote } from "lucide-react";
 import { useEffect, useState } from "react";
 import { TESTIMONIALS } from "@/data/content";
 import { EASE, SectionHeading } from "./motion";
@@ -26,7 +26,7 @@ export default function Testimonials() {
     >
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="Apa kata dunia"
+          eyebrow="Apa kata dunia — dalam sembilan bahasa"
           title={
             <>
               Kata mereka yang pernah <span className="text-gradient-gold">menang.</span>
@@ -44,7 +44,7 @@ export default function Testimonials() {
             aria-hidden="true"
           />
 
-          <div className="mt-6 min-h-[190px] sm:min-h-[160px]" aria-live="polite">
+          <div className="mt-6 min-h-[300px] sm:min-h-[270px]" aria-live="polite">
             <AnimatePresence mode="wait">
               <motion.figure
                 key={idx}
@@ -54,19 +54,44 @@ export default function Testimonials() {
                 transition={{ duration: 0.55, ease: EASE }}
                 className="text-center"
               >
-                <blockquote className="mx-auto max-w-3xl font-display text-xl font-medium leading-relaxed text-slate-900 sm:text-2xl">
+                {current.lang && (
+                  <span className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-violet-600">
+                    <Languages className="h-3 w-3" aria-hidden="true" />
+                    {current.lang}
+                  </span>
+                )}
+                <blockquote
+                  lang={current.code ?? "id"}
+                  dir={current.rtl ? "rtl" : "ltr"}
+                  className="mx-auto max-w-3xl font-display text-xl font-medium leading-relaxed text-slate-900 sm:text-2xl"
+                >
                   &ldquo;{current.quote}&rdquo;
                 </blockquote>
+                {current.translation && (
+                  <p
+                    dir="ltr"
+                    className="mx-auto mt-4 max-w-2xl text-sm italic leading-relaxed text-slate-500"
+                  >
+                    <span className="sr-only">Terjemahan bahasa Indonesia: </span>
+                    {current.translation}
+                  </p>
+                )}
                 <figcaption className="mt-7 flex items-center justify-center gap-4">
                   <span
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-500 font-display text-sm font-bold text-white"
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-500 font-display text-sm font-bold text-white"
                     aria-hidden="true"
                   >
                     {current.initials}
                   </span>
                   <span className="text-left">
                     <span className="block text-sm font-bold text-slate-900">{current.name}</span>
-                    <span className="block text-xs text-slate-9000">{current.role}</span>
+                    <span className="block text-xs text-slate-500">{current.role}</span>
+                    {current.country && (
+                      <span className="mt-1.5 inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-600">
+                        <Globe className="h-3 w-3 text-violet-600" aria-hidden="true" />
+                        {current.country}
+                      </span>
+                    )}
                   </span>
                 </figcaption>
               </motion.figure>
@@ -83,7 +108,7 @@ export default function Testimonials() {
             >
               <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
-            <div className="flex gap-2.5" role="tablist" aria-label="Pilih testimoni">
+            <div className="flex max-w-[260px] flex-wrap justify-center gap-2.5" role="tablist" aria-label="Pilih testimoni">
               {TESTIMONIALS.map((t, i) => (
                 <button
                   key={t.name}

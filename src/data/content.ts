@@ -114,6 +114,16 @@ export interface Testimonial {
   name: string;
   role: string;
   initials: string;
+  /** Nama bahasa dalam aksara aslinya (mis. "日本語") — tampil sebagai chip multibahasa */
+  lang?: string;
+  /** Kode BCP-47 untuk pembaca layar (mis. "ja", "ar") */
+  code?: string;
+  /** Negara asal klien, dalam bahasa Indonesia */
+  country?: string;
+  /** Terjemahan kutipan ke bahasa Indonesia */
+  translation?: string;
+  /** Arah teks kanan-ke-kiri (bahasa Arab, Ibrani, dll.) */
+  rtl?: boolean;
 }
 
 export interface StatItem {
@@ -531,10 +541,34 @@ export const TESTIMONIALS: Testimonial[] = [
     initials: "AC",
   },
   {
+    quote:
+      "They turned Indonesia's regulatory maze into one elegant checklist. Our Jakarta launch landed two quarters ahead of schedule — and our board now asks why every market entry isn't this clean.",
+    name: "Marcus Whitfield",
+    role: "Managing Director, Atlas Ridge Capital",
+    initials: "MW",
+    lang: "English",
+    code: "en",
+    country: "Amerika Serikat",
+    translation:
+      "Mereka mengubah labirin regulasi Indonesia menjadi satu daftar periksa yang elegan. Peluncuran kami di Jakarta maju dua kuartal — dan dewan kami kini bertanya: mengapa tidak semua ekspansi pasar semulus ini?",
+  },
+  {
     quote: "Dewan-dewan TOP menemukan US$2,3 miliar nilai tersembunyi di perusahaan yang kami kira sudah kami kenal. Merendahkan sekaligus mendebarkan.",
     name: "Rafael Okonkwo",
     role: "Managing Partner, Meridian Capital",
     initials: "RO",
+  },
+  {
+    quote:
+      "インドネシア進出の壁は、思っていたよりずっと低かった。TOPという案内人がいたからです。初回の協議から10日後、私たちの工場は法的に立ち上がっていました。",
+    name: "山田 健一",
+    role: "Managing Director, Osaka Precision Manufacturing",
+    initials: "山田",
+    lang: "日本語",
+    code: "ja",
+    country: "Jepang",
+    translation:
+      "Tembok memasuki Indonesia ternyata jauh lebih rendah dari dugaan kami — karena ada TOP sebagai pemandu jalan. Sepuluh hari setelah pertemuan pertama, pabrik kami sudah berdiri secara hukum.",
   },
   {
     quote: "Tiga pemerintah, satu koridor, nol kebuntuan. Belum pernah saya melihat diplomasi bergerak secepat ini.",
@@ -543,16 +577,101 @@ export const TESTIMONIALS: Testimonial[] = [
     initials: "LH",
   },
   {
+    quote:
+      "从雅加达到上海，我们的供应链九十天全线贯通。这不是运气，是TOP理事会的精密计算。总部第一次为海外项目起立鼓掌。",
+    name: "陈美玲",
+    role: "Regional Director, Golden Bridge Trading",
+    initials: "陈美",
+    lang: "中文",
+    code: "zh",
+    country: "Tiongkok",
+    translation:
+      "Dari Jakarta hingga Shanghai, rantai pasokan kami terhubung penuh dalam sembilan puluh hari. Ini bukan keberuntungan — ini perhitungan presisi Dewan TOP. Untuk pertama kalinya, kantor pusat berdiri bertepuk tangan untuk sebuah proyek luar negeri.",
+  },
+  {
     quote: "Para insinyur kami mengira '340% lebih cepat' itu salah ketik. Lalu mereka bertemu para Dewan.",
     name: "Jonas Weber",
     role: "CTO, TitanGrid Industries",
     initials: "JW",
   },
   {
+    quote:
+      "في عالمٍ تتعثر فيه المشاريع الكبرى، كان فريق TOP البوصلة التي أوصلتنا إلى الهدف دون انحراف. خمس عمليات ترخيص، دولة واحدة، وصفر مفاجآت — هذه شراكة نفتخر بها أمام أي مجلس إدارات.",
+    name: "خالد الفارسي",
+    role: "Chief Executive Officer, Gulf Horizon Holdings",
+    initials: "KF",
+    lang: "العربية",
+    code: "ar",
+    country: "Uni Emirat Arab",
+    translation:
+      "Di dunia tempat proyek-proyek besar saling tersandung, tim TOP menjadi kompas yang mengantarkan kami ke sasaran tanpa sedikit pun menyimpang. Lima proses perizinan, satu negara, nol kejutan — kemitraan yang kami banggakan di depan dewan direksi mana pun.",
+    rtl: true,
+  },
+  {
     quote: "Mereka menjawab dalam 48 jam apa yang tak mampu dijawab empat firma konsultan dalam empat tahun.",
     name: "Putri Maheswari",
     role: "Ketua Umum, Nusantara Financial Holdings",
     initials: "PM",
+  },
+  {
+    quote:
+      "Pensé que montar nuestra operación en Indonesia tomaría dos años. Con TOP, la planta estaba operando en siete meses. A veces todavía no lo puedo creer.",
+    name: "Valentina Ríos",
+    role: "Directora de Operaciones, Andes AgroGroup",
+    initials: "VR",
+    lang: "Español",
+    code: "es",
+    country: "Chile",
+    translation:
+      "Saya kira membangun operasi kami di Indonesia akan memakan waktu dua tahun. Bersama TOP, pabrik kami sudah beroperasi dalam tujuh bulan. Kadang saya masih sulit mempercayainya.",
+  },
+  {
+    quote:
+      "Une rigueur rare. Chaque autorisation, chaque conformité, chaque échéance — tout était maîtrisé avant même que nous ne posions la question. C'est cela, l'excellence.",
+    name: "Céline Moreau",
+    role: "Directrice Générale, Lumière Beauty Group",
+    initials: "CM",
+    lang: "Français",
+    code: "fr",
+    country: "Prancis",
+    translation:
+      "Ketelitian yang langka. Setiap perizinan, setiap kepatuhan, setiap tenggat — semuanya telah dikuasai bahkan sebelum kami sempat mengajukan pertanyaan. Inilah yang disebut keunggulan.",
+  },
+  {
+    quote:
+      "Vom ersten Gespräch bis zur endgültigen Betriebsgenehmigung: null Überraschungen. Räte, die planen wie Maschinen und denken wie Menschen — genau so haben wir uns das gewünscht.",
+    name: "Dr. Heinrich Brandt",
+    role: "Vorstandsvorsitzender, Rheinwerk Automation",
+    initials: "HB",
+    lang: "Deutsch",
+    code: "de",
+    country: "Jerman",
+    translation:
+      "Dari percakapan pertama hingga izin usaha final: nol kejutan. Dewan yang merencanakan seperti mesin dan berpikir seperti manusia — persis seperti yang kami harapkan.",
+  },
+  {
+    quote:
+      "인도네시아 시장은 복잡하다고 들었지만, TOP와 함께라면 다른 이야기입니다. 밤낮없는 대응과 세 언어를 넘나드는 소통 — 서울 본사가 감탄했습니다.",
+    name: "박서연",
+    role: "VP Global Expansion, Hanbit K-Beauty Group",
+    initials: "박서",
+    lang: "한국어",
+    code: "ko",
+    country: "Korea Selatan",
+    translation:
+      "Kami mendengar pasar Indonesia itu rumit, tetapi bersama TOP kisahnya menjadi lain. Respons siang dan malam, komunikasi yang melintasi tiga bahasa — kantor pusat kami di Seoul terpukau.",
+  },
+  {
+    quote:
+      "Halal, BPOM, SNI — parecia um labirinto sem fim. A TOP transformou tudo em um mapa claro. Hoje, nossa linha brasileira lidera as prateleiras da Indonésia.",
+    name: "Beatriz Almeida",
+    role: "CEO, Tropicália Foods",
+    initials: "BA",
+    lang: "Português",
+    code: "pt",
+    country: "Brasil",
+    translation:
+      "Halal, BPOM, SNI — semula terasa seperti labirin tanpa ujung. TOP mengubah semuanya menjadi peta yang jernih. Kini, lini produk Brasil kami memimpin rak-rak toko di Indonesia.",
   },
 ];
 
