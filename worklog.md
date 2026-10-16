@@ -430,3 +430,24 @@ Stage Summary:
 - Kode akses bawaan TOP-VVIP-2026; rotasi kapan pun via env VVIP_ACCESS_CODE di Vercel (kode lama langsung mati, tanpa deploy ulang).
 - Sesi member berakhir otomatis saat tab ditutup (sessionStorage) — aman di perangkat bersama; API tetap menolak 403 walau UI dilewati.
 - Kepada member: pemilik situs cukup kirim WhatsApp pribadi berisi alamat #/vvip + kode.
+
+---
+Task ID: 1
+Agent: Z.ai (main agent)
+Task: Install repository https://github.com/prabudanling/topkonsultan di sandbox
+
+Work Log:
+- Clone repo GitHub ke /home/z/my-project/topkonsultan (git history utuh).
+- Analisis kebutuhan: Next.js 16.1.3 + React 19 + TypeScript + Tailwind 4 + Prisma 6 (SQLite) + z-ai-web-dev-sdk.
+- Deteksi env var global sandbox DATABASE_URL=file:/home/z/my-project/db/custom.db (menang atas .env) → selaraskan db & .env ke path sandbox.
+- bun install (827 paket) + prisma generate via postinstall; prisma db push — skema sinkron, data asli repo utuh (7 ContactMessage + 5 NewsletterSubscriber).
+- Pindahkan seluruh isi repo (termasuk .git, .zscripts, db) ke root /home/z/my-project sesuai struktur sandbox; hapus .git/.gitignore/.env sandbox trivial; .next cache dibersihkan.
+- Jalankan bootstrap resmi .zscripts/dev.sh via setsid (persisten antar sesi shell): install → db:push → next dev -p 3000 → health check 200 → mini-services (0 layanan).
+- Verifikasi API: POST /api/contact 200 tersimpan ke SQLite (tiket TOP-MVBCGHOI); /api 200; /api/oracle tanpa kode → 403 vvip_required (keamanan bekerja).
+- E2E Agent Browser: homepage render penuh (judul, hero, nav, 124 tampilan); navigasi hash #/perizinan OK; gerbang #/vvip + kode TOP-VVIP-2026 OK; chat Oracle menjawab penuh via z-ai-web-dev-sdk; 0 error console.
+- Screenshot bukti: download/verifikasi-install-topkonsultan.png, -full.png, -perizinan.png, -oracle-ai.png.
+
+Stage Summary:
+- Website PT TOP KONSULTAN INTERNASIONAL terinstal penuh di /home/z/my-project (root sandbox), dev server hidup persisten di port 3000 (PID 1760).
+- Database SQLite berisi data asli repo; .env berisi DATABASE_URL + VVIP_ACCESS_CODE=TOP-VVIP-2026.
+- Oracle AI berfungsi penuh di sandbox tanpa AI_API_KEY (via z-ai-web-dev-sdk); form kontak + newsletter tersambung DB.
