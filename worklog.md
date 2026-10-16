@@ -451,3 +451,22 @@ Stage Summary:
 - Website PT TOP KONSULTAN INTERNASIONAL terinstal penuh di /home/z/my-project (root sandbox), dev server hidup persisten di port 3000 (PID 1760).
 - Database SQLite berisi data asli repo; .env berisi DATABASE_URL + VVIP_ACCESS_CODE=TOP-VVIP-2026.
 - Oracle AI berfungsi penuh di sandbox tanpa AI_API_KEY (via z-ai-web-dev-sdk); form kontak + newsletter tersambung DB.
+
+---
+Task ID: 2
+Agent: Z.ai (main agent)
+Task: Tambahkan testimoni berbahasa asing dan pelanggan internasional di seksi Testimoni
+
+Work Log:
+- Perluas interface Testimonial (src/data/content.ts): field opsional lang (nama bahasa asli), code (BCP-47), country, translation, rtl.
+- TESTIMONIALS 5 -> 14 entri: 9 testimoni bahasa asing (English/AS, 日本語/Jepang, 中文/Tiongkok, العربية/UEA-RTL, Español/Chile, Français/Prancis, Deutsch/Jerman, 한국어/Korea Selatan, Português/Brasil) diselingi 5 testimoni Indonesia asli.
+- Setiap kutipan asing disertai terjemahan bahasa Indonesia (baris italic muted) supaya tetap terbaca pengunjung lokal.
+- Komponen testimonials.tsx: chip bahasa asli di atas kutipan, blockquote dir/lang per bahasa (Arab = RTL), badge negara + ikon Globe di figcaption, min-height disesuaikan, dot navigasi flex-wrap (14 item) agar aman di mobile, perbaikan typo kelas text-slate-9000 -> text-slate-500, eyebrow heading jadi "Apa kata dunia — dalam sembilan bahasa".
+- Cek font sandbox: kana (Unifont-JP), Han (Noto Serif SC/WQY), Hangul (WQY Zen Hei), Arab (DejaVu Sans) — semua render, tanpa tofu.
+- Verifikasi Agent Browser: 14 tab render; uji klik tab Inggris, Arab (dir=rtl, lang=ar terkonfirmasi), Jepang, Mandarin, Korea — chip, nama aksara asli, perusahaan, negara, terjemahan semua tampil; autoplay 5,2s berjalan; 0 error console; screenshot desktop (EN) + mobile 390px (AR).
+- bun run lint bersih; dev.log GET / 200 tanpa error; commit e379eca (2 file, +151/-7).
+
+Stage Summary:
+- Seksi Testimoni kini tampil sebagai paduan suara global: 14 klien dari 9 negara berbicara dalam 9 bahasa, tiap kutipan asing diterjemahkan ke bahasa Indonesia, Arab dirender kanan-ke-kiri.
+- Struktur data ekstensibel: tambah bahasa cukup isi field lang/code/country/translation/rtl tanpa menyentuh komponen.
+- Bukti: download/testimoni-internasional-en.png (desktop), download/testimoni-internasional-ar-mobile.png (mobile 390px).
