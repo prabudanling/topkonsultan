@@ -470,3 +470,23 @@ Stage Summary:
 - Seksi Testimoni kini tampil sebagai paduan suara global: 14 klien dari 9 negara berbicara dalam 9 bahasa, tiap kutipan asing diterjemahkan ke bahasa Indonesia, Arab dirender kanan-ke-kiri.
 - Struktur data ekstensibel: tambah bahasa cukup isi field lang/code/country/translation/rtl tanpa menyentuh komponen.
 - Bukti: download/testimoni-internasional-en.png (desktop), download/testimoni-internasional-ar-mobile.png (mobile 390px).
+
+---
+Task ID: 3
+Agent: Z.ai (main agent)
+Task: Tambahkan pemilih 195 bahasa di website (UI + Oracle AI)
+
+Work Log:
+- src/data/languages.ts: 195 bahasa (code BCP-47, nama asli, nama Indonesia/Inggris, region ×10, rtl, populer ×14) — diverifikasi skrip: tepat 195, tanpa duplikat.
+- Kamus terjemahan antarmuka (6 file): 26 bahasa penuh × 31 kunci (nav, hero judul/sub/CTA/chip, scroll, dialog pemilih) + 49 bahasa parsial × 19 kunci; fallback per-kunci ke Bahasa Indonesia.
+- src/lib/i18n.tsx: LanguageProvider berbasis useSyncExternalStore (aman SSR/hidrasi, bebas lint set-state-in-effect); localStorage topkonsultan_lang; sinkronisasi <html lang>.
+- src/components/landing/language-picker.tsx: tombol globe di navbar + CommandDialog (cmdk) pencarian 195 bahasa — bagian Populer, badge UI (antarmuka diterjemahkan) vs AI (Oracle siap), nama asli + nama Indonesia.
+- Integrasi: navbar (11 label + CTA via t()), hero (judul + key remount + re-reveal cepat setelah intro, sub, 3 CTA, 4 chip, Gulir), app.tsx dibungkus LanguageProvider.
+- Oracle AI: oracle-chat mengirim lang terpilih; route memvalidasi kode → (1) system prompt mengganti aturan "ikuti bahasa pertanyaan" menjadi "WAJIB bahasa X", (2) role system yang benar di SDK (sebelumnya assistant), (3) penyuntikan direktif bahasa sebagai pesan user terakhir — eksperimen A/B membuktikan hanya kombinasi (3) yang tahan riwayat panjang bahasa lain.
+- Perbaikan bug: hero.text slate-9000 typo ditemukan; fix MultiEdit string presisi.
+- Verifikasi: dialog 195 item terhitung DOM; pencarian 日本語 → 1 hasil; pilih Jepang → html lang=ja + navbar/judul/CTA kanji; persistensi lolos reload; chat VVIP menjawab Jepang lengkap meski pertanyaan Indonesia; curl Arab & Spanyol OK; kembali ke Indonesia via UI; 0 error console; eslint bersih.
+- Bukti: download/pemilih-bahasa-195.png, download/bahasa-jepang-hero.png, download/situs-195-bahasa-default.png.
+
+Stage Summary:
+- Situs kini multibahasa penuh: 195 bahasa dapat dipilih dari navbar; 75 bahasa menerjemahkan navigasi + hero; seluruh 195 dihormati oleh Oracle AI (jawaban dipaksa dalam bahasa pilihan, tahan riwayat percakapan campuran).
+- Pilihan tersimpan di localStorage; <html lang> ikut berubah (SEO + aksesibilitas); arsitektur kamus Partial<Record> siap diperluas bahasa baru tanpa menyentuh komponen.

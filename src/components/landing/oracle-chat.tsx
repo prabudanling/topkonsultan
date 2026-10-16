@@ -5,6 +5,7 @@ import { MessageCircle, Send, Sparkles, X } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { ORACLE_PROMPTS } from "@/data/content";
 import { BRAND } from "@/data/brand";
+import { useI18n } from "@/lib/i18n";
 import { LogoMark } from "./logo";
 import { EASE } from "./motion";
 
@@ -34,6 +35,7 @@ export default function OracleChat({ embedded = false }: OracleChatProps) {
   const [loading, setLoading] = useState(false);
   const [fallback, setFallback] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { lang } = useI18n();
 
   useEffect(() => {
     if (open) {
@@ -63,7 +65,7 @@ export default function OracleChat({ embedded = false }: OracleChatProps) {
           "Content-Type": "application/json",
           "x-vvip-code": getVvipCode(),
         },
-        body: JSON.stringify({ messages: next.slice(-10) }),
+        body: JSON.stringify({ messages: next.slice(-10), lang }),
       });
 
       if (res.status === 403) {

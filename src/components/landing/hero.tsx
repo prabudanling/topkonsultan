@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Clock, Gauge, Hourglass, Sparkles, Users } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { BRAND } from "@/data/brand";
+import { useI18n } from "@/lib/i18n";
 import { EASE, SplitWords } from "./motion";
 
 function WhatsAppGlyph() {
@@ -22,12 +23,7 @@ const SOLVING = [
   "Strategi & Ekspansi Global.",
 ];
 
-const HERO_CHIPS = [
-  { Icon: Users, label: "46 Dewan Pakar" },
-  { Icon: Hourglass, label: "6.900 Tahun Pengalaman" },
-  { Icon: Gauge, label: "99,97% Keberhasilan" },
-  { Icon: Clock, label: "Respons ≤ 48 Jam" },
-];
+/* Chip hero kini bersumber dari terjemahan i18n (hero.chip1-4). */
 
 /* ------------------------------- Typewriter ------------------------------- */
 
@@ -159,6 +155,7 @@ function Mandala() {
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const typed = useTypewriter(SOLVING);
+  const { t, lang } = useI18n();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -166,6 +163,18 @@ export default function Hero() {
   const yDrift = useTransform(scrollYProgress, [0, 1], [0, 170]);
   const yContent = useTransform(scrollYProgress, [0, 1], [0, 90]);
   const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  // Setelah intro pertama tuntas, penggantian bahasa memutar ulang judul
+  // dengan delay singkat (bukan menunggu 1,5–2 detik lagi).
+  const [introDone, setIntroDone] = useState(false);
+  useEffect(() => {
+    const id = window.setTimeout(() => setIntroDone(true), 3800);
+    return () => window.clearTimeout(id);
+  }, []);
+  const d = (base: number) => (introDone ? 0.08 + (base - 1.55) * 0.12 : base);
+
+  const chips = [t("hero.chip1"), t("hero.chip2"), t("hero.chip3"), t("hero.chip4")];
+  const chipIcons = [Users, Hourglass, Gauge, Clock];
 
   return (
     <section
@@ -218,10 +227,10 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        <h1 className="mt-7 font-display text-[11.5vw] font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
-          <SplitWords text="Satu Gerbang untuk" delay={1.55} className="block text-slate-900" />
-          <SplitWords text="Segala Izin dan" delay={1.78} className="block text-slate-900" />
-          <SplitWords text="Kejayaan Bisnis Anda" delay={2.01} allGold className="block" />
+        <h1 key={lang} className="mt-7 font-display text-[11.5vw] font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
+          <SplitWords text={t("hero.t1")} delay={d(1.55)} className="block text-slate-900" />
+          <SplitWords text={t("hero.t2")} delay={d(1.78)} className="block text-slate-900" />
+          <SplitWords text={t("hero.t3")} delay={d(2.01)} allGold className="block" />
         </h1>
 
         <motion.p
@@ -230,12 +239,10 @@ export default function Hero() {
           transition={{ duration: 0.85, delay: 2.35, ease: EASE }}
           className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-500 sm:text-lg"
         >
-          Konsultan &amp; perizinan terlengkap di dunia — 46 Dewan Pakar internasional
-          dengan 6.900 tahun pengalaman gabungan menuntaskan semua kebutuhan bisnis
-          Anda,{" "}
-          <span className="font-semibold text-slate-700">
-            dari pendirian PT hingga penguasaan pasar di 190 negara.
-          </span>
+          {t("hero.sub1")}
+          {t("hero.sub2") ? (
+            <span className="font-semibold text-slate-700">{t("hero.sub2")}</span>
+          ) : null}
         </motion.p>
 
         <motion.p
@@ -263,7 +270,7 @@ export default function Hero() {
             className="shine inline-flex min-h-12 items-center gap-2.5 rounded-full bg-gradient-to-r from-violet-600 via-indigo-500 to-blue-600 px-8 py-3.5 text-sm font-bold text-white shadow-[0_12px_44px_-10px_rgba(139,92,246,0.8)] transition-transform duration-300 hover:scale-[1.04] active:scale-95"
           >
             <Sparkles className="h-4 w-4" aria-hidden="true" />
-            Mulai Konsultasi
+            {t("hero.cta1")}
           </a>
           <a
             href={`https://wa.me/${BRAND.whatsappIntl}?text=${encodeURIComponent("Halo TOP Konsultan, saya ingin konsultasi perizinan bisnis.")}`}
@@ -272,13 +279,13 @@ export default function Hero() {
             className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-emerald-300 bg-emerald-50 px-8 py-3.5 text-sm font-bold text-emerald-600 backdrop-blur transition-all duration-300 hover:border-emerald-500/60 hover:bg-emerald-100"
           >
             <WhatsAppGlyph />
-            Chat WhatsApp
+            {t("hero.cta2")}
           </a>
           <a
             href="#/perizinan"
             className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-slate-300 bg-white px-8 py-3.5 text-sm font-semibold text-slate-700 backdrop-blur transition-all duration-300 hover:border-violet-500/60 hover:text-violet-600"
           >
-            Jelajahi 36 Izin
+            {t("hero.cta3")}
           </a>
         </motion.div>
 
@@ -288,15 +295,18 @@ export default function Hero() {
           transition={{ duration: 0.85, delay: 2.88, ease: EASE }}
           className="mt-10 flex flex-wrap items-center justify-center gap-2.5"
         >
-          {HERO_CHIPS.map(({ Icon, label }) => (
-            <li
-              key={label}
-              className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/50 px-4 py-2 text-xs font-medium text-slate-500 backdrop-blur"
-            >
-              <Icon className="h-3.5 w-3.5 text-violet-600" aria-hidden="true" />
-              {label}
-            </li>
-          ))}
+          {chips.map((label, i) => {
+            const Icon = chipIcons[i] ?? Users;
+            return (
+              <li
+                key={label}
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/50 px-4 py-2 text-xs font-medium text-slate-500 backdrop-blur"
+              >
+                <Icon className="h-3.5 w-3.5 text-violet-600" aria-hidden="true" />
+                {label}
+              </li>
+            );
+          })}
         </motion.ul>
       </motion.div>
 
@@ -312,7 +322,7 @@ export default function Hero() {
           aria-label="Gulir ke bawah untuk melihat konten"
           className="flex flex-col items-center gap-2 text-slate-9000 transition-colors hover:text-violet-600"
         >
-          <span className="text-[10px] font-semibold uppercase tracking-[0.4em]">Gulir</span>
+          <span className="text-[10px] font-semibold uppercase tracking-[0.4em]">{t("hero.scroll")}</span>
           <span className="flex h-9 w-6 items-start justify-center rounded-full border border-current p-1.5">
             <span className="h-2 w-1 animate-bounce rounded-full bg-current" aria-hidden="true" />
           </span>

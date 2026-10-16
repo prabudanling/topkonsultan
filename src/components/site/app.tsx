@@ -8,6 +8,7 @@
 
 import { useEffect } from "react";
 import { useRoute, useScrollTopOnRoute } from "@/lib/router";
+import { LanguageProvider } from "@/lib/i18n";
 import { slugify } from "@/data/extended-types";
 import { COUNCILS, SERVICES } from "@/data/content";
 import { COUNCIL_PROFILES } from "@/data/council-profiles";
@@ -185,22 +186,24 @@ export default function SiteApp() {
   }, [title]);
 
   return (
-    <div className="flex min-h-screen flex-col bg-white text-slate-900">
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[110] focus:rounded-full focus:bg-violet-600 focus:px-5 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
-      >
-        Langsung ke konten
-      </a>
-      <Preloader />
-      <ScrollProgress />
-      <Navbar />
-      <main id="main" key={route.target ?? "/"} className="page-enter flex-1">
-        {view}
-      </main>
-      <Footer />
-      {/* Oracle kini eksklusif Member VVIP — hanya di #/vvip, bukan di situs publik. */}
-      <WhatsAppFloat />
-    </div>
+    <LanguageProvider>
+      <div className="flex min-h-screen flex-col bg-white text-slate-900">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[110] focus:rounded-full focus:bg-violet-600 focus:px-5 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
+        >
+          Langsung ke konten
+        </a>
+        <Preloader />
+        <ScrollProgress />
+        <Navbar />
+        <main id="main" key={route.target ?? "/"} className="page-enter flex-1">
+          {view}
+        </main>
+        <Footer />
+        {/* Oracle kini eksklusif Member VVIP — hanya di #/vvip, bukan di situs publik. */}
+        <WhatsAppFloat />
+      </div>
+    </LanguageProvider>
   );
 }

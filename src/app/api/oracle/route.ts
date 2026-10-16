@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import ZAI from "z-ai-web-dev-sdk";
+import { getLanguage } from "@/data/languages";
 import { vvipCodeMatches } from "@/lib/vvip";
 
 export const runtime = "nodejs";
@@ -21,6 +22,47 @@ Aturan:
 interface IncomingMsg {
   role: "user" | "assistant";
   content: string;
+}
+
+/** Susun system prompt final — hormati bahasa antarmuka pilihan pengunjung. */
+function buildSystemPrompt(langCode: unknown): string {
+  if (typeof langCode !== "string") return SYSTEM_PROMPT;
+  const entry = getLanguage(langCode.trim().slice(0, 16));
+  if (!entry || entry.code === "id") return SYSTEM_PROMPT;
+  // Ganti aturan "ikuti bahasa pertanyaan" agar tidak bertabrakan dengan
+  // bahasa antarmuka yang dipilih pengunjung.
+  return SYSTEM_PROMPT.replace(
+    "- Jawab dalam BAHASA YANG SAMA dengan pertanyaan pengguna (Indonesia → Indonesia, English → English, dst).",
+    `- Bahasa jawaban WAJIB: ${entry.native} (${entry.id}). Tulis SELURUH jawaban dalam ${entry.native} apa pun bahasa pertanyaannya — hanya nama merek, istilah teknis baku, atau angka yang boleh tetap dalam bentuk aslinya.`
+  );
+}
+
+/** Entri bahasa dari body request (valid + bukan default), atau null. */
+function resolveLang(langCode: unknown): ReturnType<typeof getLanguage> {
+  if (typeof langCode !== "string") return undefined;
+  const entry = getLanguage(langCode.trim().slice(0, 16));
+  if (!entry || entry.code === "id") return undefined;
+  return entry;
+}
+
+/**
+ * Suntikkan direktif bahasa sebagai pesan user terakhir.
+ * Eksperimen menunjukkan GLM lebih patuh pada direktif bahasa yang berada
+ * di ujung konteks (bukan hanya di system prompt) — riwayat panjang bahasa
+ * lain cenderung "menyeret" bahasa jawaban bila direktif hanya di sistem.
+ */
+function withLanguageDirective(
+  history: IncomingMsg[],
+  entry: ReturnType<typeof getLanguage>
+): IncomingMsg[] {
+  if (!entry) return history;
+  return [
+    ...history,
+    {
+      role: "user",
+      content: `(Instruksi sistem untuk jawaban ini — WAJIB: tulis SELURUH jawaban dalam ${entry.native} (${entry.id}), apa pun bahasa pesan-pesan sebelumnya. Jawab pertanyaan pengguna terakhir secara lengkap dalam ${entry.native}.)`,
+    },
+  ];
 }
 
 /** Jawan cepat & pintar ketika engine AI belum dikonfigurasi (mis. deploy Vercel tanpa API key). */
@@ -64,7 +106,7 @@ async function sanitize(body: unknown): Promise<IncomingMsg[] | null> {
 }
 
 /** Provider 1 — endpoint OpenAI-compatible via env vars (AI_API_KEY + AI_BASE_URL + AI_MODEL). */
-async function askOpenAICompatible(history: IncomingMsg[]): Promise<string> {
+async function askOpenAICompatible(history: IncomingMsg[], systemPrompt: string): Promise<string> {
   const apiKey = process.env.AI_API_KEY;
   if (!apiKey) throw new Error("AI_API_KEY not configured");
 
@@ -73,7 +115,7 @@ async function askOpenAICompatible(history: IncomingMsg[]): Promise<string> {
 
   const payload: Record<string, unknown> = {
     model,
-    messages: [{ role: "system", content: SYSTEM_PROMPT }, ...history],
+    messages: [{ role: "system", content: systemPrompt }, ...history],
     temperature: 0.8,
     max_tokens: 900,
   };
@@ -109,11 +151,11 @@ async function askOpenAICompatible(history: IncomingMsg[]): Promise<string> {
 }
 
 /** Provider 2 — SDK bawaan sandbox (butuh file .z-ai-config; tidak tersedia di Vercel). */
-async function askSandboxSDK(history: IncomingMsg[]): Promise<string> {
+async function askSandboxSDK(history: IncomingMsg[], systemPrompt: string): Promise<string> {
   const zai = await ZAI.create();
   const completion = await zai.chat.completions.create({
     messages: [
-      { role: "assistant", content: SYSTEM_PROMPT },
+      { role: "system", content: systemPrompt },
       ...history,
     ],
     thinking: { type: "disabled" },
@@ -150,15 +192,19 @@ export async function POST(req: Request) {
     );
   }
 
+  const entry = resolveLang((body as { lang?: unknown } | null)?.lang);
+  const systemPrompt = buildSystemPrompt((body as { lang?: unknown } | null)?.lang);
+  const promptHistory = withLanguageDirective(history, entry);
+
   try {
     let reply = "";
     let source = "env";
 
     if (process.env.AI_API_KEY) {
-      reply = await askOpenAICompatible(history);
+      reply = await askOpenAICompatible(promptHistory, systemPrompt);
     } else {
       source = "sandbox";
-      reply = await askSandboxSDK(history);
+      reply = await askSandboxSDK(promptHistory, systemPrompt);
     }
 
     return NextResponse.json({ ok: true, reply: cleanReply(reply), source });
