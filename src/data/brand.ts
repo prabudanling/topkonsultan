@@ -42,7 +42,7 @@ export const BRAND = {
   address:
     "Perumahan Arjamukti Kencana Raya Blok B7 No. 2, Leuwisari, Arjasari, Tasikmalaya, Jawa Barat",
 
-  /** Empat kantor resmi — tampil di footer, halaman kontak, dan Kantor Kami */
+  /** Lima kantor resmi — tampil di footer, halaman kontak, dan Kantor Kami */
   addresses: [
     {
       label: "Kantor Pusat — Tasikmalaya I",
@@ -55,6 +55,12 @@ export const BRAND = {
       short: "Andalusia Garden, Mangkubumi",
       value:
         "Perumahan Andalusia Garden, Cluster Granada No. 11, Mangkubumi, Kota Tasikmalaya, Jawa Barat",
+    },
+    {
+      label: "Kantor Jakarta Selatan — IDX Tower 1",
+      short: "IDX Tower 1, Senayan",
+      value:
+        "Indonesia Stock Exchange Tower 1 Level 3, Unit 304, Jl. Jendral Sudirman Kav 52-53, Desa/Kelurahan Senayan, Kec. Kebayoran Baru, Kota Adm. Jakarta Selatan, Provinsi DKI Jakarta",
     },
     {
       label: "Kantor Jakarta",

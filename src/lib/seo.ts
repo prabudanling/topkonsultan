@@ -708,6 +708,15 @@ function organizationJsonLd(): JsonLd {
       },
       {
         "@type": "PostalAddress",
+        streetAddress:
+          "Indonesia Stock Exchange Tower 1, Level 3, Unit 304, Jl. Jendral Sudirman Kav 52-53",
+        addressLocality: "Senayan, Kebayoran Baru, Jakarta Selatan",
+        addressRegion: "DKI Jakarta",
+        postalCode: "12190",
+        addressCountry: "ID",
+      },
+      {
+        "@type": "PostalAddress",
         streetAddress: "Kantor PHI Kwitang, Kwitang, Senen",
         addressLocality: "Jakarta Pusat",
         addressRegion: "DKI Jakarta",

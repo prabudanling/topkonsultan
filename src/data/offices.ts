@@ -1,9 +1,9 @@
 import type { Office } from "@/data/extended-types";
 
 /**
- * Empat kantor resmi PT TOP KONSULTAN INTERNASIONAL —
- * dua kantor Tasikmalaya (pusat), Jakarta (PHI Kwitang),
- * dan perwakilan IPHI Pusat. Semua berbagi zona WIB.
+ * Lima kantor resmi PT TOP KONSULTAN INTERNASIONAL —
+ * dua kantor Tasikmalaya (pusat), Jakarta Selatan (IDX Tower 1),
+ * Jakarta (PHI Kwitang), dan perwakilan IPHI Pusat. Semua berbagi zona WIB.
  * Koordinat (x, y) siap dipakai peta jika diperlukan.
  */
 export const OFFICES: Office[] = [
@@ -25,6 +25,15 @@ export const OFFICES: Office[] = [
     timezone: "Asia/Jakarta",
     x: 76,
     y: 66,
+  },
+  {
+    city: "Jakarta Selatan — IDX Tower 1",
+    country: "Indonesia",
+    address:
+      "Indonesia Stock Exchange Tower 1 Level 3, Unit 304, Jl. Jendral Sudirman Kav 52-53, Desa/Kelurahan Senayan, Kec. Kebayoran Baru, Kota Adm. Jakarta Selatan, Provinsi DKI Jakarta",
+    timezone: "Asia/Jakarta",
+    x: 71,
+    y: 62,
   },
   {
     city: "Jakarta — Kantor PHI Kwitang",

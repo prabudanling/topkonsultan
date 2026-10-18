@@ -561,3 +561,21 @@ Stage Summary:
 - Kelas error hydration id-Radix pada dialog bahasa kini MUSTAHIL terjadi (elemen ber-id tidak pernah dibandingkan saat hidrasi).
 - Aksesibilitas justru membaik: aria-labelledby/describedby selalu cocok dengan id aktual di DOM.
 - Tidak ada regresi SEO: konten yang dihapus dari SSR hanyalah dialog tertutup sr-only (nol nilai indeks).
+
+---
+Task ID: 6
+Agent: Z.ai (main agent)
+Task: Memasukkan alamat lengkap kantor baru dari user: Indonesia Stock Exchange Tower 1 Level 3, Unit 304, Jl. Jendral Sudirman Kav 52-53, Desa/Kelurahan Senayan, Kec. Kebayoran Baru, Kota Adm. Jakarta Selatan, Provinsi DKI Jakarta.
+
+Work Log:
+- Audit seluruh titik data alamat: brand.ts (BRAND.addresses), offices.ts (OFFICES), office-clocks.tsx (Kantor Kami), seo.ts (JSON-LD Organization PostalAddress), contact.tsx & footer.tsx (render otomatis dari BRAND.addresses).
+- brand.ts: entri baru "Kantor Jakarta Selatan — IDX Tower 1" (short: IDX Tower 1, Senayan) dipasang posisi ke-3 (setelah dua kantor Tasikmalaya, sebelum PHI Kwitang) — footer & section Kontak beranda langsung mewarisi tanpa perubahan komponen.
+- offices.ts: entri Office baru (city "Jakarta Selatan — IDX Tower 1", timezone Asia/Jakarta, x:71 y:62) + komentar diperbarui ke "lima kantor".
+- office-clocks.tsx: heading "Empat pintu" → "Lima pintu"; grid lg:grid-cols-4 → lg:grid-cols-3 (5 kartu = 3+2, seimbang); delay reveal i%4 → i%3.
+- seo.ts organizationJsonLd(): PostalAddress ke-4 — streetAddress "Indonesia Stock Exchange Tower 1, Level 3, Unit 304, Jl. Jendral Sudirman Kav 52-53", locality "Senayan, Kebayoran Baru, Jakarta Selatan", region "DKI Jakarta", postalCode 12190, country ID.
+- Verifikasi: dev 200; curl / menampilkan alamat IDX (footer + JSON-LD streetAddress); curl /contact 200 — alamat penuh, "Lima pintu", link Google Maps ter-enkode; agent-browser: 5 <article> (urutan: Tasik I flagship, Tasik II, IDX Tower, PHI Kwitang, IPHI), 0 error console; build produksi SUKSES 670/670 halaman statis (compile 13,6 dtk).
+- Screenshot bukti: download/kontak-idx-tower.png.
+
+Stage Summary:
+- Alamat lengkap IDX Tower 1 kini hadir di: footer situs, section Kontak (beranda + /contact), halaman Kantor Kami (/contact & /about), JSON-LD Organization (4 PostalAddress) — siap dibaca mesin lokal & Google.
+- Situs kini 5 kantor resmi: Tasikmalaya I (pusat), Tasikmalaya II, Jakarta Selatan IDX Tower 1, Jakarta Pusat PHI Kwitang, IPHI Pusat.

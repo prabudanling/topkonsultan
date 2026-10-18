@@ -38,8 +38,9 @@ function formatTime(now: Date | null, timeZone: string) {
 }
 
 /**
- * Kantor Kami — empat lokasi resmi (Tasikmalaya I & II, Jakarta PHI Kwitang,
- * IPHI Pusat). Semua berbagi zona WIB; jam kantor ditampilkan per lokasi.
+ * Kantor Kami — lima lokasi resmi (Tasikmalaya I & II, Jakarta Selatan IDX
+ * Tower 1, Jakarta PHI Kwitang, IPHI Pusat). Semua berbagi zona WIB; jam
+ * kantor ditampilkan per lokasi.
  */
 export default function OfficeClocks() {
   const now = useNow();
@@ -54,7 +55,7 @@ export default function OfficeClocks() {
         eyebrow="Kantor Kami — WIB"
         title={
           <>
-            Empat pintu, satu standar layanan{" "}
+            Lima pintu, satu standar layanan{" "}
             <span className="text-gradient-gold">terlengkap.</span>
           </>
         }
@@ -84,9 +85,9 @@ export default function OfficeClocks() {
         </div>
       </Reveal>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {OFFICES.map((o, i) => (
-          <Reveal key={o.city} delay={(i % 4) * 0.06} className="h-full">
+          <Reveal key={o.city} delay={(i % 3) * 0.06} className="h-full">
             <article
               className={`group relative flex h-full flex-col gap-3 rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 ${
                 o.flagship
