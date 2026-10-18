@@ -50,8 +50,8 @@ export const SITE = {
   ogImage: "/og-image.png",
   ogImageAlt:
     "PT TOP KONSULTAN INTERNASIONAL — PUSAT PERIZINAN.COM: satu gerbang untuk segala izin, strategi, dan eksekusi, dari pendirian PT hingga ekspansi 190 negara.",
-  /** Koordinat kantor pusat (Tasikmalaya, Jawa Barat) — meta geo & JSON-LD. */
-  geo: { lat: -7.3274, lng: 108.2207 },
+  /** Koordinat kantor utama (IDX Tower 1, Senayan, Jakarta Selatan) — meta geo & JSON-LD. */
+  geo: { lat: -6.2229, lng: 106.8094 },
 } as const;
 
 /** Tanggal basis terakhir modifikasi konten (ISO 8601) — deterministik antar-build. */
@@ -257,8 +257,17 @@ const STATIC_SEO: Record<string, StaticSeo> = {
     kind: "contact",
     title: `Kontak — ${S}`,
     description:
-      "Hubungi PT TOP KONSULTAN INTERNASIONAL: WhatsApp +62 811-1116-5165 aktif 24/7, email halo@topkonsultan.web.id, empat kantor resmi di Tasikmalaya & Jakarta. Wawasan pertama dalam 48 jam.",
-    keywords: ["kontak konsultan", "whatsapp konsultan", "kantor konsultan Jakarta", "kantor Tasikmalaya"],
+      "Hubungi PT TOP KONSULTAN INTERNASIONAL: WhatsApp +62 811-1116-5165 aktif 24/7, email halo@topkonsultan.web.id, kantor utama di IDX Tower 1 Jakarta Selatan plus empat kantor resmi lain di Tasikmalaya & Jakarta. Wawasan pertama dalam 48 jam.",
+    keywords: [
+      "konsultan perizinan Jakarta",
+      "kontak konsultan",
+      "whatsapp konsultan",
+      "kantor konsultan Jakarta Selatan",
+      "konsultan izin usaha Jakarta",
+      "IDX Tower Senayan",
+      "pengurusan perizinan Jakarta",
+      "kantor konsultan Tasikmalaya",
+    ],
   },
   "/faq": {
     kind: "faq",
@@ -769,9 +778,11 @@ function legalServiceJsonLd(): JsonLd {
     paymentAccepted: "Cash, Transfer Bank",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Perumahan Arjamukti Kencana Raya Blok B7 No. 2, Leuwisari",
-      addressLocality: "Arjasari, Kabupaten Tasikmalaya",
-      addressRegion: "Jawa Barat",
+      streetAddress:
+        "Indonesia Stock Exchange Tower 1, Level 3, Unit 304, Jl. Jendral Sudirman Kav 52-53",
+      addressLocality: "Senayan, Kebayoran Baru, Jakarta Selatan",
+      addressRegion: "DKI Jakarta",
+      postalCode: "12190",
       addressCountry: "ID",
     },
     geo: {

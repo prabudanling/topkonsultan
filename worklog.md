@@ -579,3 +579,23 @@ Work Log:
 Stage Summary:
 - Alamat lengkap IDX Tower 1 kini hadir di: footer situs, section Kontak (beranda + /contact), halaman Kantor Kami (/contact & /about), JSON-LD Organization (4 PostalAddress) — siap dibaca mesin lokal & Google.
 - Situs kini 5 kantor resmi: Tasikmalaya I (pusat), Tasikmalaya II, Jakarta Selatan IDX Tower 1, Jakarta Pusat PHI Kwitang, IPHI Pusat.
+
+---
+Task ID: 7
+Agent: Z.ai (main agent)
+Task: Jadikan IDX Tower 1 alamat utama (metadata OG & geo meta, LegalService JSON-LD) untuk kekuatan pencarian "konsultan perizinan Jakarta" + embed peta Google Maps di halaman /contact.
+
+Work Log:
+- seo.ts SITE.geo: (-7.3274, 108.2207) Tasikmalaya → (-6.2229, 106.8094) IDX Tower 1 — satu sumber untuk meta geo.position/ICBM layout dan GeoCoordinates LegalService.
+- layout.tsx: geo.region ID-JB → ID-JK; geo.placename → "Senayan, Kebayoran Baru, Jakarta Selatan, DKI Jakarta, Indonesia"; OG business:contact_data diganti penuh ke IDX Tower + postal_code 12190.
+- seo.ts legalServiceJsonLd(): PostalAddress utama diganti Arjamukti → IDX Tower (Senayan, Kebayoran Baru, Jakarta Selatan, DKI Jakarta, 12190, ID) — geo otomatis mengikuti SITE.geo baru. Organization JSON-LD tetap array 4 kantor (Arjamukti/Andalusia/IDX/PHI) — legal HQ tetap tercatat.
+- seo.ts STATIC_SEO /contact: deskripsi kini menyebut "kantor utama di IDX Tower 1 Jakarta Selatan"; keywords diperluas 8 frasa Jakarta ("konsultan perizinan Jakarta", "konsultan izin usaha Jakarta", "kantor konsultan Jakarta Selatan", "IDX Tower Senayan", dst.).
+- Komponen baru src/components/site/office-map.tsx: kartu glass dengan header (ikon MapPin, eyebrow "Kantor Utama — Jakarta Selatan", alamat lengkap, tombol "Petunjuk Arah" → Maps Directions API) + iframe embed Google Maps resmi tanpa API key (q=IDX Tower, z=16, hl=id, lazy, allowFullScreen, referrerPolicy) + strip footer akses MRT Istora Mandiri & WhatsApp 24/7.
+- pages/contact.tsx: <OfficeMap /> disisipkan antara ContactSection dan OfficeClocks.
+- Verifikasi: curl /contact → geo.region ID-JK, geo.position -6.2229;106.8094, business:contact_data IDX penuh, meta description baru; parse JSON-LD beranda → LegalService address IDX + geo -6.2229/106.8094, Organization 4 entri (IDX ✓); agent-browser → iframe 1214×440px ter-render peta (src Google Maps), urutan peta sebelum 5 kartu kantor, 0 error console; build produksi SUKSES 670/670.
+- Screenshot bukti: download/kontak-peta-idx-tower.png.
+
+Stage Summary:
+- Sinyal lokal sekarang konsisten IDX Tower 1 Jakarta Selatan: meta geo (ID-JK), OG business:contact_data, LegalService JSON-LD (address+geo+12190) — sinyal kuat untuk pencarian lokal "konsultan perizinan Jakarta".
+- Halaman /contact kini punya peta Google Maps interaktif embed (tanpa API key) + petunjuk arah + 5 kartu kantor.
+- Sitemap/metadata lain tidak berubah (katalog 500 jasa tetap SSG 670 halaman).

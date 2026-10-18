@@ -3,6 +3,7 @@
 import { Link, useRoute } from "@/lib/router";
 import ContactSection from "@/components/landing/contact";
 import OfficeClocks from "@/components/site/office-clocks";
+import OfficeMap from "@/components/site/office-map";
 import { CTABand } from "@/components/site/ui";
 
 export default function ContactPage() {
@@ -29,6 +30,7 @@ export default function ContactPage() {
         <ContactSection initialRole={role} />
       </div>
 
+      <OfficeMap />
       <OfficeClocks />
       <CTABand />
     </>

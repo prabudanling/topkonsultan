@@ -131,16 +131,18 @@ export const metadata: Metadata = {
     "DC.coverage": "Indonesia, Global (190 negara)",
     "DC.rights": `Copyright © ${new Date().getFullYear()} PT TOP KONSULTAN INTERNASIONAL. Seluruh hak cipta dilindungi.`,
 
-    /* ── Geo (meta klasik mesin lokal) ── */
-    "geo.region": "ID-JB",
-    "geo.placename": "Tasikmalaya, Jawa Barat, Indonesia",
+    /* ── Geo (meta klasik mesin lokal) — kantor utama IDX Tower 1, Jakarta Selatan ── */
+    "geo.region": "ID-JK",
+    "geo.placename": "Senayan, Kebayoran Baru, Jakarta Selatan, DKI Jakarta, Indonesia",
     "geo.position": `${SITE.geo.lat};${SITE.geo.lng}`,
     ICBM: `${SITE.geo.lat}, ${SITE.geo.lng}`,
 
-    /* ── Open Graph Business (Facebook Pages) ── */
-    "business:contact_data:street_address": "Perumahan Arjamukti Kencana Raya Blok B7 No. 2, Leuwisari",
-    "business:contact_data:locality": "Arjasari, Kabupaten Tasikmalaya",
-    "business:contact_data:region": "Jawa Barat",
+    /* ── Open Graph Business (Facebook Pages) — alamat utama IDX Tower 1 ── */
+    "business:contact_data:street_address":
+      "Indonesia Stock Exchange Tower 1, Level 3, Unit 304, Jl. Jendral Sudirman Kav 52-53",
+    "business:contact_data:locality": "Senayan, Kebayoran Baru, Jakarta Selatan",
+    "business:contact_data:region": "DKI Jakarta",
+    "business:contact_data:postal_code": "12190",
     "business:contact_data:country_name": "Indonesia",
     "business:contact_data:phone_number": SITE.phone,
     "business:contact_data:website": SITE.url,
