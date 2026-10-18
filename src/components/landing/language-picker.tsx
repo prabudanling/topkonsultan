@@ -7,7 +7,7 @@
  * ditampilkan dalam aksara aslinya supaya mudah dikenali penutur asli.
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Check, Globe, Languages, Sparkles } from "lucide-react";
 import {
   CommandDialog,
@@ -27,6 +27,15 @@ import { cn } from "@/lib/utils";
 function shortCode(code: string): string {
   return code.split("-")[0]!.toUpperCase();
 }
+
+/* Catatan hidrasi: judul & deskripsi dialog (sr-only) memakai id Radix ber-
+   basis useId() yang bergantung posisi tree render. Pada hidrasi streaming
+   dev-mode Next 16 (lazy chunk + resync useSyncExternalStore rute/bahasa),
+   posisi tersebut bisa berbeda SSR vs klien → React 19 melaporkan
+   "attributes didn't match" untuk id radix-… pada <DialogTitle>.
+   Solusi: render dialog hanya setelah mount — elemen id-tak-stabil tidak
+   pernah masuk HTML server, jadi tidak ada perbandingan hidrasi untuknya;
+   id klien konsisten dengan aria-labelledby saat dialog dibuka. */
 
 function LangRow({ lang, active }: { lang: LanguageEntry; active: boolean }) {
   const hasUI = TRANSLATED_LANGS.has(lang.code);
@@ -67,7 +76,10 @@ function LangRow({ lang, active }: { lang: LanguageEntry; active: boolean }) {
 
 export default function LanguagePicker({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { lang, langNative, setLang, t } = useI18n();
+
+  useEffect(() => setMounted(true), []);
 
   const popular = POPULAR_LANGUAGES;
   const popularCodes = new Set(popular.map((p) => p.code));
@@ -94,13 +106,14 @@ export default function LanguagePicker({ className }: { className?: string }) {
         {shortCode(lang)}
       </button>
 
-      <CommandDialog
-        open={open}
-        onOpenChange={setOpen}
-        title={t("pick.title")}
-        description={`${LANGUAGE_COUNT} ${t("pick.all").toLowerCase()}`}
-        className="sm:max-w-[520px]"
-      >
+      {mounted && (
+        <CommandDialog
+          open={open}
+          onOpenChange={setOpen}
+          title={t("pick.title")}
+          description={`${LANGUAGE_COUNT} ${t("pick.all").toLowerCase()}`}
+          className="sm:max-w-[520px]"
+        >
         <div className="flex items-center justify-between border-b px-4 py-3">
           <div className="flex items-center gap-2.5">
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-500 text-white">
@@ -162,7 +175,8 @@ export default function LanguagePicker({ className }: { className?: string }) {
             <span className="rounded-full bg-slate-100 px-1.5 py-0.5 text-[9px] font-bold text-slate-400">AI</span>
           </span>
         </div>
-      </CommandDialog>
+        </CommandDialog>
+      )}
     </>
   );
 }
