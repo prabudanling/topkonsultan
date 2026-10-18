@@ -515,3 +515,30 @@ Stage Summary:
 - 128 rute × metadata unik (title/desc/keywords/canonical/OG/robots) + 9 tipe JSON-LD; 27 hreflang per halaman; sitemap 127 URL; PWA manifest; aset OG/ikon lengkap.
 - Arsitektur: 1 sumber kebenaran (src/lib/seo.ts) → layout + [[...slug]] (server) + SeoHead (client) + sitemap/robots/manifest; hash-nav tetap penuh; /vvip noindex.
 - Bukti: download/seo-beranda-desktop.png, download/seo-perizinan-detail-desktop.png.
+
+---
+Task ID: 4
+Agent: Z.ai (main agent — "master polymath + 46 dewan pakar, full time")
+Task: Riset 10 website pusatperizinan/konsultan teratas Asia & dunia → bangun 500 kategori layanan tambahan (termasuk IATA, sertifikasi, akreditasi) → masukkan ke website dengan full SEO sejak awal + sitemap ratusan halaman.
+
+Work Log:
+- Riset web (3 gelombang, 13 kueri): IATA Cargo Agency Program (akreditasi, CASS, DGR, CTB), Dezan Shira & Associates (pan-Asia corporate establishment 30+ th), MSA Asia (incorporation 6 negara Asia, fixed-fee), LegalBison (formasi + lisensi kripto/finteks Asia-Eropa), Sleek vs OSOME (Singapura/HK digital incorporation), Hawksford, Remote People (150+ negara EOR), LegalZoom, serta lokal: konsultanperizinan.co.id, bintangteknikkonsultan.com, SEZ Gama Cendekia, Fastwork legalitas.
+- Insight katalog diambil dari benchmark: lisensi sektoral pasca-pendirian (MSA/Dezan Shira) → 33 kategori sektoral; lisensi finteks (LegalBison) → kategori keuangan; akreditasi IATA lengkap (cargo agent, PSA travel, DGR, LAR/PCR/TCR/ULD, CASS/BSP, GITA, AOC, AMO) → kategori IATA & Penerbangan 22 layanan.
+- Konstruksi Katalog 500 Jasa (src/data/jasa/, 11 file): types, 33 kategori (intro + persyaratan umum), 9 part × 500 layanan (slug/title/enTitle/agency/timeline/deskripsi unik/keywords), index.ts dengan validator build-time (tepat 500, slug unik, kategori valid) + API findJasa/jasaInCategory/searchJasa/JASA_POPULER (42 unggulan).
+- Integrasi mesin SEO (src/lib/seo.ts): RouteKind jasa/jasa-category/jasa-detail; resolver /jasa, /jasa/{cat}, /jasa/{cat}/{slug} (mismatch → 404); STATIC_SEO /jasa; buildRouteMetadata + hreflang inti id+en+x-default utk 534 halaman jasa (buildLanguageAlternates kini berparameter); allRoutePaths 663; buildSitemapEntries 661 URL (bahasa "core" vs "full"); breadcrumb 4 tingkat; JSON-LD Service (broker=instansi, OrderAction) + ItemList kategori.
+- app/sitemap.ts: dukung languageSet core/full — 661 URL (127 inti × 26 bahasa hreflang + 534 jasa × 3).
+- SPA: pages/jasa.tsx (hero, StatBand, pencarian live 500 layanan, 33 kartu kategori + ikon lucide, 42 unggulan), jasa-category.tsx (daftar + persyaratan + navigasi lintas kategori), jasa-detail.tsx (fakta 4, ruang lingkup 6 poin, protokol 5 fase, FAQ 3, terkait 3, CTA WA) — semua berparameter data.
+- app.tsx: case "jasa" 3 tingkat (indeks/kategori/detail) + NotFoundPage utk rute salah.
+- Navbar: tautan "500 Jasa" (kunci nav.jasa disuntik ke 26 kamus FullDict via scripts/add-nav-jasa.py + union TranslationKey). Footer: tautan katalog + 3 kategori unggulan (IATA, akreditasi, ISO).
+- Perbaikan tipe: layout.tsx creator → string; seo.ts keywords insight enTitle optional.
+- Build produksi: SUKSES — 670 halaman statis (662 rute catch-all SSG + aset), generate 6,9 detik.
+- Dev server persisten: double-fork (setsid dalam subshell) agar selamat dari trap cleanup dev.sh + pembunuh sesi tool; health check 200.
+- Verifikasi E2E (curl + agent-browser): /jasa 200 (H1 "500 Layanan Perizinan", 78 link server-rendered, JSON-LD ItemList), /jasa/iata-penerbangan 200 (22 kartu), /jasa/iata-penerbangan/iata-cargo-agent 200 (title/canonical pusatperizinan.com/H1 server-render/JSON-LD Service+BreadcrumbList+OrderAction/hrefLang id+en+x-default), pencarian "iata" → 6 hasil + klik → hash-nav judul tersinkron, /jasa/nonsense 404, /jasa/iso/pendirian-pt 404 (kategori-slug mismatch), sitemap.xml 661 <loc> + xhtml:link, robots.txt Host+Sitemap, 0 error console, screenshot 6 file (indeks desktop/mobile, pencarian, detail BPOM, kategori IATA).
+- Domain sweep final: nol kemunculan pusatperizinan.id di src/ & public/.
+- Commit 5bf37b1 (51 file, +2626/-15) — menggabung sisa sesi metadata (b2cd0a9) + katalog 500 jasa.
+
+Stage Summary:
+- 500 layanan tambahan TERPASANG penuh di situs: rute nyata /jasa/{kategori}/{slug}, SSG, metadata unik, JSON-LD Service/ItemList/Breadcrumb — Google dapat mengindeks 534 halaman katalog baru sejak build pertama.
+- Sitemap 661 URL (beratus-ratus halaman ✓); 33 kategori termasuk IATA (22 layanan akreditasi/pelatihan/penerbangan), ISO (22), akreditasi KAN/BNSP (14).
+- Total halaman situs: 128 → 662 (SSG 670 termasuk aset); riset 10 benchmark global terdokumentasi di atas.
+- Bukti: download/jasa-500-index.png, jasa-500-mobile.png, jasa-500-search.png, jasa-500-search-result.png, jasa-detail-bpom-md.png, jasa-kategori-iata.png.
