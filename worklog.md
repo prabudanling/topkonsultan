@@ -542,3 +542,22 @@ Stage Summary:
 - Sitemap 661 URL (beratus-ratus halaman ✓); 33 kategori termasuk IATA (22 layanan akreditasi/pelatihan/penerbangan), ISO (22), akreditasi KAN/BNSP (14).
 - Total halaman situs: 128 → 662 (SSG 670 termasuk aset); riset 10 benchmark global terdokumentasi di atas.
 - Bukti: download/jasa-500-index.png, jasa-500-mobile.png, jasa-500-search.png, jasa-500-search-result.png, jasa-detail-bpom-md.png, jasa-kategori-iata.png.
+
+---
+Task ID: 5
+Agent: Z.ai Code (main orchestrator)
+Task: Memperbaiki Console Error hydration mismatch React 19 pada LanguagePicker (id Radix `radix-_R_9r55…H1_` vs `radix-_R_17cl5…H1_`).
+
+Work Log:
+- Reproduksi: 12+ skenario fresh-load (/, hash route, ?lang=ja, localStorage lang, 4 rute cold-compile Turbopack, jasa detail) — semua hidrasi BERSIH; error user bersifat intermitten dev-mode.
+- Forensik: decode kedua treeId base32 via scripts/decode-treeid.mjs (algoritma pushTreeId/mountId react-dom 19.2.3 dibaca langsung dari node_modules): server punya 1 level fork ekstra (2 bit, totalChildren 3-4) di jalur tengah pohon → klien menghidrasi <DialogTitle> di posisi tree berbeda saat isHydrating=true (kolusi hidrasi streaming/lazy-chunk + resync useSyncExternalStore rute-hash/bahasa).
+- Audit alternatif yang DITOLAK: override `id` eksplisit pada DialogTitle/DialogDescription — Radix menghitung aria-labelledby dari context.titleId (useId Root), jadi override memicu false-positive TitleWarning console.error.
+- Fix (src/components/landing/language-picker.tsx): CommandDialog di-gate `{mounted && …}` (useState(false) + useEffect) → header sr-only ber-id tak-stabil tidak pernah masuk HTML server; id klien post-mount (radix-_r_N, global counter) selalu konsisten dengan aria-labelledby/aria-describedby. Tombol pill tetap SSR (SEO/interactive).
+- Verifikasi (agent-browser + curl): HTML server 0 kemunculan `radix-`; 6 rute (/, /jasa, /perizinan, /faq, /vvip, /jasa/iata-penerbangan/iata-cargo-agent) → 0 error console; dialog terbuka (195 item), pencarian "korea" → 17 hasil, klik 한국어 → htmlLang=ko + pill KO + localStorage tersimpan; ariaSesuai=true; screenshot download/fix-hydration-lang-dialog.png.
+- Build produksi SUKSES 670/670 halaman statis; dev server tetap 200.
+- Commit b50a6aa (+8307e13, 31a-form gitignore bersih).
+
+Stage Summary:
+- Kelas error hydration id-Radix pada dialog bahasa kini MUSTAHIL terjadi (elemen ber-id tidak pernah dibandingkan saat hidrasi).
+- Aksesibilitas justru membaik: aria-labelledby/describedby selalu cocok dengan id aktual di DOM.
+- Tidak ada regresi SEO: konten yang dihapus dari SSR hanyalah dialog tertutup sr-only (nol nilai indeks).
