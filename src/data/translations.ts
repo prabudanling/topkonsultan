@@ -14,7 +14,7 @@ import { DA, NB, FI, IS, ET, LV, LT, CS, SK, HU, RO, BG, SR, HR, SL, SQ, BE, CA,
 import { MY, LO, BN, TA, TE, KN, ML, MR, GU, PA, NE, SI, SW, ZU, AF, AM, HA, YO, KK, UZ, AZ, HY, KA, MN } from "./translations-partial2";
 
 export type TranslationKey =
-  | "nav.perizinan" | "nav.layanan" | "nav.dewan" | "nav.industri" | "nav.wawasan" | "nav.tentang"
+  | "nav.perizinan" | "nav.jasa" | "nav.layanan" | "nav.dewan" | "nav.industri" | "nav.wawasan" | "nav.tentang"
   | "nav.metode" | "nav.hasil" | "nav.karier" | "nav.faq" | "nav.kontak" | "nav.cta"
   | "hero.t1" | "hero.t2" | "hero.t3" | "hero.sub1" | "hero.sub2"
   | "hero.cta1" | "hero.cta2" | "hero.cta3"

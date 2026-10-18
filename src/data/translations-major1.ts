@@ -6,6 +6,7 @@ export type FullDict = Record<TranslationKey, string>;
 /* Bahasa Indonesia — bahasa dasar situs. */
 export const ID: FullDict = {
   "nav.perizinan": "Perizinan",
+  "nav.jasa": "500 Jasa",
   "nav.layanan": "Layanan",
   "nav.dewan": "46 Dewan Pakar",
   "nav.industri": "Industri",
@@ -40,6 +41,7 @@ export const ID: FullDict = {
 
 export const EN: FullDict = {
   "nav.perizinan": "Licensing",
+  "nav.jasa": "500 Services",
   "nav.layanan": "Services",
   "nav.dewan": "46 Expert Councils",
   "nav.industri": "Industries",
@@ -74,6 +76,7 @@ export const EN: FullDict = {
 
 export const MS: FullDict = {
   "nav.perizinan": "Pelesenan",
+  "nav.jasa": "500 Perkhidmatan",
   "nav.layanan": "Perkhidmatan",
   "nav.dewan": "46 Majlis Pakar",
   "nav.industri": "Industri",
@@ -108,6 +111,7 @@ export const MS: FullDict = {
 
 export const JA: FullDict = {
   "nav.perizinan": "許認可",
+  "nav.jasa": "500サービス",
   "nav.layanan": "サービス",
   "nav.dewan": "46の専門委員会",
   "nav.industri": "業界",
@@ -142,6 +146,7 @@ export const JA: FullDict = {
 
 export const KO: FullDict = {
   "nav.perizinan": "인허가",
+  "nav.jasa": "500 서비스",
   "nav.layanan": "서비스",
   "nav.dewan": "46개 전문위원회",
   "nav.industri": "산업",
@@ -176,6 +181,7 @@ export const KO: FullDict = {
 
 export const ZH_CN: FullDict = {
   "nav.perizinan": "许可",
+  "nav.jasa": "500服务",
   "nav.layanan": "服务",
   "nav.dewan": "46个专家委员会",
   "nav.industri": "行业",
@@ -210,6 +216,7 @@ export const ZH_CN: FullDict = {
 
 export const ZH_TW: FullDict = {
   "nav.perizinan": "許可",
+  "nav.jasa": "500服務",
   "nav.layanan": "服務",
   "nav.dewan": "46個專家委員會",
   "nav.industri": "產業",
@@ -244,6 +251,7 @@ export const ZH_TW: FullDict = {
 
 export const AR: FullDict = {
   "nav.perizinan": "التراخيص",
+  "nav.jasa": "500 خدمة",
   "nav.layanan": "الخدمات",
   "nav.dewan": "46 مجلس خبراء",
   "nav.industri": "الصناعات",
@@ -278,6 +286,7 @@ export const AR: FullDict = {
 
 export const ES: FullDict = {
   "nav.perizinan": "Licencias",
+  "nav.jasa": "500 Servicios",
   "nav.layanan": "Servicios",
   "nav.dewan": "46 Consejos de Expertos",
   "nav.industri": "Industrias",
@@ -312,6 +321,7 @@ export const ES: FullDict = {
 
 export const FR: FullDict = {
   "nav.perizinan": "Licences",
+  "nav.jasa": "500 Services",
   "nav.layanan": "Services",
   "nav.dewan": "46 Conseils d'Experts",
   "nav.industri": "Industries",
@@ -346,6 +356,7 @@ export const FR: FullDict = {
 
 export const DE: FullDict = {
   "nav.perizinan": "Lizenzen",
+  "nav.jasa": "500 Dienstleistungen",
   "nav.layanan": "Leistungen",
   "nav.dewan": "46 Expertenräte",
   "nav.industri": "Branchen",
@@ -380,6 +391,7 @@ export const DE: FullDict = {
 
 export const PT: FullDict = {
   "nav.perizinan": "Licenças",
+  "nav.jasa": "500 Serviços",
   "nav.layanan": "Serviços",
   "nav.dewan": "46 Conselhos de Especialistas",
   "nav.industri": "Indústrias",
@@ -414,6 +426,7 @@ export const PT: FullDict = {
 
 export const IT: FullDict = {
   "nav.perizinan": "Licenze",
+  "nav.jasa": "500 Servizi",
   "nav.layanan": "Servizi",
   "nav.dewan": "46 Consigli di Esperti",
   "nav.industri": "Settori",

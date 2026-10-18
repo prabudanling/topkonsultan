@@ -16,6 +16,7 @@ import { COUNCIL_PROFILES } from "@/data/council-profiles";
 import { INDUSTRIES } from "@/data/industries";
 import { INSIGHTS } from "@/data/insights";
 import { PERIZINAN } from "@/data/perizinan";
+import { findJasa, findJasaCategory } from "@/data/jasa";
 import Navbar from "@/components/landing/navbar";
 import Footer from "@/components/landing/footer";
 import Preloader from "@/components/landing/preloader";
@@ -34,6 +35,9 @@ import InsightsPage from "@/components/site/pages/insights";
 import InsightDetailPage from "@/components/site/pages/insight-detail";
 import PerizinanPage from "@/components/site/pages/perizinan";
 import PerizinanDetailPage from "@/components/site/pages/perizinan-detail";
+import JasaPage from "@/components/site/pages/jasa";
+import JasaCategoryPage from "@/components/site/pages/jasa-category";
+import JasaDetailPage from "@/components/site/pages/jasa-detail";
 import CareersPage from "@/components/site/pages/careers";
 import MethodPage from "@/components/site/pages/method";
 import ResultsPage from "@/components/site/pages/results";
@@ -87,6 +91,23 @@ function SiteShell() {
         ) : (
           <PerizinanPage initialCategory={route.query.get("kategori")} />
         );
+        break;
+      }
+      case "jasa": {
+        const seg3 = route.segments[2];
+        if (!seg2) {
+          view = <JasaPage />;
+        } else if (!seg3) {
+          const cat = findJasaCategory(seg2);
+          view = cat ? <JasaCategoryPage catId={cat.id} /> : <NotFoundPage />;
+        } else {
+          const item = findJasa(seg3);
+          view = item && item.cat === seg2 ? (
+            <JasaDetailPage slug={item.slug} />
+          ) : (
+            <NotFoundPage />
+          );
+        }
         break;
       }
       case "councils": {

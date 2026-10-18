@@ -21,6 +21,14 @@ import { INSIGHTS } from "@/data/insights";
 import { FAQS } from "@/data/legal";
 import { LANGUAGES } from "@/data/languages";
 import { slugify } from "@/data/extended-types";
+import {
+  JASA_CATEGORIES,
+  JASA_ITEMS,
+  JASA_STATS,
+  findJasa,
+  findJasaCategory,
+  jasaInCategory,
+} from "@/data/jasa";
 
 /* ============================== KONSTANTA SITUS ============================= */
 
@@ -116,13 +124,18 @@ export function abs(path: string): string {
 }
 
 /**
- * Peta hreflang lengkap untuk sebuah path:
- * - id (default) → URL bersih; 25 bahasa penuh lainnya → ?lang=kode
+ * Peta hreflang untuk sebuah path:
+ * - id (default) → URL bersih; bahasa lainnya → ?lang=kode
  * - x-default → URL bersih
+ * `langs` penuh (26) untuk halaman inti; inti (id+en) untuk 500+ halaman katalog jasa
+ *   agar sitemap tetap ringkas dan setiap entri jujur secara bahasa konten.
  */
-export function buildLanguageAlternates(path: string): Record<string, string> {
+export function buildLanguageAlternates(
+  path: string,
+  langs: readonly string[] = FULL_LANGS
+): Record<string, string> {
   const map: Record<string, string> = {};
-  for (const code of FULL_LANGS) {
+  for (const code of langs) {
     map[code] = code === "id" ? abs(path) : `${abs(path)}?lang=${code}`;
   }
   map["x-default"] = abs(path);
@@ -135,7 +148,11 @@ export type RouteKind =
   | "home" | "about" | "services" | "perizinan" | "councils" | "industries"
   | "insights" | "careers" | "method" | "results" | "contact" | "faq"
   | "legal" | "vvip" | "service-detail" | "perizinan-detail"
-  | "council-detail" | "industry-detail" | "insight-detail" | "not-found";
+  | "council-detail" | "industry-detail" | "insight-detail" | "not-found"
+  | "jasa" | "jasa-category" | "jasa-detail";
+
+/** Bahasa hreflang inti untuk halaman katalog 500 jasa (ringkas & jujur). */
+const JASA_LANGS: readonly string[] = ["id", "en"];
 
 export interface RouteSeo {
   /** Jalur ternormalisasi, selalu diawali "/", tanpa query & trailing slash. */
@@ -271,6 +288,16 @@ const STATIC_SEO: Record<string, StaticSeo> = {
       "Kebijakan Cookie situs PT TOP KONSULTAN INTERNASIONAL — jenis cookie yang kami gunakan, untuk apa kami menggunakannya, dan bagaimana Anda mengendalikannya kapan pun dari peramban Anda.",
     keywords: ["kebijakan cookie", "cookie policy"],
   },
+  "/jasa": {
+    kind: "jasa",
+    title: `Katalog 500 Jasa Perizinan — ${S}`,
+    description:
+      "Katalog 500 jasa perizinan terlengkap di Indonesia dalam 33 kategori: pendirian PT/PMA, NIB OSS, BPOM, halal, ISO, akreditasi KAN/BNSP, IATA, KITAS, SNI, TKDN, OJK — diurus tuntas 46 Dewan Pakar.",
+    keywords: [
+      "katalog jasa perizinan", "500 jasa perizinan", "jasa pengurusan izin",
+      "izin usaha lengkap", "sertifikasi indonesia", "iata", "akreditasi", "bpom", "halal",
+    ],
+  },
   "/vvip": {
     kind: "vvip",
     title: `Member Lounge — ${S}`,
@@ -394,15 +421,75 @@ export function getRouteSeo(input: string): RouteSeo | null {
       path, url: abs(path), kind: "insight-detail",
       title: `${ins.title} — Wawasan — ${S}`,
       description: clampDesc(ins.excerpt),
-      keywords: [ins.title, ins.enTitle, ins.category, "wawasan dewan", "analisis strategi"].filter(Boolean),
+      keywords: [ins.title, ins.enTitle ?? "", ins.category, "wawasan dewan", "analisis strategi"],
       noindex: false, ogType: "article",
       publishedTime: ins.date, modifiedTime: ins.date,
       image: ins.cover, entitySlug: ins.slug,
     };
   }
 
+  /* --- Katalog 500 jasa: /jasa, /jasa/{kategori}, /jasa/{kategori}/{slug} --- */
+  if (seg1 === "jasa") {
+    if (!seg2) {
+      const st = STATIC_SEO["/jasa"];
+      return {
+        path, url: abs(path), kind: "jasa", title: st.title as string,
+        description: st.description as string,
+        keywords: [...((st.keywords ?? []) as string[]), ...KEYWORDS.slice(0, 8)],
+        noindex: false, ogType: "website", modifiedTime: SITE_LASTMOD,
+      };
+    }
+    if (seg2 && !segments[2]) {
+      const cat = findJasaCategory(seg2);
+      if (!cat) return null;
+      const count = jasaInCategory(cat.id).length;
+      return {
+        path, url: abs(path), kind: "jasa-category",
+        title: `${cat.name} — 500 Jasa Perizinan — ${S}`,
+        description: clampDesc(
+          `${cat.intro} ${count} layanan dalam kategori ini: dari instansi ${firstAgencyOf(cat.id)} hingga selesai tuntas.`
+        ),
+        keywords: [cat.name, cat.enName, ...categoryKeywordSample(cat.id), "jasa perizinan", "konsultan perizinan"],
+        noindex: false, ogType: "website", modifiedTime: SITE_LASTMOD, entitySlug: cat.id,
+      };
+    }
+    const [c, itemSlug] = [seg2, segments[2]];
+    const item = itemSlug ? findJasa(itemSlug) : undefined;
+    if (!item || item.cat !== c) return null;
+    const cat = findJasaCategory(item.cat);
+    return {
+      path, url: abs(path), kind: "jasa-detail",
+      title: `${item.title} — Jasa Pengurusan — ${S}`,
+      description: clampDesc(item.desc),
+      keywords: [item.title, item.enTitle, ...item.keywords.slice(0, 4), "jasa perizinan", cat?.name ?? ""].filter(Boolean),
+      noindex: false, ogType: "website", modifiedTime: SITE_LASTMOD, entitySlug: item.slug,
+    };
+  }
+
   /* --- Rute tidak dikenal → 404 --- */
   return null;
+}
+
+/** Instansi pertama sebuah kategori jasa — untuk deskripsi halaman kategori. */
+function firstAgencyOf(cat: string): string {
+  const items = jasaInCategory(cat);
+  return items[0]?.agency ?? "instansi terkait";
+}
+
+/** Sampel kata kunci layanan sebuah kategori (maks 6, unik). */
+function categoryKeywordSample(cat: string): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const item of jasaInCategory(cat)) {
+    for (const kw of item.keywords) {
+      if (!seen.has(kw)) {
+        seen.add(kw);
+        out.push(kw);
+        if (out.length >= 6) return out;
+      }
+    }
+  }
+  return out;
 }
 
 /* ========================= METADATA NEXT.JS PER RUTE ======================== */
@@ -419,13 +506,15 @@ export function buildRouteMetadata(input: string): Metadata {
   const image = seo.image ?? SITE.ogImage;
   const isArticle = seo.ogType === "article";
 
+  const isJasa = seo.kind === "jasa" || seo.kind === "jasa-category" || seo.kind === "jasa-detail";
+
   return {
     title: { absolute: seo.title },
     description: seo.description,
     keywords: seo.keywords,
     alternates: {
       canonical: seo.url,
-      languages: buildLanguageAlternates(seo.path),
+      languages: buildLanguageAlternates(seo.path, isJasa ? JASA_LANGS : FULL_LANGS),
     },
     openGraph: {
       ...(isArticle
@@ -442,7 +531,7 @@ export function buildRouteMetadata(input: string): Metadata {
       url: seo.url,
       siteName: SITE.name,
       locale: "id_ID",
-      alternateLocale: FULL_LANGS.filter((c) => c !== "id").map(ogLocale),
+      alternateLocale: (isJasa ? JASA_LANGS : FULL_LANGS).filter((c) => c !== "id").map(ogLocale),
       images: [{ url: image, width: 1200, height: 630, alt: SITE.ogImageAlt }],
     },
     twitter: {
@@ -480,6 +569,9 @@ export function allRoutePaths(): string[] {
   for (const c of COUNCILS) paths.push(`/councils/${slugify(c.name)}`);
   for (const i of INDUSTRIES) paths.push(`/industries/${i.slug}`);
   for (const x of INSIGHTS) paths.push(`/insights/${x.slug}`);
+  paths.push("/jasa");
+  for (const cat of JASA_CATEGORIES) paths.push(`/jasa/${cat.id}`);
+  for (const item of JASA_ITEMS) paths.push(`/jasa/${item.cat}/${item.slug}`);
   return paths;
 }
 
@@ -495,13 +587,16 @@ export interface SitemapEntry {
   priority: number;
   changeFrequency: "daily" | "weekly" | "monthly" | "yearly";
   lastModified?: string;
+  /** "core" → hreflang id+en+x-default (halaman katalog 500 jasa); default "full". */
+  languageSet?: "full" | "core";
 }
 
-/** Entri sitemap.xml — 127 URL (VVIP sengaja dikeluarkan). */
+/** Entri sitemap.xml — 661 URL: 127 halaman inti + 534 halaman katalog 500 jasa (VVIP dikeluarkan). */
 export function buildSitemapEntries(): SitemapEntry[] {
   const entries: SitemapEntry[] = [
     { path: "/", priority: 1.0, changeFrequency: "daily", lastModified: SITE_LASTMOD },
     { path: "/perizinan", priority: 0.9, changeFrequency: "weekly", lastModified: SITE_LASTMOD },
+    { path: "/jasa", priority: 0.9, changeFrequency: "weekly", lastModified: SITE_LASTMOD, languageSet: "core" },
     { path: "/services", priority: 0.9, changeFrequency: "weekly", lastModified: SITE_LASTMOD },
     { path: "/councils", priority: 0.8, changeFrequency: "weekly", lastModified: SITE_LASTMOD },
     { path: "/contact", priority: 0.8, changeFrequency: "monthly", lastModified: SITE_LASTMOD },
@@ -530,6 +625,21 @@ export function buildSitemapEntries(): SitemapEntry[] {
   }
   for (const x of INSIGHTS) {
     entries.push({ path: `/insights/${x.slug}`, priority: 0.5, changeFrequency: "monthly", lastModified: x.date });
+  }
+  for (const cat of JASA_CATEGORIES) {
+    entries.push({
+      path: `/jasa/${cat.id}`, priority: 0.7, changeFrequency: "weekly",
+      lastModified: SITE_LASTMOD, languageSet: "core",
+    });
+  }
+  for (const item of JASA_ITEMS) {
+    entries.push({
+      path: `/jasa/${item.cat}/${item.slug}`,
+      priority: item.populer ? 0.7 : 0.6,
+      changeFrequency: "monthly",
+      lastModified: SITE_LASTMOD,
+      languageSet: "core",
+    });
   }
   return entries;
 }
@@ -767,6 +877,7 @@ function crumbsFor(seo: RouteSeo): Array<{ name: string; url: string }> {
       case "about": return "Tentang Kami";
       case "services": return "Layanan";
       case "perizinan": return "Gerbang Perizinan";
+      case "jasa": return "500 Jasa Perizinan";
       case "councils": return "Dewan Pakar";
       case "industries": return "Industri";
       case "insights": return "Wawasan";
@@ -783,6 +894,15 @@ function crumbsFor(seo: RouteSeo): Array<{ name: string; url: string }> {
   };
   if (seg.length === 0) return [home];
   if (seg.length === 1) return [home, { name: label(seg[0]), url: abs(`/${seg[0]}`) }];
+  if (seg[0] === "jasa" && seg.length === 3) {
+    const cat = findJasaCategory(seg[1]);
+    return [
+      home,
+      { name: "500 Jasa Perizinan", url: abs("/jasa") },
+      { name: cat?.name ?? seg[1], url: abs(`/jasa/${seg[1]}`) },
+      { name: seo.title.split(" — ")[0], url: seo.url },
+    ];
+  }
   return [
     home,
     { name: label(seg[0]), url: abs(`/${seg[0]}`) },
@@ -847,6 +967,31 @@ function serviceJsonLd(seo: RouteSeo): JsonLd | null {
       potentialAction: {
         "@type": "OrderAction",
         name: `Ajukan pengurusan ${item.name}`,
+        target: abs("/contact"),
+      },
+    };
+  }
+  if (seo.kind === "jasa-detail") {
+    const item = findJasa(seo.entitySlug as string);
+    if (!item) return null;
+    const cat = findJasaCategory(item.cat);
+    return {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${seo.url}#service`,
+      name: item.title,
+      alternateName: item.enTitle,
+      description: item.desc,
+      serviceType: `Jasa pengurusan — ${cat?.name ?? "perizinan"}`,
+      category: cat?.name,
+      url: seo.url,
+      provider: { "@id": LEGAL_ID },
+      broker: item.agency,
+      areaServed: [{ "@type": "AdministrativeArea", name: "Indonesia" }],
+      termsOfService: abs("/terms"),
+      potentialAction: {
+        "@type": "OrderAction",
+        name: `Ajukan ${item.title}`,
         target: abs("/contact"),
       },
     };
@@ -934,6 +1079,30 @@ function itemListJsonLd(seo: RouteSeo): JsonLd | null {
   switch (seo.kind) {
     case "perizinan":
       return build("Gerbang Perizinan — 36 Jenis Izin", PERIZINAN as unknown as Named[], (x) => abs(`/perizinan/${x.slug}`));
+    case "jasa":
+      return {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "@id": `${seo.url}#itemlist`,
+        name: `Katalog 500 Jasa Perizinan — ${JASA_STATS.total} layanan dalam ${JASA_STATS.categories} kategori`,
+        numberOfItems: JASA_CATEGORIES.length,
+        itemListElement: JASA_CATEGORIES.map((c, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: `${c.name} (${jasaInCategory(c.id).length} layanan)`,
+          url: abs(`/jasa/${c.id}`),
+        })),
+      };
+    case "jasa-category": {
+      const cat = findJasaCategory(seo.entitySlug as string);
+      if (!cat) return null;
+      const items = jasaInCategory(cat.id);
+      return build(
+        `${cat.name} — ${items.length} Layanan`,
+        items as unknown as Named[],
+        (x) => abs(`/jasa/${cat.id}/${x.slug}`)
+      );
+    }
     case "services":
       return build("12 Praktik Konsultasi", SERVICES as unknown as Named[], (x) => abs(`/services/${x.num}`));
     case "councils":

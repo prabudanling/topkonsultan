@@ -2,14 +2,17 @@ import type { MetadataRoute } from "next";
 import {
   SITE,
   SITE_LASTMOD,
+  FULL_LANGS,
   buildLanguageAlternates,
   buildSitemapEntries,
 } from "@/lib/seo";
 
 /**
- * /sitemap.xml — seluruh 127 URL nyata situs (rute VVIP sengaja dikeluarkan).
- * Setiap URL membawa hreflang untuk 26 bahasa terjemahan penuh + x-default,
- * prioritas, dan frekuensi perubahan yang sesuai bobot kontennya.
+ * /sitemap.xml — seluruh 661 URL nyata situs:
+ *   127 halaman inti (hreflang 26 bahasa penuh + x-default)
+ * + 534 halaman Katalog 500 Jasa Perizinan (hreflang inti id+en+x-default,
+ *   jujur terhadap bahasa konten & menjaga sitemap tetap ringkas).
+ * Rute VVIP sengaja dikeluarkan.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   return buildSitemapEntries().map((entry) => ({
@@ -18,7 +21,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: entry.changeFrequency,
     priority: entry.priority,
     alternates: {
-      languages: buildLanguageAlternates(entry.path),
+      languages: buildLanguageAlternates(
+        entry.path,
+        entry.languageSet === "core" ? ["id", "en"] : FULL_LANGS
+      ),
     },
   }));
 }

@@ -233,6 +233,26 @@ export default function Footer() {
                   Lihat semua 36 izin →
                 </Link>
               </li>
+              <li className="pt-1.5">
+                <Link to="/jasa" className="font-semibold text-violet-700 transition-colors hover:text-violet-700">
+                  Katalog 500 Jasa (33 kategori) →
+                </Link>
+              </li>
+              <li>
+                <Link to="/jasa/iata-penerbangan" className="text-slate-500 transition-colors hover:text-violet-600">
+                  IATA, Penerbangan &amp; Travel
+                </Link>
+              </li>
+              <li>
+                <Link to="/jasa/akreditasi" className="text-slate-500 transition-colors hover:text-violet-600">
+                  Akreditasi KAN &amp; BNSP
+                </Link>
+              </li>
+              <li>
+                <Link to="/jasa/iso" className="text-slate-500 transition-colors hover:text-violet-600">
+                  Sertifikasi ISO
+                </Link>
+              </li>
             </ul>
           </nav>
 

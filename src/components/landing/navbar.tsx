@@ -12,6 +12,7 @@ import { EASE } from "./motion";
 
 const NAV_LINKS: { to: string; key: TranslationKey }[] = [
   { to: "/perizinan", key: "nav.perizinan" },
+  { to: "/jasa", key: "nav.jasa" },
   { to: "/services", key: "nav.layanan" },
   { to: "/councils", key: "nav.dewan" },
   { to: "/industries", key: "nav.industri" },

@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   description: SITE.description,
   keywords: [...KEYWORDS],
   authors: [{ name: SITE.name, url: SITE.url }],
-  creator: { name: "Gugun Gunara — PT TOP KONSULTAN INTERNASIONAL" },
+  creator: "Gugun Gunara — PT TOP KONSULTAN INTERNASIONAL",
   publisher: SITE.name,
   category: "Konsultasi Manajemen & Perizinan Usaha",
   classification: "Business Consulting, Legal Licensing, Professional Services",
